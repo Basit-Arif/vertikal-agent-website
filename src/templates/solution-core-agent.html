@@ -1,0 +1,489 @@
+{% extends "base.html" %}
+
+{% block title %}Vertikal Agent - AI Agents for Core Agent{% endblock %}
+{% block content %}
+<section id="core-operations-hero" class="gradient-bg py-20 px-6 h-[680px]">
+    <div class="max-w-7xl mx-auto">
+        <div class="grid md:grid-cols-2 gap-12 items-center h-full">
+            <div class="text-center md:text-left">
+                <h1 class="text-5xl md:text-6xl font-bold text-dark-text mb-6">
+                    Core Operations<br/>
+                    <span class="text-primary-blue">Agent</span>
+                </h1>
+                <p class="text-xl text-muted-text mb-8 leading-relaxed">
+                    Automate your everyday business workflows — without writing a single message or email.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <span class="bg-primary-blue text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-blue-700 transition-colors cursor-pointer">
+                        <a href="https://calendar.app.google/sYYdKgsQZizuwJMe8" 
+                        target="_blank" 
+                        >
+                        Book Demo
+                        </a>
+                    </span>
+                    
+                </div>
+            </div>
+            <div class="relative">
+                <div class="bg-white rounded-2xl p-8 shadow-xl">
+                    <div class="text-center mb-6">
+                        <div class="bg-primary-blue text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fa-solid fa-robot text-2xl"></i>
+                        </div>
+                        <h3 class="font-bold text-dark-text text-xl">AI Agent Orchestrating</h3>
+                        <p class="text-muted-text text-sm">Connecting your business tools</p>
+                    </div>
+                    <div class="grid grid-cols-3 gap-4 mb-6">
+                        <div class="text-center">
+                            <div class="bg-blue-100 text-blue-600 w-12 h-12 rounded-lg flex items-center justify-center mx-auto mb-2">
+                                <i class="fa-solid fa-address-book text-lg"></i>
+                            </div>
+                            <span class="text-xs font-medium">CRM</span>
+                        </div>
+                        <div class="text-center">
+                            <div class="bg-green-100 text-green-600 w-12 h-12 rounded-lg flex items-center justify-center mx-auto mb-2">
+                                <i class="fa-brands fa-whatsapp text-lg"></i>
+                            </div>
+                            <span class="text-xs font-medium">WhatsApp</span>
+                        </div>
+                        <div class="text-center">
+                            <div class="bg-purple-100 text-purple-600 w-12 h-12 rounded-lg flex items-center justify-center mx-auto mb-2">
+                                <i class="fa-solid fa-calendar text-lg"></i>
+                            </div>
+                            <span class="text-xs font-medium">Calendar</span>
+                        </div>
+                    </div>
+                    <div class="space-y-3">
+                        <div class="flex items-center space-x-2">
+                            <div class="w-2 h-2 bg-green-500 rounded-full workflow-animation"></div>
+                            <span class="text-sm text-dark-text">Processing CRM follow-ups...</span>
+                        </div>
+                        <div class="bg-green-50 p-3 rounded-lg">
+                            <div class="flex items-center justify-between">
+                                <span class="text-sm">WhatsApp sent to Alex Kumar</span>
+                                <i class="fa-solid fa-check text-green-500"></i>
+                            </div>
+                        </div>
+                        <div class="bg-blue-50 p-3 rounded-lg">
+                            <div class="flex items-center justify-between">
+                                <span class="text-sm">Interview scheduled for Sarah</span>
+                                <i class="fa-solid fa-check text-blue-500"></i>
+                            </div>
+                        </div>
+                        <div class="bg-orange-50 p-3 rounded-lg">
+                            <div class="flex items-center justify-between">
+                                <span class="text-sm">Invoice reminder sent</span>
+                                <i class="fa-solid fa-check text-orange-500"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Problems We Solve -->
+<section id="core-operations-problems" class="py-16 px-6 bg-accent-gray">
+    <div class="max-w-6xl mx-auto text-center">
+        <h2 class="text-4xl font-bold text-dark-text mb-6">Manual processes slow your team down.</h2>
+        <div class="grid md:grid-cols-3 gap-8">
+            <div class="bg-red-50 p-8 rounded-xl hover-lift">
+                <div class="bg-red-100 text-red-600 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i class="fa-solid fa-clock text-2xl"></i>
+                </div>
+                <h3 class="text-xl font-bold text-dark-text mb-3">Sales Delays</h3>
+                <p class="text-muted-text">Sales reps forget to follow up on quotes, leads go cold, and revenue opportunities slip away</p>
+            </div>
+            <div class="bg-yellow-50 p-8 rounded-xl hover-lift">
+                <div class="bg-yellow-100 text-yellow-600 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i class="fa-solid fa-user-tie text-2xl"></i>
+                </div>
+                <h3 class="text-xl font-bold text-dark-text mb-3">HR Overload</h3>
+                <p class="text-muted-text">Endless back-and-forth calls and emails just to schedule a simple interview or meeting</p>
+            </div>
+            <div class="bg-orange-50 p-8 rounded-xl hover-lift">
+                <div class="bg-orange-100 text-orange-600 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i class="fa-solid fa-file-invoice text-2xl"></i>
+                </div>
+                <h3 class="text-xl font-bold text-dark-text mb-3">Finance Gaps</h3>
+                <p class="text-muted-text">Invoices get forgotten, payments are delayed, and cash flow suffers from poor follow-up</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- How the Core Agent Works -->
+<section id="core-agent-works" class="py-16 px-6 bg-white">
+    <div class="max-w-6xl mx-auto text-center">
+        <h2 class="text-4xl font-bold text-dark-text mb-12">Your agent connects the dots across teams.</h2>
+        <div class="grid md:grid-cols-3 gap-8">
+            <div class="bg-gradient-to-br from-blue-50 to-blue-100 p-8 rounded-xl hover-lift">
+                <div class="bg-blue-600 text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <i class="fa-solid fa-handshake text-2xl"></i>
+                </div>
+                <h3 class="text-xl font-bold text-dark-text mb-4">Sales Follow-ups</h3>
+                <p class="text-muted-text mb-6">Automatically sends WhatsApp messages when leads go cold or quotes expire</p>
+                <div class="bg-white p-4 rounded-lg shadow-sm">
+                    <div class="flex items-start space-x-3">
+                        <div class="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">
+                            <i class="fa-brands fa-whatsapp text-white text-sm"></i>
+                        </div>
+                        <div class="text-left">
+                            <p class="text-sm text-dark-text font-medium">To: Alex Kumar</p>
+                            <p class="text-xs text-muted-text mt-1">"Hi Alex 👋 Just following up on the quote we sent yesterday. Let us know if you have questions!"</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-gradient-to-br from-green-50 to-green-100 p-8 rounded-xl hover-lift">
+                <div class="bg-green-600 text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <i class="fa-solid fa-calendar-check text-2xl"></i>
+                </div>
+                <h3 class="text-xl font-bold text-dark-text mb-4">Interview Scheduling</h3>
+                <p class="text-muted-text mb-6">HR adds candidates, agent handles all scheduling and sends calendar invites</p>
+                <div class="bg-white p-4 rounded-lg shadow-sm">
+                    <div class="space-y-2">
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm font-medium text-dark-text">Sarah Johnson Interview</span>
+                            <span class="text-xs bg-green-100 text-green-600 px-2 py-1 rounded">Scheduled</span>
+                        </div>
+                        <p class="text-xs text-muted-text">Tomorrow 2:30 PM • Google Meet sent</p>
+                        <p class="text-xs text-muted-text">WhatsApp reminder sent to candidate</p>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-gradient-to-br from-orange-50 to-orange-100 p-8 rounded-xl hover-lift">
+                <div class="bg-orange-600 text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <i class="fa-solid fa-receipt text-2xl"></i>
+                </div>
+                <h3 class="text-xl font-bold text-dark-text mb-4">Invoice Reminders</h3>
+                <p class="text-muted-text mb-6">Tracks due dates and automatically sends payment reminders via email</p>
+                <div class="bg-white p-4 rounded-lg shadow-sm">
+                    <div class="text-left">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-sm font-medium text-dark-text">Invoice #8472</span>
+                            <span class="text-xs bg-orange-100 text-orange-600 px-2 py-1 rounded">Due Soon</span>
+                        </div>
+                        <p class="text-xs text-muted-text">"🔔 Payment reminder: Invoice #8472 due on Tuesday"</p>
+                        <p class="text-xs text-muted-text mt-1">Email sent to client</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Agent in Action Mini Demos -->
+<section id="agent-demos" class="py-16 px-6 bg-accent-gray">
+    <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-12">
+            <h2 class="text-4xl font-bold text-dark-text mb-6">See the agent in action</h2>
+            <p class="text-xl text-muted-text">Real workflows your team uses every day</p>
+        </div>
+        <div class="space-y-12">
+            <!-- Demo 1: Sales Follow-up -->
+            <div class="bg-white rounded-2xl p-8 shadow-lg">
+                <div class="grid md:grid-cols-2 gap-8 items-center">
+                    <div>
+                        <div class="flex items-center mb-4">
+                            <div class="bg-blue-100 text-blue-600 w-12 h-12 rounded-full flex items-center justify-center mr-4">
+                                <i class="fa-solid fa-bolt text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold text-dark-text">Trigger: New lead in CRM goes cold</h3>
+                                <p class="text-muted-text text-sm">Lead hasn't responded in 24 hours</p>
+                            </div>
+                        </div>
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <p class="text-sm text-muted-text mb-2">Agent detects:</p>
+                            <ul class="text-sm space-y-1">
+                                <li>• Quote sent to Alex Kumar yesterday</li>
+                                <li>• No response received</li>
+                                <li>• Auto-follow-up rule activated</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div>
+                        <img class="w-full h-48 object-cover rounded-lg mb-4" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/3cb8c7e847-26552597c235ca1fcb59.png" alt="WhatsApp chat interface showing automated follow-up message to customer Alex with quote reminder" />
+                        <div class="bg-green-50 p-4 rounded-lg">
+                            <div class="flex items-center space-x-3">
+                                <i class="fa-brands fa-whatsapp text-green-500 text-xl"></i>
+                                <div>
+                                    <p class="font-medium text-dark-text">WhatsApp sent automatically</p>
+                                    <p class="text-sm text-muted-text">Follow-up rate: 100%</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Demo 2: Interview Scheduling -->
+            <div class="bg-white rounded-2xl p-8 shadow-lg">
+                <div class="grid md:grid-cols-2 gap-8 items-center">
+                    <div>
+                        <img class="w-full h-48 object-cover rounded-lg mb-4" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/9fc04ffa0b-cfca45332f37bc599934.png" alt="Google Calendar interface showing automated interview scheduling with candidate details and meeting room booking" />
+                        <div class="bg-blue-50 p-4 rounded-lg">
+                            <div class="flex items-center space-x-3">
+                                <i class="fa-solid fa-calendar text-blue-500 text-xl"></i>
+                                <div>
+                                    <p class="font-medium text-dark-text">Calendar invite sent</p>
+                                    <p class="text-sm text-muted-text">Scheduling time saved: 15 mins</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex items-center mb-4">
+                            <div class="bg-green-100 text-green-600 w-12 h-12 rounded-full flex items-center justify-center mr-4">
+                                <i class="fa-solid fa-user-plus text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold text-dark-text">Trigger: HR adds candidate to system</h3>
+                                <p class="text-muted-text text-sm">Candidate profile created</p>
+                            </div>
+                        </div>
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <p class="text-sm text-muted-text mb-2">Agent actions:</p>
+                            <ul class="text-sm space-y-1">
+                                <li>• Finds available time slots</li>
+                                <li>• Creates Google Calendar invite</li>
+                                <li>• Sends WhatsApp reminder to candidate</li>
+                                <li>• Notifies interviewer</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Demo 3: Invoice Reminder -->
+            <div class="bg-white rounded-2xl p-8 shadow-lg">
+                <div class="grid md:grid-cols-2 gap-8 items-center">
+                    <div>
+                        <div class="flex items-center mb-4">
+                            <div class="bg-orange-100 text-orange-600 w-12 h-12 rounded-full flex items-center justify-center mr-4">
+                                <i class="fa-solid fa-clock text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold text-dark-text">Trigger: Invoice due in 2 days</h3>
+                                <p class="text-muted-text text-sm">Payment deadline approaching</p>
+                            </div>
+                        </div>
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <p class="text-sm text-muted-text mb-2">Agent monitors:</p>
+                            <ul class="text-sm space-y-1">
+                                <li>• Invoice #8472 due Tuesday</li>
+                                <li>• Payment not received</li>
+                                <li>• Reminder sequence activated</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div>
+                        <img class="w-full h-48 object-cover rounded-lg mb-4" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/50732ea149-e0d7dfb55e4d9aff2edf.png" alt="Email interface showing automated invoice payment reminder with professional formatting and payment link" />
+                        <div class="bg-orange-50 p-4 rounded-lg">
+                            <div class="flex items-center space-x-3">
+                                <i class="fa-solid fa-envelope text-orange-500 text-xl"></i>
+                                <div>
+                                    <p class="font-medium text-dark-text">Email reminder sent</p>
+                                    <p class="text-sm text-muted-text">Collection rate improved: 40%</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Benefits Section -->
+<section id="core-benefits" class="py-16 px-6 bg-white">
+    <div class="max-w-6xl mx-auto text-center">
+        <h2 class="text-4xl font-bold text-dark-text mb-12">Why use a Core Operations Agent?</h2>
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div class="bg-gradient-to-br from-green-50 to-green-100 p-6 rounded-xl hover-lift">
+                <div class="bg-green-600 text-white w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i class="fa-solid fa-check text-xl"></i>
+                </div>
+                <h3 class="text-lg font-bold text-dark-text mb-3">Reduce busywork for your team</h3>
+                <p class="text-muted-text text-sm">Free up 2-3 hours daily from repetitive follow-ups and scheduling</p>
+            </div>
+            <div class="bg-gradient-to-br from-blue-50 to-blue-100 p-6 rounded-xl hover-lift">
+                <div class="bg-blue-600 text-white w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i class="fa-solid fa-chart-line text-xl"></i>
+                </div>
+                <h3 class="text-lg font-bold text-dark-text mb-3">Improve response times across departments</h3>
+                <p class="text-muted-text text-sm">Instant follow-ups and scheduling mean faster customer satisfaction</p>
+            </div>
+            <div class="bg-gradient-to-br from-purple-50 to-purple-100 p-6 rounded-xl hover-lift">
+                <div class="bg-purple-600 text-white w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i class="fa-solid fa-clock text-xl"></i>
+                </div>
+                <h3 class="text-lg font-bold text-dark-text mb-3">Never forget follow-ups, interviews, or payments</h3>
+                <p class="text-muted-text text-sm">100% consistency with automated workflows that never sleep</p>
+            </div>
+            <div class="bg-gradient-to-br from-teal-50 to-teal-100 p-6 rounded-xl hover-lift">
+                <div class="bg-teal-600 text-white w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i class="fa-solid fa-comments text-xl"></i>
+                </div>
+                <h3 class="text-lg font-bold text-dark-text mb-3">Communicate via tools your team already uses</h3>
+                <p class="text-muted-text text-sm">WhatsApp, Email, Calendar — no new apps to learn</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- How It Works Steps -->
+<section id="core-how-it-works" class="py-16 px-6 bg-accent-gray">
+    <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-12">
+            <h2 class="text-4xl font-bold text-dark-text mb-6">Getting Started is Simple</h2>
+            <p class="text-xl text-muted-text">Deploy your Core Operations Agent in under 30 minutes</p>
+        </div>
+        <div class="grid md:grid-cols-5 gap-8">
+            <div class="text-center">
+                <div class="bg-primary-blue text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold">1</div>
+                <div class="bg-blue-100 text-blue-600 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-3">
+                    <i class="fa-solid fa-link text-xl"></i>
+                </div>
+                <h3 class="font-bold text-dark-text mb-2">Connect your tools</h3>
+                <p class="text-sm text-muted-text">CRM, calendar, finance app, WhatsApp</p>
+            </div>
+            <div class="text-center">
+                <div class="bg-primary-blue text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold">2</div>
+                <div class="bg-green-100 text-green-600 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-3">
+                    <i class="fa-solid fa-cogs text-xl"></i>
+                </div>
+                <h3 class="font-bold text-dark-text mb-2">Define your daily workflows</h3>
+                <p class="text-sm text-muted-text">Follow-up rules, scheduling preferences</p>
+            </div>
+            <div class="text-center">
+                <div class="bg-primary-blue text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold">3</div>
+                <div class="bg-purple-100 text-purple-600 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-3">
+                    <i class="fa-solid fa-message text-xl"></i>
+                </div>
+                <h3 class="font-bold text-dark-text mb-2">Choose message templates</h3>
+                <p class="text-sm text-muted-text">Customize tone and branding</p>
+            </div>
+            <div class="text-center">
+                <div class="bg-primary-blue text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold">4</div>
+                <div class="bg-orange-100 text-orange-600 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-3">
+                    <i class="fa-solid fa-rocket text-xl"></i>
+                </div>
+                <h3 class="font-bold text-dark-text mb-2">Agent is deployed</h3>
+                <p class="text-sm text-muted-text">Live monitoring begins</p>
+            </div>
+            <div class="text-center">
+                <div class="bg-primary-blue text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold">5</div>
+                <div class="bg-teal-100 text-teal-600 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-3">
+                    <i class="fa-solid fa-chart-bar text-xl"></i>
+                </div>
+                <h3 class="font-bold text-dark-text mb-2">Track & optimize in dashboard</h3>
+                <p class="text-sm text-muted-text">Performance metrics and insights</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Social Proof / Results -->
+<section id="core-results" class="py-16 px-6 bg-white">
+    <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-12">
+            <h2 class="text-4xl font-bold text-dark-text mb-6">Real results from real businesses</h2>
+        </div>
+        <div class="bg-gradient-to-br from-primary-blue to-blue-700 text-white p-8 rounded-2xl shadow-xl mb-8">
+            <div class="text-center">
+                <div class="text-6xl mb-4">"</div>
+                <p class="text-xl mb-6 italic">
+                    Our HR used to spend 2–3 hours daily on follow-ups. Now the agent handles interview scheduling end-to-end. We've cut our time-to-hire in half.
+                </p>
+                <div class="flex items-center justify-center">
+                    <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-5.jpg" alt="Farah A." class="w-12 h-12 rounded-full mr-4">
+                    <div class="text-left">
+                        <p class="font-bold">Farah A.</p>
+                        <p class="opacity-90">Ops Manager, PowerPlus</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="grid md:grid-cols-3 gap-6">
+            <div class="bg-green-50 p-6 rounded-xl shadow-sm text-center hover-lift">
+                <div class="text-3xl font-bold text-green-600 mb-2">70%</div>
+                <p class="text-muted-text font-medium">Drop in interview scheduling time</p>
+                <div class="mt-3">
+                    <i class="fa-solid fa-calendar-check text-green-500"></i>
+                </div>
+            </div>
+            <div class="bg-blue-50 p-6 rounded-xl shadow-sm text-center hover-lift">
+                <div class="text-3xl font-bold text-blue-600 mb-2">2.3×</div>
+                <p class="text-muted-text font-medium">Faster payment collection</p>
+                <div class="mt-3">
+                    <i class="fa-solid fa-credit-card text-blue-500"></i>
+                </div>
+            </div>
+            <div class="bg-purple-50 p-6 rounded-xl shadow-sm text-center hover-lift">
+                <div class="text-3xl font-bold text-purple-600 mb-2">95%</div>
+                <p class="text-muted-text font-medium">Lead follow-up rate</p>
+                <div class="mt-3">
+                    <i class="fa-solid fa-handshake text-purple-500"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Integration Partners -->
+<section id="core-integrations" class="py-16 px-6 bg-accent-gray">
+    <div class="max-w-6xl mx-auto text-center">
+        <h2 class="text-4xl font-bold text-dark-text mb-6">Works with the tools you already use</h2>
+        <p class="text-xl text-muted-text mb-12">Connect to your existing workflow in minutes</p>
+        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 items-center">
+            <div class="bg-white p-6 rounded-xl shadow-sm hover-lift">
+                <i class="fa-brands fa-whatsapp text-4xl text-green-500 mb-2"></i>
+                <p class="text-sm font-medium text-muted-text">WhatsApp</p>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-sm hover-lift">
+                <i class="fa-brands fa-google text-4xl text-blue-500 mb-2"></i>
+                <p class="text-sm font-medium text-muted-text">Google Cal</p>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-sm hover-lift">
+                <i class="fa-solid fa-address-book text-4xl text-purple-500 mb-2"></i>
+                <p class="text-sm font-medium text-muted-text">HubSpot</p>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-sm hover-lift">
+                <i class="fa-solid fa-envelope text-4xl text-red-500 mb-2"></i>
+                <p class="text-sm font-medium text-muted-text">Gmail</p>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-sm hover-lift">
+                <i class="fa-solid fa-file-invoice text-4xl text-orange-500 mb-2"></i>
+                <p class="text-sm font-medium text-muted-text">QuickBooks</p>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-sm hover-lift">
+                <i class="fa-solid fa-chart-bar text-4xl text-teal-500 mb-2"></i>
+                <p class="text-sm font-medium text-muted-text">Slack</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Final CTA -->
+<section id="core-final-cta" class="py-20 px-6 bg-primary-blue text-white">
+    <div class="max-w-4xl mx-auto text-center">
+        <h2 class="text-5xl font-bold mb-6">Let your AI agent handle the boring stuff.</h2>
+        <p class="text-xl mb-8 opacity-90">
+            Sales, HR, and finance teams can focus on what matters — while the agent handles the repetitive workflows.
+        </p>
+        <button onclick="openForm()" 
+            class="bg-white text-primary-blue px-8 py-4 rounded-xl font-bold text-lg hover:bg-gray-100 transition-colors shadow-xl flex items-center">
+            <i class="fa-solid fa-calendar mr-3"></i>
+            Book Free Demo
+            </button>
+        
+    </div>
+</section>
+
+{% endblock %}
+
+</body>
+</html>

@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Vertikal Agent</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="{{ url_for('static', filename='js/livekit-client.umd.js') }}"></script>
+  <script>
+    const lkGlobal =
+      window.LivekitClient ||
+      window.LiveKitClient ||
+      window.livekitClient ||
+      window.liveKitClient;
+    console.log("✅ LiveKit Client Loaded:", Boolean(lkGlobal));
+  </script>
+</head>
+<body class="bg-gray-50">
+
+<!-- Talk to Agent Button -->
+<div id="talkToAgentBtn" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-[1000]">
+  <button
+    onclick="openAgentChat()"
+    class="flex items-center space-x-3 px-6 py-3 rounded-full bg-gray-100 shadow-xl border border-gray-200 hover:shadow-2xl transition-all duration-300 ease-in-out hover:scale-105"
+  >
+    <img src="{{ url_for('static', filename='images/logo.jpeg') }}"
+         alt="Agent Logo"
+         class="w-7 h-7 rounded-full object-cover" />
+    <span class="font-semibold text-base text-dark-text tracking-tight">
+      Talk to an agent
+    </span>
+  </button>
+</div>
+
+
+<!-- Modal -->
+<div id="agentModal" class="fixed inset-0 z-[1001] bg-black/40 flex items-center justify-center hidden">
+  <div id="modalContainer" 
+       class="bg-[#f9f9f9] w-[95%] max-w-md rounded-2xl p-6 shadow-xl text-center relative animate-fade-in transition-all duration-300 h-auto max-h-[90vh] sm:max-h-[80vh] overflow-hidden flex flex-col">
+
+    <!-- Back Button -->
+    <button id="backBtn" onclick="showOptions()" 
+            class="hidden absolute top-4 left-4 text-gray-400 hover:text-gray-600 z-10">
+      <i class="fas fa-arrow-left text-xl"></i>
+    </button>
+
+    <!-- Header -->
+    <div id="agentHeader" class="flex flex-col items-center mb-6 transition-all duration-300">
+      <img id="agentLogo"
+           src="{{ url_for('static', filename='images/logo.jpeg') }}" 
+           alt="Agent" 
+           class="w-20 h-20 mx-auto mb-3 rounded-full shadow transition-all duration-300" />
+      <h2 id="agentName" class="text-xl font-semibold transition-all duration-300">Vertikal Agent</h2>
+      <p id="agentSub" class="text-muted-text text-sm transition-all duration-300">Your AI Assistant</p>
+    </div>
+
+    <!-- Option Selector -->
+    <div id="agentOptions" class="grid grid-cols-2 gap-4 mb-6">
+      <button onclick="switchToTextChat()" 
+              class="flex flex-col items-center justify-center p-4 rounded-xl bg-white border hover:bg-gray-100 shadow">
+        <i class="fas fa-comments text-primary text-2xl mb-2"></i>
+        <span class="text-sm font-semibold">Live Chat</span>
+      </button>
+      <button onclick="switchToVoiceChat()" 
+              class="flex flex-col items-center justify-center p-4 rounded-xl bg-white border hover:bg-gray-100 shadow">
+        <i class="fas fa-microphone text-green-500 text-2xl mb-2"></i>
+        <span class="text-sm font-semibold">Voice Call</span>
+      </button>
+    </div>
+
+    <!-- Text Chat UI -->
+    <div id="textChatUI" class="hidden flex flex-col flex-1 min-h-0 transition-all duration-300">
+      <div id="chatMessages" 
+           class="flex-1 overflow-y-auto overflow-x-hidden mb-3 p-3 text-left text-sm bg-gray-50 rounded-xl border flex flex-col gap-3 min-h-0"
+           aria-live="polite"
+           aria-label="Chat messages"
+           style="background-image: linear-gradient(to bottom right, #f9fafb, #f1f5f9);">
+        <div id="chatPlaceholder" class="text-gray-500 text-center text-sm leading-relaxed">
+          👋 Start chatting with Vertikal Agent...
+        </div>
+      </div>
+
+      <div class="flex items-end gap-2 bg-white border rounded-xl p-2 shadow-inner">
+        <textarea id="chatInput" placeholder="Type a message..." rows="1"
+                  class="flex-1 resize-none border-none focus:outline-none focus:ring-0 px-3 py-3 bg-transparent text-gray-800 leading-relaxed min-h-[3rem] max-h-32"
+                  aria-label="Message Vertikal Agent"></textarea>
+        <button id="sendBtn" type="button" onclick="sendMessage()" 
+                class="flex-shrink-0 inline-flex items-center justify-center bg-primary text-white px-5 py-3 rounded-xl hover:bg-blue-700 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+                aria-label="Send message to Vertikal Agent">
+          <i class="fas fa-paper-plane"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Voice Chat UI -->
+    <div id="voiceChatUI" class="hidden flex-1 flex flex-col justify-between">
+      <div class="flex flex-col items-center gap-2 mb-5">
+        <span id="voiceStatusLabel" class="text-sm text-gray-500">Tap connect to speak with Vertikal</span>
+        <span id="voiceTimer" class="text-2xl font-semibold text-gray-800">00:00</span>
+      </div>
+
+      <audio id="voiceRemoteAudio" autoplay playsinline class="hidden"></audio>
+
+      <div class="flex justify-center items-center gap-4 mb-5">
+        <button id="voiceConnectBtn"
+                class="w-12 h-12 rounded-full bg-green-500 text-white shadow flex items-center justify-center hover:bg-green-600 disabled:opacity-40 disabled:cursor-not-allowed"
+                title="Connect"
+                onclick="startVoiceSession(true)">
+          <i class="fas fa-phone"></i>
+        </button>
+        <button id="voiceMuteBtn"
+                class="w-12 h-12 rounded-full bg-white shadow border flex items-center justify-center text-gray-700 disabled:opacity-40 disabled:cursor-not-allowed"
+                title="Mute microphone"
+                onclick="toggleVoiceMute()"
+                disabled>
+          <i class="fas fa-microphone"></i>
+        </button>
+        <button id="voiceHangupBtn"
+                class="w-12 h-12 rounded-full bg-red-500 text-white shadow flex items-center justify-center hover:bg-red-600 disabled:opacity-40 disabled:cursor-not-allowed"
+                title="End call"
+                onclick="endVoiceSession(true)"
+                disabled>
+          <i class="fas fa-phone-slash"></i>
+        </button>
+      </div>
+      <p id="voiceHint" class="text-xs text-gray-500 text-center px-4">
+        Allow microphone access when prompted to start a live call with Vertikal's voice agent.
+      </p>
+    </div>
+
+    <!-- Close Button -->
+    <button onclick="closeAgentChat()" 
+            class="absolute top-4 right-4 text-gray-400 hover:text-gray-600">
+      <i class="fas fa-times"></i>
+    </button>
+  </div>
+</div>
+
+<script>
+  
+  const ui = {
+    talkToAgentBtn: document.getElementById("talkToAgentBtn"),
+    agentModal: document.getElementById("agentModal"),
+    modalContainer: document.getElementById("modalContainer"),
+    agentOptions: document.getElementById("agentOptions"),
+    textChatUI: document.getElementById("textChatUI"),
+    voiceChatUI: document.getElementById("voiceChatUI"),
+    backBtn: document.getElementById("backBtn"),
+    agentHeader: document.getElementById("agentHeader"),
+    agentLogo: document.getElementById("agentLogo"),
+    agentName: document.getElementById("agentName"),
+    chatMessages: document.getElementById("chatMessages"),
+    chatInput: document.getElementById("chatInput"),
+    sendBtn: document.getElementById("sendBtn"),
+    voiceStatusLabel: document.getElementById("voiceStatusLabel"),
+    voiceTimer: document.getElementById("voiceTimer"),
+    voiceRemoteAudio: document.getElementById("voiceRemoteAudio"),
+    voiceConnectBtn: document.getElementById("voiceConnectBtn"),
+    voiceMuteBtn: document.getElementById("voiceMuteBtn"),
+    voiceHangupBtn: document.getElementById("voiceHangupBtn"),
+    voiceHint: document.getElementById("voiceHint"),
+  };
+
+  const chatState = {
+    history: [],
+    isSending: false,
+    leadId: null,
+    sourcePage: window.location.pathname,
+  };
+
+  const voiceState = {
+    room: null,
+    localTrack: null,
+    localPublication: null,
+    remoteTrack: null,
+    connecting: false,
+    connected: false,
+    muted: false,
+    startedAt: null,
+    timerHandle: null,
+    sessionId: null,
+    roomName: null,
+    livekitUrl: null,
+  };
+
+  const LIVEKIT_URL = "wss://testing-mwtbjpwy.livekit.cloud";
+  const LIVEKIT_ROOM = "vertikal-room";
+
+  const PLACEHOLDER_TEXT = "👋 Start chatting with Vertikal Agent...";
+
+  function waitForLiveKit(timeoutMs = 5000) {
+    const getSdk = () =>
+      window.LivekitClient ||
+      window.LiveKitClient ||
+      window.livekitClient ||
+      window.liveKitClient;
+
+    const existing = getSdk();
+    if (existing) {
+      return Promise.resolve(existing);
+    }
+
+    return new Promise((resolve, reject) => {
+      const start = Date.now();
+      const interval = window.setInterval(() => {
+        const sdk = getSdk();
+        if (sdk) {
+          window.clearInterval(interval);
+          resolve(sdk);
+          return;
+        }
+
+        if (Date.now() - start >= timeoutMs) {
+          window.clearInterval(interval);
+          reject(new Error("LiveKit SDK failed to load."));
+        }
+      }, 100);
+    });
+  }
+
+  function updateVoiceStatus(message, tone = "info") {
+    if (!ui.voiceStatusLabel) return;
+    ui.voiceStatusLabel.textContent = message;
+    ui.voiceStatusLabel.classList.remove("text-green-500", "text-red-500", "text-gray-500", "text-blue-500");
+    const toneClass = {
+      success: "text-green-500",
+      error: "text-red-500",
+      info: "text-blue-500",
+      muted: "text-gray-500",
+    }[tone] || "text-gray-500";
+    ui.voiceStatusLabel.classList.add(toneClass);
+  }
+
+  function setVoiceConnectIcon(iconClass, spinning = false) {
+    if (!ui.voiceConnectBtn) return;
+    ui.voiceConnectBtn.innerHTML = `<i class="fas ${iconClass} ${spinning ? "fa-spin" : ""}"></i>`;
+  }
+
+  function startVoiceTimer() {
+    stopVoiceTimer();
+    voiceState.startedAt = Date.now();
+    updateVoiceTimer();
+    voiceState.timerHandle = window.setInterval(updateVoiceTimer, 1000);
+  }
+
+  function stopVoiceTimer() {
+    if (voiceState.timerHandle) {
+      clearInterval(voiceState.timerHandle);
+      voiceState.timerHandle = null;
+    }
+    voiceState.startedAt = null;
+  }
+
+  function updateVoiceTimer() {
+    if (!ui.voiceTimer) return;
+    if (!voiceState.startedAt) {
+      ui.voiceTimer.textContent = "00:00";
+      return;
+    }
+    const elapsedSeconds = Math.max(0, Math.floor((Date.now() - voiceState.startedAt) / 1000));
+    const minutes = String(Math.floor(elapsedSeconds / 60)).padStart(2, "0");
+    const seconds = String(elapsedSeconds % 60).padStart(2, "0");
+    ui.voiceTimer.textContent = `${minutes}:${seconds}`;
+  }
+
+  function cleanupVoiceResources() {
+    stopVoiceTimer();
+
+    const currentRoom = voiceState.room;
+    const currentTrack = voiceState.localTrack;
+    const currentRemoteTrack = voiceState.remoteTrack;
+
+    if (currentRoom && currentTrack) {
+      try {
+        currentRoom.localParticipant.unpublishTrack(currentTrack);
+      } catch (unpublishError) {
+        console.warn("Failed to unpublish local track", unpublishError);
+      }
+    }
+
+    if (currentTrack) {
+      try {
+        currentTrack.stop();
+      } catch (stopError) {
+        console.warn("Failed to stop local track", stopError);
+      }
+    }
+
+    if (currentRemoteTrack && ui.voiceRemoteAudio) {
+      try {
+        currentRemoteTrack.detach(ui.voiceRemoteAudio);
+      } catch (detachError) {
+        console.warn("Failed to detach remote track", detachError);
+      }
+    }
+
+    if (currentRoom) {
+      try {
+        currentRoom.disconnect();
+      } catch (disconnectError) {
+        console.warn("Failed to disconnect voice room", disconnectError);
+      }
+    }
+
+    if (ui.voiceRemoteAudio) {
+      ui.voiceRemoteAudio.srcObject = null;
+      ui.voiceRemoteAudio.classList.add("hidden");
+    }
+
+    voiceState.room = null;
+    voiceState.localTrack = null;
+    voiceState.localPublication = null;
+    voiceState.remoteTrack = null;
+    voiceState.connected = false;
+    voiceState.connecting = false;
+    voiceState.muted = false;
+    voiceState.sessionId = null;
+    voiceState.roomName = null;
+    voiceState.livekitUrl = null;
+  }
+
+  function setVoiceIdleState(message, tone = "muted") {
+    updateVoiceStatus(message, tone);
+    updateVoiceTimer();
+    setVoiceConnectIcon("fa-phone");
+    if (ui.voiceConnectBtn) ui.voiceConnectBtn.disabled = false;
+    if (ui.voiceMuteBtn) {
+      ui.voiceMuteBtn.disabled = true;
+      ui.voiceMuteBtn.innerHTML = '<i class="fas fa-microphone"></i>';
+      ui.voiceMuteBtn.classList.remove("text-red-500", "bg-gray-200");
+    }
+    if (ui.voiceHangupBtn) ui.voiceHangupBtn.disabled = true;
+    if (ui.voiceHint) {
+      ui.voiceHint.textContent = "Allow microphone access when prompted to start a live call with Vertikal's voice agent.";
+    }
+  }
+
+  function resetVoiceSession() {
+    cleanupVoiceResources();
+    setVoiceIdleState("Tap connect to speak with Vertikal");
+  }
+
+  function prepareVoiceControlsForConnecting() {
+    updateVoiceStatus("Connecting to Vertikal voice agent…", "info");
+    setVoiceConnectIcon("fa-circle-notch", true);
+    if (ui.voiceConnectBtn) ui.voiceConnectBtn.disabled = true;
+    if (ui.voiceMuteBtn) ui.voiceMuteBtn.disabled = true;
+    if (ui.voiceHangupBtn) ui.voiceHangupBtn.disabled = true;
+    if (ui.voiceHint) ui.voiceHint.textContent = "Initializing a secure audio session…";
+  }
+
+  function attachRemoteTrack(track) {
+    if (!track || !ui.voiceRemoteAudio) return;
+    voiceState.remoteTrack = track;
+    try {
+      track.attach(ui.voiceRemoteAudio);
+      ui.voiceRemoteAudio.classList.remove("hidden");
+    } catch (attachError) {
+      console.warn("Failed to attach remote track", attachError);
+    }
+  }
+
+  async function startVoiceSession(autoTriggered = false) {
+    let livekitSdk;
+    try {
+      livekitSdk = await waitForLiveKit();
+    } catch (error) {
+      console.error("LiveKit SDK did not load in time.", error);
+      setVoiceIdleState("Voice calling SDK is unavailable.", "error");
+      return;
+    }
+
+    const { Room, RoomEvent, Track, createLocalAudioTrack } = livekitSdk;
+    if (voiceState.connecting || voiceState.connected) return;
+
+    if (!LIVEKIT_URL) {
+      setVoiceIdleState("LIVEKIT_URL is not configured.", "error");
+      return;
+    }
+    if (!LIVEKIT_ROOM) {
+      // Not fatal if your token grants any room, but warn anyway
+      console.warn("LIVEKIT_ROOM is empty. Ensure your token was minted with a room grant that matches the room you will join.");
+    }
+
+    voiceState.connecting = true;
+    voiceState.connected = false;
+    prepareVoiceControlsForConnecting();
+
+    let room = null;
+    let localTrack = null;
+
+    try {
+      // Your endpoint returns a raw JWT string
+      const response = await fetch("{{ url_for('agent.getToken') }}", { method: "GET" });
+      const token = (await response.text()).trim();
+      if (!response.ok || !token) {
+        throw new Error(`Unable to start voice session. (${response.status})`);
+      }
+
+      // Build connection details
+      const data = {
+        url: LIVEKIT_URL,
+        token,
+        room: LIVEKIT_ROOM,
+        participant_identity: `visitor-${Math.random().toString(36).slice(2, 10)}`,
+        job_started: true,
+      };
+
+      room = new Room({
+        adaptiveStream: false,
+        dynacast: false,
+        stopLocalTrackOnUnpublish: true,
+      });
+
+      // Remote audio subscribe
+      room.on(RoomEvent.TrackSubscribed, (track /*, publication, participant */) => {
+        try {
+          if (track?.kind === Track.Kind.Audio) {
+            attachRemoteTrack(track);
+            updateVoiceStatus("Voice agent joined the call", "success");
+            ui.voiceHint && (ui.voiceHint.textContent = "You’re live with Vertikal. Use mute or hang up anytime.");
+          }
+        } catch (e) {
+          console.warn("Failed to handle TrackSubscribed", e);
+        }
+      });
+
+      // Remote audio unsubscribe
+      room.on(RoomEvent.TrackUnsubscribed, (track /*, publication, participant */) => {
+        try {
+          if (voiceState.remoteTrack === track && ui.voiceRemoteAudio) {
+            track.detach(ui.voiceRemoteAudio);
+            ui.voiceRemoteAudio.classList.add("hidden");
+            voiceState.remoteTrack = null;
+          }
+        } catch (e) {
+          console.warn("Failed to handle TrackUnsubscribed", e);
+        }
+      });
+
+      room.on(RoomEvent.ParticipantDisconnected, () => {
+        if (voiceState.connected) {
+          updateVoiceStatus("Agent disconnected.", "info");
+          ui.voiceHint && (ui.voiceHint.textContent = "The agent left. You can hang up or wait for them to rejoin.");
+        }
+      });
+
+      room.on(RoomEvent.Disconnected, () => {
+        // Covers server disconnects and manual disconnects
+        if (voiceState.connected || voiceState.connecting) endVoiceSession(false);
+      });
+
+      // Ask for mic before connect (helps user see the browser prompt sooner)
+      localTrack = await createLocalAudioTrack({
+        echoCancellation: true,
+        noiseSuppression: true,
+        autoGainControl: true,
+      });
+
+      // Connect & publish mic
+      await room.connect(data.url, data.token);
+      const publication = await room.localParticipant.publishTrack(localTrack);
+
+      // Update state
+      voiceState.room = room;
+      voiceState.localTrack = localTrack;
+      voiceState.localPublication = publication || null;
+      voiceState.connecting = false;
+      voiceState.connected = true;
+      voiceState.sessionId = data.session_id || data.participant_identity || null;
+      voiceState.roomName = room.name || data.room || null;
+      voiceState.livekitUrl = data.url || null;
+      voiceState.muted = false;
+
+      startVoiceTimer();
+
+      setVoiceConnectIcon("fa-check");
+      ui.voiceConnectBtn && (ui.voiceConnectBtn.disabled = true);
+      if (ui.voiceMuteBtn) {
+        ui.voiceMuteBtn.disabled = false;
+        ui.voiceMuteBtn.innerHTML = '<i class="fas fa-microphone"></i>';
+        ui.voiceMuteBtn.classList.remove("text-red-500", "bg-gray-200");
+      }
+      ui.voiceHangupBtn && (ui.voiceHangupBtn.disabled = false);
+
+      const waitingMessage = data.job_started === false
+        ? "Connected. Waiting for Vertikal voice agent to join…"
+        : "Connected. Preparing Vertikal voice agent…";
+      updateVoiceStatus(waitingMessage, "info");
+      ui.voiceHint && (ui.voiceHint.textContent = "We’re connecting you with Vertikal now. You’ll hear the agent as soon as they join.");
+    } catch (error) {
+      console.error("Unable to start voice session", error);
+      try { room && room.disconnect(); } catch {}
+      try { localTrack && localTrack.stop(); } catch {}
+      cleanupVoiceResources();
+      setVoiceIdleState(error?.message || "Voice agent is unavailable. Please try again.", "error");
+    } finally {
+      voiceState.connecting = false;
+    }
+  }
+  async function toggleVoiceMute() {
+    if (!voiceState.room || voiceState.connecting) return;
+    const nextMuted = !voiceState.muted;
+    try {
+      await voiceState.room.localParticipant.setMicrophoneEnabled(!nextMuted);
+      voiceState.muted = nextMuted;
+      if (ui.voiceMuteBtn) {
+        ui.voiceMuteBtn.innerHTML = nextMuted
+          ? '<i class="fas fa-microphone-slash"></i>'
+          : '<i class="fas fa-microphone"></i>';
+        ui.voiceMuteBtn.classList.toggle("text-red-500", nextMuted);
+        ui.voiceMuteBtn.classList.toggle("bg-gray-200", nextMuted);
+      }
+      updateVoiceStatus(nextMuted ? "Microphone muted" : "Microphone active", nextMuted ? "info" : "success");
+    } catch (error) {
+      console.error("Failed to toggle mute", error);
+      updateVoiceStatus("Could not change microphone state.", "error");
+    }
+  }
+
+  function endVoiceSession(userInitiated = false, idleMessage = null) {
+    cleanupVoiceResources();
+    const message = idleMessage || (userInitiated ? "Call ended." : "Voice agent idle.");
+    const tone = userInitiated ? "muted" : "info";
+    setVoiceIdleState(message, tone);
+  }
+
+  function renderPlaceholder() {
+    if (!ui.chatMessages) return;
+    ui.chatMessages.innerHTML = "";
+    const placeholder = document.createElement("div");
+    placeholder.id = "chatPlaceholder";
+    placeholder.className = "text-gray-500 text-center text-sm leading-relaxed";
+    placeholder.textContent = PLACEHOLDER_TEXT;
+    ui.chatMessages.appendChild(placeholder);
+  }
+
+  function removePlaceholder() {
+    const placeholder = document.getElementById("chatPlaceholder");
+    if (placeholder) {
+      placeholder.remove();
+    }
+  }
+
+  function setSendingState(isSending) {
+    chatState.isSending = isSending;
+    if (ui.chatInput) {
+      ui.chatInput.disabled = isSending;
+    }
+    if (ui.sendBtn) {
+      ui.sendBtn.disabled = isSending;
+      if (isSending) {
+        ui.sendBtn.classList.add("opacity-60", "cursor-not-allowed");
+      } else {
+        ui.sendBtn.classList.remove("opacity-60", "cursor-not-allowed");
+      }
+    }
+  }
+
+  function autoResizeInput() {
+    if (!ui.chatInput) return;
+    ui.chatInput.style.height = "auto";
+    const minHeight = 48;
+    const maxHeight = 128;
+    const nextHeight = Math.min(Math.max(ui.chatInput.scrollHeight, minHeight), maxHeight);
+    ui.chatInput.style.height = `${nextHeight}px`;
+  }
+
+  function resetChatUI() {
+    chatState.history = [];
+    chatState.leadId = null;
+    setSendingState(false);
+    if (ui.chatInput) {
+      ui.chatInput.value = "";
+      ui.chatInput.style.height = "";
+    }
+    renderPlaceholder();
+    autoResizeInput();
+  }
+
+  function appendMessage(role, text) {
+    if (!ui.chatMessages) return null;
+    removePlaceholder();
+
+    const bubble = document.createElement("div");
+    bubble.dataset.role = role;
+    bubble.className = "max-w-[85%] whitespace-pre-wrap break-words leading-relaxed px-4 py-3 rounded-2xl shadow-sm";
+    if (role === "user") {
+      bubble.classList.add("self-end", "bg-white", "border", "border-gray-200", "text-gray-800");
+    } else {
+      bubble.classList.add("self-start", "bg-primary", "text-white");
+    }
+    bubble.textContent = text;
+    ui.chatMessages.appendChild(bubble);
+    ui.chatMessages.scrollTop = ui.chatMessages.scrollHeight;
+    return bubble;
+  }
+
+  function openAgentChat() {
+    ui.talkToAgentBtn?.classList.add("hidden");
+    ui.agentModal?.classList.remove("hidden");
+  }
+
+  function closeAgentChat() {
+    resetChatUI();
+    showOptions();
+    ui.talkToAgentBtn?.classList.remove("hidden");
+    ui.agentModal?.classList.add("hidden");
+  }
+
+  function showOptions() {
+    resetVoiceSession();
+    ui.modalContainer?.classList.remove("h-[90vh]", "md:h-[80vh]");
+    ui.modalContainer?.classList.add("h-auto");
+
+    ui.agentOptions?.classList.remove("hidden");
+    ui.textChatUI?.classList.add("hidden");
+    ui.voiceChatUI?.classList.add("hidden");
+    ui.backBtn?.classList.add("hidden");
+
+    ui.agentHeader?.classList.add("items-center");
+    ui.agentHeader?.classList.remove("items-start");
+    ui.agentLogo?.classList.remove("w-12", "h-12");
+    ui.agentLogo?.classList.add("w-20", "h-20");
+    ui.agentName?.classList.remove("text-lg");
+    ui.agentName?.classList.add("text-xl");
+  }
+
+  function switchToTextChat() {
+    resetVoiceSession();
+    ui.modalContainer?.classList.remove("h-auto");
+    ui.modalContainer?.classList.add("h-[90vh]", "md:h-[80vh]");
+
+    ui.agentOptions?.classList.add("hidden");
+    ui.textChatUI?.classList.remove("hidden");
+    ui.voiceChatUI?.classList.add("hidden");
+    ui.backBtn?.classList.remove("hidden");
+
+    ui.agentHeader?.classList.remove("items-center");
+    ui.agentHeader?.classList.add("items-start");
+    ui.agentLogo?.classList.remove("w-20", "h-20");
+    ui.agentLogo?.classList.add("w-12", "h-12");
+    ui.agentName?.classList.remove("text-xl");
+    ui.agentName?.classList.add("text-lg");
+
+    setTimeout(() => {
+      autoResizeInput();
+      ui.chatInput?.focus();
+    }, 50);
+  }
+
+  function switchToVoiceChat() {
+    ui.modalContainer?.classList.remove("h-[90vh]", "md:h-[80vh]");
+    ui.modalContainer?.classList.add("h-auto");
+
+    ui.agentOptions?.classList.add("hidden");
+    ui.voiceChatUI?.classList.remove("hidden");
+    ui.textChatUI?.classList.add("hidden");
+    ui.backBtn?.classList.remove("hidden");
+
+    ui.agentHeader?.classList.add("items-center");
+    ui.agentHeader?.classList.remove("items-start");
+    ui.agentLogo?.classList.remove("w-12", "h-12");
+    ui.agentLogo?.classList.add("w-20", "h-20");
+    ui.agentName?.classList.remove("text-lg");
+    ui.agentName?.classList.add("text-xl");
+
+    startVoiceSession();
+  }
+
+  async function sendMessage() {
+    if (!ui.chatInput || chatState.isSending) return;
+
+    const rawMessage = ui.chatInput.value;
+    const trimmedMessage = rawMessage.trim();
+    if (!trimmedMessage) {
+      ui.chatInput.value = "";
+      autoResizeInput();
+      return;
+    }
+
+    ui.chatInput.value = "";
+    autoResizeInput();
+
+    appendMessage("user", trimmedMessage);
+
+    const historyPayload = chatState.history.concat({ role: "user", content: trimmedMessage });
+    chatState.history = historyPayload;
+    const agentBubble = appendMessage("assistant", "Typing…");
+    if (!agentBubble) return;
+
+    agentBubble.classList.add("animate-pulse");
+    setSendingState(true);
+
+    const payload = {
+      message: trimmedMessage,
+      history: historyPayload,
+      source_page: chatState.sourcePage,
+    };
+    if (chatState.leadId) {
+      payload.lead_id = chatState.leadId;
+    }
+
+    try {
+      const response = await fetch("{{ url_for('agent.chatting') }}", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+
+      const contentType = response.headers.get("Content-Type") || "";
+
+      if (contentType.includes("application/json")) {
+        let data = null;
+        try {
+          data = await response.json();
+        } catch (parseError) {
+          console.error("Failed to parse chat response", parseError);
+        }
+
+        if (!response.ok || !data?.success) {
+          const errorMsg = data?.error || `Something went wrong (${response.status})`;
+          agentBubble.textContent = `⚠️ ${errorMsg}`;
+          return;
+        }
+
+        const reply = (data.reply || "").trim() || "Thanks for reaching out! We'll follow up shortly.";
+        agentBubble.textContent = reply;
+        chatState.history = historyPayload.concat({ role: "assistant", content: reply });
+        if (data.lead_id) {
+          chatState.leadId = data.lead_id;
+        }
+      } else {
+        if (!response.ok || !response.body) {
+          agentBubble.textContent = `⚠️ Something went wrong (${response.status})`;
+          return;
+        }
+
+        agentBubble.textContent = "";
+        const reader = response.body.getReader();
+        const decoder = new TextDecoder("utf-8");
+        let reply = "";
+
+        while (true) {
+          const { done, value } = await reader.read();
+          if (done) break;
+          const chunk = decoder.decode(value, { stream: true });
+          if (!chunk) continue;
+          reply += chunk;
+          agentBubble.textContent += chunk;
+          if (ui.chatMessages) {
+            ui.chatMessages.scrollTop = ui.chatMessages.scrollHeight;
+          }
+        }
+
+        reply = reply.trim();
+        if (!reply) {
+          agentBubble.textContent = "Thanks for reaching out! We'll follow up shortly.";
+        }
+        chatState.history = historyPayload.concat({
+          role: "assistant",
+          content: reply || agentBubble.textContent,
+        });
+      }
+    } catch (error) {
+      console.error("Chat request failed", error);
+      agentBubble.textContent = "⚠️ Network error. Please try again.";
+    } finally {
+      agentBubble.classList.remove("animate-pulse");
+      setSendingState(false);
+      if (ui.chatMessages) {
+        ui.chatMessages.scrollTop = ui.chatMessages.scrollHeight;
+      }
+      ui.chatInput?.focus();
+    }
+  }
+
+  if (ui.chatInput) {
+    ui.chatInput.addEventListener("keydown", (event) => {
+      if (event.key === "Enter" && !event.shiftKey) {
+        event.preventDefault();
+        sendMessage();
+      }
+    });
+
+    ui.chatInput.addEventListener("input", autoResizeInput);
+  }
+
+  resetChatUI();
+  
+</script>
+<script src="{{ url_for('static', filename='js/livekit-client.umd.js') }}"></script>
+<script>
+  console.log("✅ LiveKit Client Loaded:", window.LiveKitClient || window.livekitClient);
+</script>
+
+
+
+</body>
+</html>

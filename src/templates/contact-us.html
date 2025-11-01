@@ -1,0 +1,640 @@
+{% extends "base.html" %}
+
+{% block title %}Vertikal Agent - AI Agents for Core Operations{% endblock %}
+{% block content %}
+
+
+<!-- Hero Section -->
+<section id="hero" class="py-24 px-6 relative overflow-hidden" 
+         style="background: linear-gradient(135deg, #2563EB 0%, #25A9A3 100%);">
+    <div class="absolute inset-0 opacity-10">
+        <div class="absolute top-20 left-10 w-32 h-32 bg-white rounded-full opacity-20"></div>
+        <div class="absolute top-40 right-20 w-24 h-24 bg-white rounded-full opacity-15"></div>
+        <div class="absolute bottom-20 left-1/3 w-40 h-40 bg-white rounded-full opacity-10"></div>
+    </div>
+    <div class="max-w-6xl mx-auto text-center relative z-10">
+        <div class="mb-8">
+            <div class="inline-flex items-center bg-white bg-opacity-20 rounded-full px-6 py-3 text-white mb-8">
+                <i class="fas fa-sparkles mr-2"></i>
+                <span class="text-sm font-medium">AI-Powered Business Automation</span>
+            </div>
+        </div>
+        <h1 class="text-6xl font-bold text-white mb-6 leading-tight">
+            Let's Build Your<br/>
+            <span class="bg-gradient-to-r from-yellow-300 to-orange-300 bg-clip-text text-transparent">AI Agent</span> Together
+        </h1>
+        <p class="text-xl text-white opacity-90 mb-12 max-w-3xl mx-auto leading-relaxed">
+            Have questions or ready to start? Reach out to Vertikal Agent and we'll respond within 24 hours. 
+            Transform your business operations with intelligent automation that understands, acts, and improves over time.
+        </p>
+        <div class="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6">
+            <span class="bg-white text-primary px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-100 transition-all transform hover:scale-105 shadow-lg cursor-pointer">
+                
+                    <a href="https://calendar.app.google/sYYdKgsQZizuwJMe8" 
+                    target="_blank" 
+                    >
+                    Schedule a Demo
+                    </a>
+            </button>
+               
+            </span>
+            <button 
+  onclick="document.getElementById('contactModal').classList.remove('hidden')" 
+  class="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white hover:text-primary transition-all cursor-pointer">
+  <i class="fas fa-phone mr-2"></i>
+  Contact Sales
+</button>
+        </div>
+    </div>
+    <div class="absolute bottom-0 left-0 right-0">
+        <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0 120L60 110C120 100 240 80 360 70C480 60 600 60 720 65C840 70 960 80 1080 85C1200 90 1320 90 1380 90L1440 90V120H1380C1320 120 1200 120 1080 120C960 120 840 120 720 120C600 120 480 120 360 120C240 120 120 120 60 120H0Z" fill="#f9fafb"/>
+        </svg>
+    </div>
+</section>
+</div>
+
+<!-- Contact Options Section -->
+<section id="contact-options" class="py-20 px-6 bg-light">
+    <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl font-bold text-dark mb-4">Multiple Ways to Connect</h2>
+            <p class="text-xl text-gray-600 max-w-2xl mx-auto">Choose the method that works best for you. Our team is ready to help you transform your business operations.</p>
+        </div>
+        
+        <div class="grid md:grid-cols-3 gap-8 mb-16">
+            <!-- Sales Inquiries -->
+            <div class="bg-white rounded-2xl p-8 shadow-lg card-hover border border-gray-100">
+                <div class="w-16 h-16 bg-gradient-to-br from-primary to-blue-600 rounded-2xl flex items-center justify-center mb-6">
+                  <i class="fas fa-phone-volume text-white text-2xl"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-dark mb-4">Sales Inquiries</h3>
+                <p class="text-gray-600 mb-6">Speak directly with our sales team to discuss enterprise solutions and custom pricing.</p>
+                <div class="space-y-4">
+                  <div class="flex items-center text-gray-700">
+                    <i class="fas fa-phone mr-3 text-primary"></i>
+                    <span class="font-semibold">+1 (719) 451-5279</span>
+                  </div>
+                  <div class="flex items-center text-gray-700">
+                    <i class="fas fa-clock mr-3 text-primary"></i>
+                    <span>Mon-Fri 9AM-6PM EST</span>
+                  </div>
+                </div>
+                <a href="tel:+17194515279"
+                   class="inline-block w-full bg-primary text-white text-center py-3 rounded-lg font-semibold mt-6 hover:bg-blue-700 transition-colors cursor-pointer">
+                  Contact Sales Team
+                </a>
+              </div>
+
+            <!-- Email Support -->
+            <div class="bg-white rounded-2xl p-8 shadow-lg card-hover border border-gray-100">
+                <div class="w-16 h-16 bg-gradient-to-br from-secondary to-teal-600 rounded-2xl flex items-center justify-center mb-6">
+                  <i class="fas fa-envelope text-white text-2xl"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-dark mb-4">Email Support</h3>
+                <p class="text-gray-600 mb-6">Get detailed answers to your questions via email. We respond within 4 hours during business days.</p>
+                <div class="space-y-4">
+                  <div class="flex items-center text-gray-700">
+                    <i class="fas fa-envelope mr-3 text-secondary"></i>
+                    <span class="font-semibold">support@vertikalagent.com</span>
+                  </div>
+                  <div class="flex items-center text-gray-700">
+                    <i class="fas fa-reply mr-3 text-secondary"></i>
+                    <span>Response within 4 hours</span>
+                  </div>
+                </div>
+                <a href="mailto:support@vertikalagent.com"
+                   class="inline-block w-full bg-secondary text-white text-center py-3 rounded-lg font-semibold mt-6 hover:bg-teal-700 transition-colors cursor-pointer">
+                  Send Email
+                </a>
+              </div>
+
+            <!-- Office Location -->
+            <div class="bg-white rounded-2xl p-8 shadow-lg card-hover border border-gray-100">
+                <div class="w-16 h-16 bg-gradient-to-br from-purple-500 to-purple-600 rounded-2xl flex items-center justify-center mb-6">
+                  <i class="fas fa-map-marker-alt text-white text-2xl"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-dark mb-4">Visit Our Office</h3>
+                <p class="text-gray-600 mb-6">Schedule an in-person meeting at our headquarters for enterprise discussions and demos.</p>
+                <div class="space-y-4">
+                  <div class="flex items-start text-gray-700">
+                    <i class="fas fa-building mr-3 text-purple-500 mt-1"></i>
+                    <div>
+                      <div class="font-semibold">COLORADO</div>
+                      <div class="text-sm">
+                        5142 N ACADEMY BLVD STE 4280<br/>COLORADO SPRINGS, CO 80918
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <a href="https://www.google.com/maps/search/?api=1&query=5142+N+ACADEMY+BLVD+STE+4280,+COLORADO+SPRINGS,+CO+80918"
+                   target="_blank"
+                   class="inline-block w-full bg-purple-500 text-white text-center py-3 rounded-lg font-semibold mt-6 hover:bg-purple-700 transition-colors cursor-pointer">
+                  View on Map
+                </a>
+              </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Form Section -->
+<section id="contact-form" class="py-20 px-6 bg-white">
+    <div class="max-w-7xl mx-auto">
+        <div class="grid lg:grid-cols-2 gap-16 items-center">
+            <!-- Left Side - Form -->
+            <div class="order-2 lg:order-1">
+                <div class="bg-light rounded-3xl p-10 shadow-xl">
+                    <div class="mb-8">
+                        <h2 class="text-4xl font-bold text-dark mb-4">Get in Touch</h2>
+                        <p class="text-gray-600 text-lg">Fill out the form below and our team will get back to you within 24 hours.</p>
+                    </div>
+                    
+                    <form action="{{ url_for('home.create_lead') }}" method="POST" class="space-y-6">
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-2" for="name">
+                                    Full Name *
+                                </label>
+                                <input class="w-full px-4 py-4 border-2 border-gray-200 rounded-xl focus:border-primary focus:outline-none form-input"
+                                       id="name" name="name" type="text" placeholder="John Doe" required/>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-2" for="email">
+                                    Work Email *
+                                </label>
+                                <input class="w-full px-4 py-4 border-2 border-gray-200 rounded-xl focus:border-primary focus:outline-none form-input"
+                                       id="email" name="email" type="email" placeholder="john@company.com" required/>
+                            </div>
+                        </div>
+                    
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-2" for="phone">
+                                    Phone Number
+                                </label>
+                                <input class="w-full px-4 py-4 border-2 border-gray-200 rounded-xl focus:border-primary focus:outline-none form-input"
+                                       id="phone" name="phone" type="tel" placeholder="+1 (555) 123-4567"/>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-2" for="company">
+                                    Company Name
+                                </label>
+                                <input class="w-full px-4 py-4 border-2 border-gray-200 rounded-xl focus:border-primary focus:outline-none form-input"
+                                       id="company" name="company" type="text" placeholder="Acme Corp"/>
+                            </div>
+                        </div>
+                    
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-2" for="intent">
+                                How can we help? *
+                            </label>
+                            <select class="w-full px-4 py-4 border-2 border-gray-200 rounded-xl focus:border-primary focus:outline-none form-input"
+                                    id="intent" name="intent" required>
+                                <option value="">Select an option</option>
+                                <option value="demo">Request a Demo</option>
+                                <option value="support">Technical Support</option>
+                                <option value="automation">Automation Consultation</option>
+                                <option value="enterprise">Enterprise Solutions</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                    
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-2" for="message">
+                                Tell us about your needs
+                            </label>
+                            <textarea class="w-full px-4 py-4 border-2 border-gray-200 rounded-xl focus:border-primary focus:outline-none form-input resize-none"
+                                      id="message" name="message" rows="5"
+                                      placeholder="Describe your current challenges and how AI agents could help your business..."></textarea>
+                        </div>
+                    
+                        <div class="flex items-start space-x-3">
+                            <input type="checkbox" id="privacy" class="mt-1 w-5 h-5 text-primary border-gray-300 rounded focus:ring-primary" required/>
+                            <label for="privacy" class="text-sm text-gray-600">
+                                I agree to the <span class="text-primary hover:underline cursor-pointer">Privacy Policy</span> and 
+                                <span class="text-primary hover:underline cursor-pointer">Terms of Service</span>
+                            </label>
+                        </div>
+                    
+                        <button type="submit"
+                                class="w-full bg-gradient-to-r from-primary to-secondary text-white py-4 rounded-xl font-bold text-lg hover:shadow-lg transform hover:scale-105 transition-all">
+                            <i class="fas fa-paper-plane mr-2"></i>
+                            Submit Request
+                        </button>
+                    </form>
+                </div>
+            </div>
+            
+            <!-- Right Side - Content -->
+            <div class="order-1 lg:order-2">
+                <div class="space-y-8">
+                    <div>
+                        <h3 class="text-3xl font-bold text-dark mb-6">Why Choose Vertikal Agent?</h3>
+                        <div class="space-y-6">
+                            <div class="flex items-start space-x-4">
+                                <div class="w-12 h-12 bg-primary rounded-xl flex items-center justify-center flex-shrink-0">
+                                    <i class="fas fa-rocket text-white"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-dark mb-2">Rapid Implementation</h4>
+                                    <p class="text-gray-600">Get your AI agents up and running in weeks, not months. Our proven methodology ensures quick time-to-value.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start space-x-4">
+                                <div class="w-12 h-12 bg-secondary rounded-xl flex items-center justify-center flex-shrink-0">
+                                    <i class="fas fa-brain text-white"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-dark mb-2">Intelligent Automation</h4>
+                                    <p class="text-gray-600">Our AI agents learn from your data and processes, continuously improving performance and accuracy.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start space-x-4">
+                                <div class="w-12 h-12 bg-purple-500 rounded-xl flex items-center justify-center flex-shrink-0">
+                                    <i class="fas fa-shield-alt text-white"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-dark mb-2">Enterprise Security</h4>
+                                    <p class="text-gray-600">Bank-level security with SOC 2 compliance, GDPR ready, and complete data privacy protection.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-gradient-to-br from-gray-50 to-gray-100 rounded-2xl p-8">
+                        <div class="flex items-center mb-4">
+                            <div class="flex -space-x-2 mr-4">
+                                <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-1.jpg" class="w-10 h-10 rounded-full border-2 border-white"/>
+                                <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-2.jpg" class="w-10 h-10 rounded-full border-2 border-white"/>
+                                <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-3.jpg" class="w-10 h-10 rounded-full border-2 border-white"/>
+                            </div>
+                            <div class="text-yellow-500">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                        <blockquote class="text-gray-700 font-medium mb-3">
+                            "Vertikal Agent transformed our operations. We've reduced manual work by 80% and improved response times significantly."
+                        </blockquote>
+                        <cite class="text-sm text-gray-600 font-semibold">Sarah Johnson, COO at TechFlow Solutions</cite>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Quick Actions Section -->
+<section id="quick-actions" class="py-20 px-6 bg-gray-50">
+    <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl font-bold text-dark mb-4">Prefer a Different Approach?</h2>
+            <p class="text-xl text-gray-600">We offer multiple ways to connect and get started with AI automation.</p>
+        </div>
+        
+        <div class="grid md:grid-cols-3 gap-8">
+            <!-- Book Demo -->
+            <div class="bg-white rounded-2xl p-8 text-center shadow-lg card-hover border border-gray-100">
+                <div class="w-20 h-20 bg-gradient-to-br from-primary to-blue-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <i class="fas fa-calendar-check text-white text-2xl"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-dark mb-4">Book a Live Demo</h3>
+                <p class="text-gray-600 mb-6">Schedule a personalized 30-minute demo to see our AI agents in action with your specific use cases.</p>
+                <div class="space-y-3 mb-6">
+                    <div class="flex items-center justify-center text-sm text-gray-600">
+                        <i class="fas fa-clock mr-2 text-primary"></i>
+                        30 minutes
+                    </div>
+                    <div class="flex items-center justify-center text-sm text-gray-600">
+                        <i class="fas fa-video mr-2 text-primary"></i>
+                        Via Zoom/Google Meet
+                    </div>
+                    <div class="flex items-center justify-center text-sm text-gray-600">
+                        <i class="fas fa-user-tie mr-2 text-primary"></i>
+                        With AI specialist
+                    </div>
+                </div>
+                <button onclick="openForm()" 
+                class="w-full bg-primary text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors flex items-center justify-center">
+                <i class="fas fa-calendar-plus mr-2"></i>
+                Book Free Demo
+            </button>
+                   
+                </span>
+            </div>
+            
+            <!-- WhatsApp -->
+            <div class="bg-white rounded-2xl p-8 text-center shadow-lg card-hover border border-gray-100">
+                <div class="w-20 h-20 bg-gradient-to-br from-green-500 to-green-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <i class="fab fa-whatsapp text-white text-3xl"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-dark mb-4">WhatsApp Support</h3>
+                <p class="text-gray-600 mb-6">Get instant answers to your questions via WhatsApp. Perfect for quick consultations and technical support.</p>
+                <div class="space-y-3 mb-6">
+                    <div class="flex items-center justify-center text-sm text-gray-600">
+                        <i class="fas fa-bolt mr-2 text-green-500"></i>
+                        Instant responses
+                    </div>
+                    <div class="flex items-center justify-center text-sm text-gray-600">
+                        <i class="fas fa-mobile-alt mr-2 text-green-500"></i>
+                        Mobile-friendly
+                    </div>
+                    <div class="flex items-center justify-center text-sm text-gray-600">
+                        <i class="fas fa-headset mr-2 text-green-500"></i>
+                        24/7 availability
+                    </div>
+                </div>
+                <span class="inline-block w-full bg-green-500 text-white py-3 rounded-lg font-semibold hover:bg-green-600 transition-colors cursor-pointer">
+                    <i class="fab fa-whatsapp mr-2"></i>
+                    Message on WhatsApp
+                </span>
+            </div>
+            
+            <!-- Live Chat -->
+            <div class="bg-white rounded-2xl p-8 text-center shadow-lg card-hover border border-gray-100">
+                <div class="w-20 h-20 bg-gradient-to-br from-secondary to-teal-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <i class="fas fa-comments text-white text-2xl"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-dark mb-4">Live Chat</h3>
+                <p class="text-gray-600 mb-6">Start a conversation right now with our support team. Get immediate assistance with any questions or concerns.</p>
+                <div class="space-y-3 mb-6">
+                    <div class="flex items-center justify-center text-sm text-gray-600">
+                        <i class="fas fa-circle text-green-400 mr-2"></i>
+                        Online now
+                    </div>
+                    <div class="flex items-center justify-center text-sm text-gray-600">
+                        <i class="fas fa-reply mr-2 text-secondary"></i>
+                        Instant replies
+                    </div>
+                    <div class="flex items-center justify-center text-sm text-gray-600">
+                        <i class="fas fa-user-friends mr-2 text-secondary"></i>
+                        Expert support
+                    </div>
+                </div>
+                <button class="w-full bg-secondary text-white py-3 rounded-lg font-semibold hover:bg-teal-700 transition-colors" onclick="openAgentChat()">
+                    <i class="fas fa-headset mr-2"></i>
+                    Talk to an Agent
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Social Proof Section -->
+<section id="social-proof" class="py-20 px-6 bg-white">
+    <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl font-bold text-dark mb-4">Trusted by Industry Leaders</h2>
+            <p class="text-xl text-gray-600">Join hundreds of companies using Vertikal Agent to automate their operations</p>
+        </div>
+        
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+            <div class="text-center">
+                <div class="text-4xl font-bold text-primary mb-2">500+</div>
+                <div class="text-gray-600">Companies Served</div>
+            </div>
+            <div class="text-center">
+                <div class="text-4xl font-bold text-secondary mb-2">2M+</div>
+                <div class="text-gray-600">Tasks Automated</div>
+            </div>
+            <div class="text-center">
+                <div class="text-4xl font-bold text-purple-500 mb-2">85%</div>
+                <div class="text-gray-600">Time Saved</div>
+            </div>
+            <div class="text-center">
+                <div class="text-4xl font-bold text-green-500 mb-2">24/7</div>
+                <div class="text-gray-600">Agent Uptime</div>
+            </div>
+        </div>
+        
+        <div class="bg-gray-50 rounded-3xl p-12">
+            <div class="grid lg:grid-cols-3 gap-8">
+                <div class="bg-white rounded-2xl p-8 shadow-lg">
+                    <div class="flex items-center mb-6">
+                        <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-5.jpg" class="w-12 h-12 rounded-full mr-4"/>
+                        <div>
+                            <div class="font-bold text-dark">Emma Rodriguez</div>
+                            <div class="text-sm text-gray-600">VP Operations, E-commerce Plus</div>
+                        </div>
+                    </div>
+                    <div class="text-yellow-500 mb-4">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <blockquote class="text-gray-700">
+                        "Our customer support response time improved by 90% with Vertikal Agent. The AI handles routine inquiries perfectly, letting our team focus on complex issues."
+                    </blockquote>
+                </div>
+                
+                <div class="bg-white rounded-2xl p-8 shadow-lg">
+                    <div class="flex items-center mb-6">
+                        <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-8.jpg" class="w-12 h-12 rounded-full mr-4"/>
+                        <div>
+                            <div class="font-bold text-dark">Marcus Chen</div>
+                            <div class="text-sm text-gray-600">CTO, FinTech Solutions</div>
+                        </div>
+                    </div>
+                    <div class="text-yellow-500 mb-4">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <blockquote class="text-gray-700">
+                        "The HR agent automated our entire onboarding process. New employees now get processed in hours instead of days. Game-changing technology."
+                    </blockquote>
+                </div>
+                
+                <div class="bg-white rounded-2xl p-8 shadow-lg">
+                    <div class="flex items-center mb-6">
+                        <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-6.jpg" class="w-12 h-12 rounded-full mr-4"/>
+                        <div>
+                            <div class="font-bold text-dark">Lisa Thompson</div>
+                            <div class="text-sm text-gray-600">CEO, Digital Marketing Agency</div>
+                        </div>
+                    </div>
+                    <div class="text-yellow-500 mb-4">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <blockquote class="text-gray-700">
+                        "Vertikal Agent's sales automation increased our lead qualification rate by 300%. The ROI was evident within the first month of implementation."
+                    </blockquote>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Industries Served Section -->
+<section id="industries" class="py-20 px-6 bg-gray-50">
+    <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl font-bold text-dark mb-4">Industries We Serve</h2>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto">Our AI agents are designed to work across various industries, adapting to specific business needs and compliance requirements.</p>
+        </div>
+        
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div class="bg-white rounded-2xl p-8 text-center card-hover shadow-lg border border-gray-100">
+                <div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                    <i class="fas fa-shopping-cart text-white text-2xl"></i>
+                </div>
+                <h3 class="text-xl font-bold text-dark mb-3">E-commerce</h3>
+                <p class="text-gray-600 text-sm">Automate inventory management, customer support, and order processing with intelligent agents.</p>
+            </div>
+            
+            <div class="bg-white rounded-2xl p-8 text-center card-hover shadow-lg border border-gray-100">
+                <div class="w-16 h-16 bg-gradient-to-br from-green-500 to-green-600 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                    <i class="fas fa-user-md text-white text-2xl"></i>
+                </div>
+                <h3 class="text-xl font-bold text-dark mb-3">Healthcare</h3>
+                <p class="text-gray-600 text-sm">Streamline patient scheduling, insurance verification, and administrative tasks while maintaining HIPAA compliance.</p>
+            </div>
+            
+            <div class="bg-white rounded-2xl p-8 text-center card-hover shadow-lg border border-gray-100">
+                <div class="w-16 h-16 bg-gradient-to-br from-purple-500 to-purple-600 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                    <i class="fas fa-chart-line text-white text-2xl"></i>
+                </div>
+                <h3 class="text-xl font-bold text-dark mb-3">Financial Services</h3>
+                <p class="text-gray-600 text-sm">Enhance fraud detection, automate compliance reporting, and improve customer onboarding processes.</p>
+            </div>
+            
+            <div class="bg-white rounded-2xl p-8 text-center card-hover shadow-lg border border-gray-100">
+                <div class="w-16 h-16 bg-gradient-to-br from-red-500 to-red-600 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                    <i class="fas fa-building text-white text-2xl"></i>
+                </div>
+                <h3 class="text-xl font-bold text-dark mb-3">Real Estate</h3>
+                <p class="text-gray-600 text-sm">Automate lead qualification, property management, and client communication workflows.</p>
+            </div>
+            
+            <div class="bg-white rounded-2xl p-8 text-center card-hover shadow-lg border border-gray-100">
+                <div class="w-16 h-16 bg-gradient-to-br from-yellow-500 to-orange-500 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                    <i class="fas fa-graduation-cap text-white text-2xl"></i>
+                </div>
+                <h3 class="text-xl font-bold text-dark mb-3">Education</h3>
+                <p class="text-gray-600 text-sm">Streamline student admissions, course management, and administrative processes with AI automation.</p>
+            </div>
+            
+            <div class="bg-white rounded-2xl p-8 text-center card-hover shadow-lg border border-gray-100">
+                <div class="w-16 h-16 bg-gradient-to-br from-indigo-500 to-indigo-600 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                    <i class="fas fa-cogs text-white text-2xl"></i>
+                </div>
+                <h3 class="text-xl font-bold text-dark mb-3">Manufacturing</h3>
+                <p class="text-gray-600 text-sm">Optimize supply chain management, quality control, and production scheduling with intelligent agents.</p>
+            </div>
+            
+            <div class="bg-white rounded-2xl p-8 text-center card-hover shadow-lg border border-gray-100">
+                <div class="w-16 h-16 bg-gradient-to-br from-teal-500 to-teal-600 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                    <i class="fas fa-handshake text-white text-2xl"></i>
+                </div>
+                <h3 class="text-xl font-bold text-dark mb-3">Professional Services</h3>
+                <p class="text-gray-600 text-sm">Automate client onboarding, project management, and billing processes for consulting firms.</p>
+            </div>
+            
+            <div class="bg-white rounded-2xl p-8 text-center card-hover shadow-lg border border-gray-100">
+                <div class="w-16 h-16 bg-gradient-to-br from-pink-500 to-pink-600 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                    <i class="fas fa-ellipsis-h text-white text-2xl"></i>
+                </div>
+                <h3 class="text-xl font-bold text-dark mb-3">And More</h3>
+                <p class="text-gray-600 text-sm">Our flexible AI agents adapt to any industry. Contact us to discuss your specific use case.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ Section -->
+<section id="faq" class="py-20 px-6 bg-white">
+    <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl font-bold text-dark mb-4">Frequently Asked Questions</h2>
+            <p class="text-xl text-gray-600">Get answers to common questions about Vertikal Agent and AI automation.</p>
+        </div>
+        
+        <div class="space-y-6">
+            <div class="bg-gray-50 rounded-2xl p-8 card-hover">
+                <div class="flex items-start justify-between">
+                    <div class="flex-1">
+                        <h3 class="text-xl font-bold text-dark mb-3">How quickly can we implement Vertikal Agent?</h3>
+                        <p class="text-gray-600">Most implementations are completed within 2-4 weeks, depending on complexity. Our team provides dedicated support throughout the entire process to ensure smooth deployment.</p>
+                    </div>
+                    <div class="ml-6">
+                        <i class="fas fa-chevron-down text-gray-400"></i>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-gray-50 rounded-2xl p-8 card-hover">
+                <div class="flex items-start justify-between">
+                    <div class="flex-1">
+                        <h3 class="text-xl font-bold text-dark mb-3">What kind of ROI can we expect?</h3>
+                        <p class="text-gray-600">Our clients typically see 300-500% ROI within the first year through reduced labor costs, improved efficiency, and faster processing times. We provide detailed ROI projections during the consultation phase.</p>
+                    </div>
+                    <div class="ml-6">
+                        <i class="fas fa-chevron-down text-gray-400"></i>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-gray-50 rounded-2xl p-8 card-hover">
+                <div class="flex items-start justify-between">
+                    <div class="flex-1">
+                        <h3 class="text-xl font-bold text-dark mb-3">Is my data secure with Vertikal Agent?</h3>
+                        <p class="text-gray-600">Absolutely. We maintain SOC 2 Type II compliance, use enterprise-grade encryption, and follow strict data privacy protocols. Your data never leaves your secure environment without explicit permission.</p>
+                    </div>
+                    <div class="ml-6">
+                        <i class="fas fa-chevron-down text-gray-400"></i>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-gray-50 rounded-2xl p-8 card-hover">
+                <div class="flex items-start justify-between">
+                    <div class="flex-1">
+                        <h3 class="text-xl font-bold text-dark mb-3">Do you offer ongoing support and maintenance?</h3>
+                        <p class="text-gray-600">Yes, we provide 24/7 monitoring, regular updates, and dedicated customer success management. Our support team is available via phone, email, and live chat to ensure optimal performance.</p>
+                    </div>
+                    <div class="ml-6">
+                        <i class="fas fa-chevron-down text-gray-400"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Final CTA Section -->
+<section id="final-cta" class="gradient-bg py-20 px-6 relative overflow-hidden" style="background: linear-gradient(135deg, #2563EB 0%, #25A9A3 100%);">
+    <div class="absolute inset-0 opacity-10">
+        <div class="absolute top-10 left-20 w-40 h-40 bg-white rounded-full opacity-20"></div>
+        <div class="absolute bottom-20 right-10 w-32 h-32 bg-white rounded-full opacity-15"></div>
+        <div class="absolute top-1/2 left-10 w-24 h-24 bg-white rounded-full opacity-10"></div>
+    </div>
+    <div class="max-w-4xl mx-auto text-center relative z-10">
+        <h2 class="text-5xl font-bold text-white mb-6">Ready to Automate Your Business with AI Agents?</h2>
+        <p class="text-xl text-white opacity-90 mb-12 max-w-3xl mx-auto">
+            Join hundreds of companies already using Vertikal Agent to transform their operations. 
+            Get started today with a personalized demo and see the future of business automation.
+        </p>
+    </div>
+</section>
+
+{% endblock %}
+
+
+
+
+
+</body>
+</html>

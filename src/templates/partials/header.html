@@ -1,0 +1,99 @@
+<header class="sticky top-0 z-50 border-b border-gray-200 bg-white/95 backdrop-blur">
+  <div class="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
+    <a href="/" class="flex shrink-0 items-center gap-3" aria-label="Vertikal Agent">
+      <img
+        src="{{ url_for('static', filename='images/Full_Black_Logo.png') }}"
+        alt="Vertikal Agent Logo"
+        class="h-10 w-auto object-contain sm:h-11"
+      />
+    </a>
+
+    <!-- Desktop navigation -->
+    <nav class="hidden items-center gap-6 lg:flex" aria-label="Main navigation">
+      <a href="/" class="text-sm font-medium text-muted-text transition hover:text-dark-text">Home</a>
+      <a href="{{ url_for('home.about_page') }}" class="text-sm font-medium text-muted-text transition hover:text-dark-text">About</a>
+
+      <div class="relative">
+        <button
+          id="desktop-solutions-toggle"
+          type="button"
+          class="flex items-center gap-1 text-sm font-medium text-muted-text transition hover:text-dark-text focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary"
+          aria-haspopup="true"
+          aria-expanded="false"
+        >
+          <span>Solutions</span>
+          <i class="fa-solid fa-chevron-down text-xs transition-transform duration-200" aria-hidden="true"></i>
+        </button>
+        <div
+          id="desktop-solutions-menu"
+          class="invisible absolute left-0 top-full z-50 mt-3 w-64 translate-y-2 rounded-lg border border-gray-200 bg-white py-2 shadow-lg opacity-0 transition-all duration-200"
+          role="menu"
+          aria-label="Solutions"
+        >
+          <a href="{{ url_for('home.solution_core_agent') }}" class="block px-4 py-2 text-sm text-dark-text transition hover:bg-gray-100" role="menuitem">Core Operations Agent</a>
+          <a href="{{ url_for('home.solution_workflow_integration') }}" class="block px-4 py-2 text-sm text-dark-text transition hover:bg-gray-100" role="menuitem">Workflow Integrations</a>
+          <a href="{{ url_for('home.solution_conversational_agent') }}" class="block px-4 py-2 text-sm text-dark-text transition hover:bg-gray-100" role="menuitem">Conversational Dashboards</a>
+          <a href="{{ url_for('home.solution_custom_agent') }}" class="block px-4 py-2 text-sm text-dark-text transition hover:bg-gray-100" role="menuitem">Custom AI Agents</a>
+          <a href="{{ url_for('home.solution_voice_agent') }}" class="block px-4 py-2 text-sm text-dark-text transition hover:bg-gray-100" role="menuitem">Voice Agent</a>
+        </div>
+      </div>
+
+      <a href="{{ url_for('home.contact_us') }}" class="text-sm font-medium text-muted-text transition hover:text-dark-text">Contact</a>
+    </nav>
+
+    <div class="flex items-center gap-3">
+      <button 
+  onclick="openForm()" 
+  class="hidden sm:inline-flex sm:items-center sm:justify-center rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-blue-700"
+>
+  <i class="fas fa-calendar-plus mr-2"></i>
+  Book Free Demo
+</button>
+      <button
+        id="mobile-menu-toggle"
+        type="button"
+        class="flex h-11 w-11 items-center justify-center rounded-lg border border-gray-200 text-dark-text focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary lg:hidden"
+        aria-controls="mobile-menu"
+        aria-expanded="false"
+      >
+        <span class="sr-only">Toggle navigation</span>
+        <i id="mobile-menu-icon" class="fa-solid fa-bars text-xl"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile navigation -->
+  <div id="mobile-menu" class="hidden border-t border-gray-200 bg-white/95 px-4 pb-6 pt-4 shadow-sm lg:hidden">
+    <nav class="mx-auto flex max-w-7xl flex-col gap-4" aria-label="Mobile navigation">
+      <a href="/" class="text-sm font-medium text-muted-text transition hover:text-dark-text">Home</a>
+      <a href="{{ url_for('home.about_page') }}" class="text-sm font-medium text-muted-text transition hover:text-dark-text">About</a>
+
+      <div>
+        <button
+          id="mobile-solutions-toggle"
+          type="button"
+          class="flex w-full items-center justify-between rounded-lg bg-gray-50 px-3 py-2 text-left text-sm font-medium text-muted-text transition hover:bg-gray-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary"
+          aria-expanded="false"
+          aria-controls="mobile-solutions-menu"
+        >
+          <span>Solutions</span>
+          <i class="fa-solid fa-chevron-down text-xs transition-transform duration-200" aria-hidden="true"></i>
+        </button>
+        <div id="mobile-solutions-menu" class="mt-2 hidden space-y-2 rounded-lg border border-gray-200 bg-white px-3 py-3">
+          <a href="{{ url_for('home.solution_core_agent') }}" class="block text-sm text-dark-text transition hover:text-primary">Core Operations Agent</a>
+          <a href="{{ url_for('home.solution_workflow_integration') }}" class="block text-sm text-dark-text transition hover:text-primary">Workflow Integrations</a>
+          <a href="{{ url_for('home.solution_conversational_agent') }}" class="block text-sm text-dark-text transition hover:text-primary">Conversational Dashboards</a>
+          <a href="{{ url_for('home.solution_custom_agent') }}" class="block text-sm text-dark-text transition hover:text-primary">Custom AI Agents</a>
+          <a href="{{ url_for('home.solution_voice_agent') }}" class="block text-sm text-dark-text transition hover:text-primary">Voice Agent</a>
+        </div>
+      </div>
+
+      <a href="{{ url_for('home.contact_us') }}" class="text-sm font-medium text-muted-text transition hover:text-dark-text">Contact</a>
+      <button onclick="openForm()" 
+                class="w-full bg-primary text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors flex items-center justify-center">
+                <i class="fas fa-calendar-plus mr-2"></i>
+                Book Free Demo
+        </button>
+    </nav>
+  </div>
+</header>

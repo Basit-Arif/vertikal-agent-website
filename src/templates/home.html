@@ -1,0 +1,680 @@
+{% extends "base.html" %}
+
+{% block title %}Vertikal Agent - AI Agents for Core Operations{% endblock %}
+{% block meta_description %}Automate sales, HR, finance, and support with Vertikal Agent's AI-powered conversational and workflow automation solutions.{% endblock %}
+{% block content %}
+<section id="hero" class="gradient-bg relative overflow-hidden px-4 py-16 sm:px-6 md:py-20 lg:py-24">
+    <div class="container mx-auto max-w-6xl relative z-10">
+        <div class="grid items-center gap-12 md:grid-cols-2">
+            <div class="order-2 text-center md:order-1 md:text-left">
+                <div class="inline-flex items-center bg-white/80 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-medium text-primary-blue mb-6">
+                    <i class="fa-solid fa-sparkles mr-2"></i>
+                    AI Agents for Business Operations
+                </div>
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-dark-text mb-6 leading-tight">
+                    Let <span class="text-gradient">AI Agents</span> Run Your Business Operations
+                </h1>
+
+                <p class="mt-6 text-lg sm:text-xl text-muted-text leading-relaxed max-w-xl mx-auto md:mx-0">
+                    Deploy AI that automates your sales, HR, finance, and support — working 24/7 inside your existing systems.
+                </p>
+
+                <div class="mt-6 flex flex-col sm:flex-row gap-4 items-center justify-center md:justify-start">
+                    <button onclick="openForm()" class="bg-primary text-white px-8 py-4 rounded-xl font-semibold hover:bg-blue-700 transition-colors shadow-lg">
+                            <i class="fa-solid fa-play mr-2"></i>
+                            Book a Demo
+                        </button>
+                        <button 
+                        onclick="scrollToSolutions()" 
+                        class="text-primary-blue font-semibold text-base sm:text-lg hover:underline cursor-pointer flex items-center"
+                      >
+                        Explore Solutions
+                        <i class="fa-solid fa-arrow-down ml-2"></i>
+                      </button>
+                </div>
+            </div>
+            <div class="order-1 flex justify-center md:order-2 relative">
+                <div class="relative w-64 h-64 sm:w-80 sm:h-80 lg:w-[500px] lg:h-[500px]">
+                    <div class="absolute inset-0 bg-gradient-to-r from-primary-blue/20 to-secondary-teal/20 rounded-full blur-sm animate-pulse-slow"></div>
+                    <div class="absolute inset-6 sm:inset-10 lg:inset-12 bg-white rounded-full shadow-2xl flex items-center justify-center animate-float">
+                        <div class="grid grid-cols-3 gap-4 sm:gap-6">
+                            <div class="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 bg-gradient-to-r from-blue-500 to-blue-600 rounded-xl flex items-center justify-center shadow-lg">
+                                <i class="fa-solid fa-chart-line text-white text-base sm:text-lg lg:text-xl"></i>
+                            </div>
+                            <div class="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 bg-gradient-to-r from-green-500 to-green-600 rounded-xl flex items-center justify-center shadow-lg">
+                                <i class="fa-solid fa-users text-white text-base sm:text-lg lg:text-xl"></i>
+                            </div>
+                            <div class="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 bg-gradient-to-r from-purple-500 to-purple-600 rounded-xl flex items-center justify-center shadow-lg">
+                                <i class="fa-solid fa-calculator text-white text-base sm:text-lg lg:text-xl"></i>
+                            </div>
+                            <div class="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 bg-gradient-to-r from-orange-500 to-orange-600 rounded-xl flex items-center justify-center shadow-lg">
+                                <i class="fa-solid fa-headset text-white text-base sm:text-lg lg:text-xl"></i>
+                            </div>
+                            <div class="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 bg-gradient-to-r from-primary-blue to-secondary-teal rounded-xl flex items-center justify-center shadow-lg">
+                                <i class="fa-solid fa-robot text-white text-base sm:text-lg lg:text-xl"></i>
+                            </div>
+                            <div class="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 bg-gradient-to-r from-red-500 to-red-600 rounded-xl flex items-center justify-center shadow-lg">
+                                <i class="fa-solid fa-cog text-white text-base sm:text-lg lg:text-xl"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="absolute top-4 left-4 sm:top-8 sm:left-8 w-10 h-10 sm:w-12 sm:h-12 bg-blue-100 rounded-full flex items-center justify-center animate-bounce">
+                        <i class="fa-solid fa-envelope text-blue-600"></i>
+                    </div>
+                    <div class="absolute bottom-4 right-4 sm:bottom-8 sm:right-8 w-10 h-10 sm:w-12 sm:h-12 bg-green-100 rounded-full flex items-center justify-center animate-bounce" style="animation-delay: 1s;">
+                        <i class="fa-solid fa-check text-green-600"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="absolute inset-0 bg-gradient-to-b from-transparent to-white/60 pointer-events-none"></div>
+</section>
+
+<section id="problem" class="bg-white px-4 py-16 sm:px-6 lg:py-20">
+    <div class="mx-auto max-w-6xl">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-dark-text mb-6">Manual operations waste time and money</h2>
+            <p class="text-base sm:text-lg text-muted-text max-w-4xl mx-auto leading-relaxed">
+                Most businesses struggle with repetitive processes — sales teams forget to follow up, HR wastes time on scheduling, and finance misses reminders. Vertikal Agents remove friction by taking intelligent actions inside your workflows.
+            </p>
+        </div>
+        
+        <div class="grid md:grid-cols-3 gap-8">
+            <div class="bg-gradient-to-br from-red-50 to-red-100 p-8 rounded-2xl border border-red-200 card-hover">
+                <div class="w-16 h-16 bg-gradient-to-r from-red-500 to-red-600 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg">
+                    <i class="fa-solid fa-phone-slash text-white text-2xl"></i>
+                </div>
+                <h3 class="text-xl font-bold text-dark-text mb-4 text-center">Sales Follow-up Missed</h3>
+            <p class="text-muted-text text-center leading-relaxed">Leads go cold while sales teams juggle multiple prospects manually, losing potential revenue daily</p>
+                <div class="mt-6 text-center">
+                    <span class="inline-flex items-center bg-red-100 text-red-800 text-sm font-medium px-3 py-1 rounded-full">
+                        <i class="fa-solid fa-exclamation-triangle mr-2"></i>
+                        40% leads lost
+                    </span>
+                </div>
+            </div>
+            
+            <div class="bg-gradient-to-br from-orange-50 to-orange-100 p-8 rounded-2xl border border-orange-200 card-hover">
+                <div class="w-16 h-16 bg-gradient-to-r from-orange-500 to-orange-600 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg">
+                    <i class="fa-solid fa-calendar-xmark text-white text-2xl"></i>
+                </div>
+                <h3 class="text-xl font-bold text-dark-text mb-4 text-center">HR Buried in Scheduling</h3>
+                <p class="text-muted-text text-center leading-relaxed">Hours wasted coordinating interviews and managing calendars instead of strategic HR work</p>
+                <div class="mt-6 text-center">
+                    <span class="inline-flex items-center bg-orange-100 text-orange-800 text-sm font-medium px-3 py-1 rounded-full">
+                        <i class="fa-solid fa-clock mr-2"></i>
+                        15 hrs/week lost
+                    </span>
+                </div>
+            </div>
+            
+            <div class="bg-gradient-to-br from-yellow-50 to-yellow-100 p-8 rounded-2xl border border-yellow-200 card-hover">
+                <div class="w-16 h-16 bg-gradient-to-r from-yellow-500 to-yellow-600 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg">
+                    <i class="fa-solid fa-bell-slash text-white text-2xl"></i>
+                </div>
+                <h3 class="text-xl font-bold text-dark-text mb-4 text-center">Finance Forgets Reminders</h3>
+                <p class="text-muted-text text-center leading-relaxed">Invoice follow-ups and payment reminders fall through the cracks, impacting cash flow</p>
+                <div class="mt-6 text-center">
+                    <span class="inline-flex items-center bg-yellow-100 text-yellow-800 text-sm font-medium px-3 py-1 rounded-full">
+                        <i class="fa-solid fa-dollar-sign mr-2"></i>
+                        Late payments
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="ai-agent-explanation" class="gradient-bg px-4 py-16 sm:px-6 lg:py-20">
+    <div class="mx-auto max-w-6xl">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-dark-text mb-6">Not just a chatbot — a business assistant that takes action</h2>
+            <p class="text-base sm:text-lg text-muted-text max-w-4xl mx-auto leading-relaxed">
+                Vertikal Agents connect to your tools, understand context, and take actions. From sending follow-ups to updating CRMs or booking meetings — agents operate autonomously.
+            </p>
+        </div>
+        
+        <div class="bg-white rounded-3xl p-12 shadow-2xl">
+            <div class="flex flex-wrap items-center justify-center gap-8 md:justify-between">
+                <div class="flex flex-col items-center space-y-4">
+                    <div class="w-20 h-20 bg-gradient-to-r from-green-500 to-green-600 rounded-2xl flex items-center justify-center shadow-lg">
+                        <i class="fa-brands fa-whatsapp text-white text-3xl"></i>
+                    </div>
+                    <span class="font-bold text-dark-text text-lg">WhatsApp</span>
+                    <span class="text-sm text-muted-text">Customer Messages</span>
+                </div>
+                
+                <div class="flex items-center">
+                    <div class="flex flex-col items-center">
+                        <i class="fa-solid fa-arrow-right text-primary-blue text-3xl mb-2"></i>
+                        <span class="text-xs text-muted-text">Analyzes</span>
+                    </div>
+                </div>
+                
+                <div class="flex flex-col items-center space-y-4">
+                    <div class="w-20 h-20 bg-gradient-to-r from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center shadow-lg">
+                        <i class="fa-solid fa-address-book text-white text-3xl"></i>
+                    </div>
+                    <span class="font-bold text-dark-text text-lg">CRM</span>
+                    <span class="text-sm text-muted-text">Updates Records</span>
+                </div>
+                
+                <div class="flex items-center">
+                    <div class="flex flex-col items-center">
+                        <i class="fa-solid fa-arrow-right text-primary-blue text-3xl mb-2"></i>
+                        <span class="text-xs text-muted-text">Syncs</span>
+                    </div>
+                </div>
+                
+                <div class="flex flex-col items-center space-y-4">
+                    <div class="w-20 h-20 bg-gradient-to-r from-green-600 to-green-700 rounded-2xl flex items-center justify-center shadow-lg">
+                        <i class="fa-solid fa-table text-white text-3xl"></i>
+                    </div>
+                    <span class="font-bold text-dark-text text-lg">Google Sheets</span>
+                    <span class="text-sm text-muted-text">Data Processing</span>
+                </div>
+                
+                <div class="flex items-center">
+                    <div class="flex flex-col items-center">
+                        <i class="fa-solid fa-arrow-right text-primary-blue text-3xl mb-2"></i>
+                        <span class="text-xs text-muted-text">Sends</span>
+                    </div>
+                </div>
+                
+                <div class="flex flex-col items-center space-y-4">
+                    <div class="w-20 h-20 bg-gradient-to-r from-red-500 to-red-600 rounded-2xl flex items-center justify-center shadow-lg">
+                        <i class="fa-solid fa-envelope text-white text-3xl"></i>
+                    </div>
+                    <span class="font-bold text-dark-text text-lg">Email</span>
+                    <span class="text-sm text-muted-text">Automated Response</span>
+                </div>
+            </div>
+            
+            <div class="mt-12 text-center">
+                <div class="inline-flex items-center bg-gradient-to-r from-primary-blue/10 to-secondary-teal/10 px-6 py-3 rounded-full">
+                    <i class="fa-solid fa-magic-wand-sparkles text-primary-blue mr-3"></i>
+                    <span class="text-dark-text font-semibold">All actions happen automatically, 24/7</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="solutions" class="bg-white px-4 py-16 sm:px-6 lg:py-20">
+    <div class="mx-auto max-w-7xl">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-dark-text mb-6">Our AI Solutions</h2>
+            <p class="text-base sm:text-lg text-muted-text">Choose from our specialized agents or build custom solutions</p>
+        </div>
+        
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="bg-gradient-to-br from-white to-blue-50 border border-blue-100 rounded-2xl p-8 card-hover relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-primary-blue/10 to-transparent rounded-full -mr-16 -mt-16"></div>
+                <div class="relative z-10">
+                    <div class="w-16 h-16 bg-gradient-to-r from-primary-blue to-blue-600 rounded-2xl flex items-center justify-center mb-6 shadow-lg">
+                        <i class="fa-solid fa-cogs text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-dark-text mb-3">Core Operations Agent</h3>
+                    <p class="text-muted-text mb-6">Automate day-to-day business workflows seamlessly.</p>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center text-muted-text">
+                            <div class="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center mr-3">
+                                <i class="fa-solid fa-check text-green-600 text-sm"></i>
+                            </div>
+                            WhatsApp CRM follow-ups
+                        </li>
+                        <li class="flex items-center text-muted-text">
+                            <div class="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center mr-3">
+                                <i class="fa-solid fa-check text-green-600 text-sm"></i>
+                            </div>
+                            Interview scheduling
+                        </li>
+                        <li class="flex items-center text-muted-text">
+                            <div class="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center mr-3">
+                                <i class="fa-solid fa-check text-green-600 text-sm"></i>
+                            </div>
+                            Invoice reminders
+                        </li>
+                    </ul>
+                    <a href="{{ url_for('home.solution_core_agent') }}"
+                       class="inline-flex w-full items-center justify-center rounded-xl bg-primary-blue py-3 font-semibold text-white shadow-lg transition-colors hover:bg-blue-700">
+                        See in Action
+                    </a>
+                </div>
+            </div>
+            
+            <div class="bg-gradient-to-br from-white to-teal-50 border border-teal-100 rounded-2xl p-8 card-hover relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-secondary-teal/10 to-transparent rounded-full -mr-16 -mt-16"></div>
+                <div class="relative z-10">
+                    <div class="w-16 h-16 bg-gradient-to-r from-secondary-teal to-teal-600 rounded-2xl flex items-center justify-center mb-6 shadow-lg">
+                        <i class="fa-solid fa-link text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-dark-text mb-3">Workflow Integrations</h3>
+                    <p class="text-muted-text mb-6">Connect your stack and automate complex flows.</p>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center text-muted-text">
+                            <div class="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center mr-3">
+                                <i class="fa-solid fa-check text-green-600 text-sm"></i>
+                            </div>
+                            Google Sheets sync
+                        </li>
+                        <li class="flex items-center text-muted-text">
+                            <div class="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center mr-3">
+                                <i class="fa-solid fa-check text-green-600 text-sm"></i>
+                            </div>
+                            Shopify cart follow-ups
+                        </li>
+                        <li class="flex items-center text-muted-text">
+                            <div class="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center mr-3">
+                                <i class="fa-solid fa-check text-green-600 text-sm"></i>
+                            </div>
+                            CRM webhook triggers
+                        </li>
+                    </ul>
+                    <a href="{{ url_for('home.solution_workflow_integration') }}"
+                       class="inline-flex w-full items-center justify-center rounded-xl bg-secondary-teal py-3 font-semibold text-white shadow-lg transition-colors hover:bg-teal-700">
+                        View Use Cases
+                    </a>
+                </div>
+            </div>
+            
+            <div class="bg-gradient-to-br from-white to-purple-50 border border-purple-100 rounded-2xl p-8 card-hover relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-purple-500/10 to-transparent rounded-full -mr-16 -mt-16"></div>
+                <div class="relative z-10">
+                    <div class="w-16 h-16 bg-gradient-to-r from-purple-500 to-purple-600 rounded-2xl flex items-center justify-center mb-6 shadow-lg">
+                        <i class="fa-solid fa-chart-pie text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-dark-text mb-3">Conversational Dashboards</h3>
+                    <p class="text-muted-text mb-6">Ask your business anything, get instant insights.</p>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center text-muted-text">
+                            <div class="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center mr-3">
+                                <i class="fa-solid fa-check text-green-600 text-sm"></i>
+                            </div>
+                            Sales/expense snapshots
+                        </li>
+                        <li class="flex items-center text-muted-text">
+                            <div class="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center mr-3">
+                                <i class="fa-solid fa-check text-green-600 text-sm"></i>
+                            </div>
+                            Daily WhatsApp agent
+                        </li>
+                        <li class="flex items-center text-muted-text">
+                            <div class="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center mr-3">
+                                <i class="fa-solid fa-check text-green-600 text-sm"></i>
+                            </div>
+                            Inventory insights
+                        </li>
+                    </ul>
+                    <a href="{{ url_for('home.solution_conversational_agent') }}"
+                       class="inline-flex w-full items-center justify-center rounded-xl bg-purple-500 py-3 font-semibold text-white shadow-lg transition-colors hover:bg-purple-700">
+                        Explore Dashboards
+                    </a>
+                </div>
+            </div>
+            
+            <div class="bg-gradient-to-br from-white to-orange-50 border border-orange-100 rounded-2xl p-8 card-hover relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-orange-500/10 to-transparent rounded-full -mr-16 -mt-16"></div>
+                <div class="relative z-10">
+                    <div class="w-16 h-16 bg-gradient-to-r from-orange-500 to-orange-600 rounded-2xl flex items-center justify-center mb-6 shadow-lg">
+                        <i class="fa-solid fa-wrench text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-dark-text mb-3">Custom AI Agents</h3>
+                    <p class="text-muted-text mb-6">Have a unique process? We'll build it for you.</p>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center text-muted-text">
+                            <div class="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center mr-3">
+                                <i class="fa-solid fa-check text-green-600 text-sm"></i>
+                            </div>
+                            Idea-to-Agent in 7–10 days
+                        </li>
+                        <li class="flex items-center text-muted-text">
+                            <div class="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center mr-3">
+                                <i class="fa-solid fa-check text-green-600 text-sm"></i>
+                            </div>
+                            API + DB integrations
+                        </li>
+                        <li class="flex items-center text-muted-text">
+                            <div class="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center mr-3">
+                                <i class="fa-solid fa-check text-green-600 text-sm"></i>
+                            </div>
+                            Fully managed delivery
+                        </li>
+                    </ul>
+                    <a href="{{ url_for('home.solution_custom_agent') }}"
+                       class="inline-flex w-full items-center justify-center rounded-xl bg-orange-500 py-3 font-semibold text-white shadow-lg transition-colors hover:bg-orange-700">
+                        Start a Consultation
+                    </a>
+                </div>
+            </div>
+            
+            
+            
+            <div class="bg-gradient-to-br from-white to-red-50 border border-red-100 rounded-2xl p-8 card-hover relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-red-500/10 to-transparent rounded-full -mr-16 -mt-16"></div>
+                <div class="relative z-10">
+                    <div class="w-16 h-16 bg-gradient-to-r from-red-500 to-red-600 rounded-2xl flex items-center justify-center mb-6 shadow-lg">
+                        <i class="fa-solid fa-microphone text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-dark-text mb-3">Voice Agent</h3>
+                    <p class="text-muted-text mb-6">Your 24/7 AI receptionist that never sleeps.</p>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center text-muted-text">
+                            <div class="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center mr-3">
+                                <i class="fa-solid fa-check text-green-600 text-sm"></i>
+                            </div>
+                            Answers and routes calls
+                        </li>
+                        <li class="flex items-center text-muted-text">
+                            <div class="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center mr-3">
+                                <i class="fa-solid fa-check text-green-600 text-sm"></i>
+                            </div>
+                            CRM sync + transcription
+                        </li>
+                        <li class="flex items-center text-muted-text">
+                            <div class="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center mr-3">
+                                <i class="fa-solid fa-check text-green-600 text-sm"></i>
+                            </div>
+                            Integrates with Vapi, Retell
+                        </li>
+                    </ul>
+                    <a href="{{ url_for('home.solution_voice_agent') }}"
+                       class="inline-flex w-full items-center justify-center rounded-xl bg-red-500 py-3 font-semibold text-white shadow-lg transition-colors hover:bg-red-700">
+                        Listen to Demo
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="how-it-works" class="gradient-bg px-4 py-16 sm:px-6 lg:py-20">
+    <div class="mx-auto max-w-6xl">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-dark-text mb-6">How Your AI Agent Works</h2>
+            <p class="text-base sm:text-lg text-muted-text">From setup to optimization in just 5 simple steps</p>
+        </div>
+        
+        <div class="grid gap-10 sm:grid-cols-2 lg:grid-cols-5">
+            <div class="text-center relative">
+                <div class="w-24 h-24 bg-gradient-to-r from-primary-blue to-blue-600 rounded-3xl flex items-center justify-center mx-auto mb-6 shadow-xl">
+                    <span class="text-white font-bold text-3xl">1</span>
+                </div>
+                <div class="absolute top-12 left-24 hidden lg:block">
+                    <div class="w-16 h-0.5 bg-gradient-to-r from-primary-blue to-secondary-teal"></div>
+                </div>
+                <h3 class="font-bold text-dark-text mb-3 text-lg">Connect Tools</h3>
+                <p class="text-muted-text text-sm leading-relaxed">Link your existing WhatsApp, CRM, and business tools securely</p>
+                <div class="mt-4 flex justify-center space-x-2">
+                    <i class="fa-brands fa-whatsapp text-green-500 text-lg"></i>
+                    <i class="fa-solid fa-address-book text-blue-500 text-lg"></i>
+                    <i class="fa-solid fa-shopping-cart text-purple-500 text-lg"></i>
+                </div>
+            </div>
+            
+            <div class="text-center relative">
+                <div class="w-24 h-24 bg-gradient-to-r from-secondary-teal to-teal-600 rounded-3xl flex items-center justify-center mx-auto mb-6 shadow-xl">
+                    <span class="text-white font-bold text-3xl">2</span>
+                </div>
+                <div class="absolute top-12 left-24 hidden lg:block">
+                    <div class="w-16 h-0.5 bg-gradient-to-r from-secondary-teal to-purple-500"></div>
+                </div>
+                <h3 class="font-bold text-dark-text mb-3 text-lg">Define Use Case</h3>
+                <p class="text-muted-text text-sm leading-relaxed">Specify your automation goals for Sales, HR, Finance operations</p>
+                <div class="mt-4 flex justify-center space-x-2">
+                    <i class="fa-solid fa-chart-line text-blue-500 text-lg"></i>
+                    <i class="fa-solid fa-users text-green-500 text-lg"></i>
+                    <i class="fa-solid fa-calculator text-orange-500 text-lg"></i>
+                </div>
+            </div>
+            
+            <div class="text-center relative">
+                <div class="w-24 h-24 bg-gradient-to-r from-purple-500 to-purple-600 rounded-3xl flex items-center justify-center mx-auto mb-6 shadow-xl">
+                    <span class="text-white font-bold text-3xl">3</span>
+                </div>
+                <div class="absolute top-12 left-24 hidden lg:block">
+                    <div class="w-16 h-0.5 bg-gradient-to-r from-purple-500 to-green-500"></div>
+                </div>
+                <h3 class="font-bold text-dark-text mb-3 text-lg">Train Agent</h3>
+                <p class="text-muted-text text-sm leading-relaxed">Our experts configure and rigorously test your custom agent</p>
+                <div class="mt-4 flex justify-center">
+                    <i class="fa-solid fa-robot text-purple-500 text-2xl"></i>
+                </div>
+            </div>
+            
+            <div class="text-center relative">
+                <div class="w-24 h-24 bg-gradient-to-r from-green-500 to-green-600 rounded-3xl flex items-center justify-center mx-auto mb-6 shadow-xl">
+                    <span class="text-white font-bold text-3xl">4</span>
+                </div>
+                <div class="absolute top-12 left-24 hidden lg:block">
+                    <div class="w-16 h-0.5 bg-gradient-to-r from-green-500 to-orange-500"></div>
+                </div>
+                <h3 class="font-bold text-dark-text mb-3 text-lg">Deploy &amp; Monitor</h3>
+                <p class="text-muted-text text-sm leading-relaxed">Go live with real-time monitoring and performance analytics</p>
+                <div class="mt-4 flex justify-center space-x-2">
+                    <i class="fa-solid fa-play text-green-500 text-lg"></i>
+                    <i class="fa-solid fa-chart-bar text-blue-500 text-lg"></i>
+                </div>
+            </div>
+            
+            <div class="text-center">
+                <div class="w-24 h-24 bg-gradient-to-r from-orange-500 to-orange-600 rounded-3xl flex items-center justify-center mx-auto mb-6 shadow-xl">
+                    <span class="text-white font-bold text-3xl">5</span>
+                </div>
+                <h3 class="font-bold text-dark-text mb-3 text-lg">Iterate</h3>
+                <p class="text-muted-text text-sm leading-relaxed">Continuously add new workflows and optimize performance</p>
+                <div class="mt-4 flex justify-center">
+                    <i class="fa-solid fa-sync text-orange-500 text-2xl"></i>
+                </div>
+            </div>
+        </div>
+        
+        <div class="mt-16 text-center">
+            <div class="inline-flex items-center bg-white px-8 py-4 rounded-2xl shadow-lg">
+                <i class="fa-solid fa-clock text-primary-blue mr-3 text-xl"></i>
+                <span class="text-dark-text font-semibold text-lg">Average setup time: 7-10 days</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="industries" class="bg-white px-4 py-16 sm:px-6 lg:py-20">
+    <div class="mx-auto max-w-6xl text-center">
+        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-dark-text mb-6">Built for Every Industry</h2>
+        <p class="text-base sm:text-lg text-muted-text mb-16">Wherever there's a process — there's an agent waiting to help optimize it</p>
+        
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
+            <div class="text-center group">
+                <div class="w-24 h-24 bg-gradient-to-br from-blue-100 to-blue-200 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform shadow-lg">
+                    <i class="fa-solid fa-shopping-cart text-blue-600 text-3xl"></i>
+                </div>
+                <span class="font-semibold text-dark-text">E-commerce</span>
+                <p class="text-sm text-muted-text mt-1">Cart abandonment, order updates</p>
+            </div>
+            
+            <div class="text-center group">
+                <div class="w-24 h-24 bg-gradient-to-br from-purple-100 to-purple-200 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform shadow-lg">
+                    <i class="fa-solid fa-palette text-purple-600 text-3xl"></i>
+                </div>
+                <span class="font-semibold text-dark-text">Digital Agencies</span>
+                <p class="text-sm text-muted-text mt-1">Client communication, reporting</p>
+            </div>
+            
+            <div class="text-center group">
+                <div class="w-24 h-24 bg-gradient-to-br from-green-100 to-green-200 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform shadow-lg">
+                    <i class="fa-solid fa-home text-green-600 text-3xl"></i>
+                </div>
+                <span class="font-semibold text-dark-text">Real Estate</span>
+                <p class="text-sm text-muted-text mt-1">Lead qualification, showings</p>
+            </div>
+            
+            <div class="text-center group">
+                <div class="w-24 h-24 bg-gradient-to-br from-red-100 to-red-200 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform shadow-lg">
+                    <i class="fa-solid fa-stethoscope text-red-600 text-3xl"></i>
+                </div>
+                <span class="font-semibold text-dark-text">Clinics &amp; Salons</span>
+                <p class="text-sm text-muted-text mt-1">Appointment booking, reminders</p>
+            </div>
+            
+            <div class="text-center group">
+                <div class="w-24 h-24 bg-gradient-to-br from-yellow-100 to-yellow-200 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform shadow-lg">
+                    <i class="fa-solid fa-truck text-yellow-600 text-3xl"></i>
+                </div>
+                <span class="font-semibold text-dark-text">Logistics</span>
+                <p class="text-sm text-muted-text mt-1">Shipment tracking, updates</p>
+            </div>
+            
+            <div class="text-center group">
+                <div class="w-24 h-24 bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform shadow-lg">
+                    <i class="fa-solid fa-industry text-gray-600 text-3xl"></i>
+                </div>
+                <span class="font-semibold text-dark-text">Manufacturing</span>
+                <p class="text-sm text-muted-text mt-1">Inventory management, orders</p>
+            </div>
+        </div>
+        
+        <div class="mt-16">
+            <div class="bg-gradient-to-r from-accent-gray to-blue-50 rounded-2xl p-8">
+                <h3 class="text-2xl font-bold text-dark-text mb-4">Don't see your industry?</h3>
+                <p class="text-muted-text mb-6">We've successfully deployed agents across 50+ different industries and business models.</p>
+                <button class="rounded-lg bg-primary-blue px-6 py-3 font-semibold text-white transition-colors hover:bg-blue-700">
+                    Discuss Your Use Case
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="testimonial" class="gradient-bg px-4 py-16 sm:px-6 lg:py-20">
+    <div class="mx-auto max-w-5xl">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-dark-text">Real Results from Real Businesses</h2>
+        </div>
+        <div class="grid gap-8 md:grid-cols-2">
+            <div class="rounded-2xl bg-white p-6 shadow-xl sm:p-8">
+                <div class="flex items-center mb-6">
+                    <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-3.jpg" alt="CEO Avatar" class="w-16 h-16 rounded-full mr-4">
+                    <div>
+                        <div class="font-bold text-dark-text">Sarah Chen</div>
+                        <div class="text-muted-text">CEO, PowerPlus</div>
+                    </div>
+                </div>
+                <blockquote class="text-lg text-dark-text mb-6 italic leading-relaxed">
+                    "We replaced 3 support agents in 2 weeks with Vertikal Agent. It never forgets, never complains, and handles 80% of our customer queries flawlessly."
+                </blockquote>
+                <div class="flex items-center space-x-4">
+                    <div class="text-center">
+                        <div class="text-2xl font-bold text-primary-blue">80%</div>
+                        <div class="text-sm text-muted-text">Query Resolution</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-2xl font-bold text-green-500">$15K</div>
+                        <div class="text-sm text-muted-text">Monthly Savings</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-2xl font-bold text-orange-500">24/7</div>
+                        <div class="text-sm text-muted-text">Availability</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-2xl p-8 shadow-xl">
+                <div class="flex items-center mb-6">
+                    <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-8.jpg" alt="Operations Director Avatar" class="w-16 h-16 rounded-full mr-4">
+                    <div>
+                        <div class="font-bold text-dark-text">Marcus Rodriguez</div>
+                        <div class="text-muted-text">Operations Director, TechFlow</div>
+                    </div>
+                </div>
+                <blockquote class="text-lg text-dark-text mb-6 italic leading-relaxed">
+                    "Our sales follow-up rate went from 40% to 95% overnight. The agent never misses a lead and integrates perfectly with our existing CRM workflow."
+                </blockquote>
+                <div class="flex items-center space-x-4">
+                    <div class="text-center">
+                        <div class="text-2xl font-bold text-primary-blue">95%</div>
+                        <div class="text-sm text-muted-text">Follow-up Rate</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-2xl font-bold text-green-500">40%</div>
+                        <div class="text-sm text-muted-text">More Conversions</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-2xl font-bold text-orange-500">2hrs</div>
+                        <div class="text-sm text-muted-text">Daily Time Saved</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="mt-12 text-center">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div class="text-center">
+                    <div class="text-3xl font-bold text-primary-blue mb-2">500+</div>
+                    <div class="text-muted-text">Active Agents</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl font-bold text-secondary-teal mb-2">99.8%</div>
+                    <div class="text-muted-text">Uptime</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl font-bold text-green-500 mb-2">150+</div>
+                    <div class="text-muted-text">Happy Clients</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl font-bold text-orange-500 mb-2">50+</div>
+                    <div class="text-muted-text">Industries</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="final-cta" class="relative overflow-hidden bg-gradient-to-r from-primary-blue to-secondary-teal px-4 py-16 sm:px-6 lg:py-20">
+    <div class="absolute inset-0 bg-black/10"></div>
+    <div class="relative z-10 mx-auto max-w-4xl text-center">
+        <h2 class="text-3xl font-bold text-white sm:text-4xl md:text-5xl">Put agents to work in your business</h2>
+        <p class="mt-6 text-base text-blue-100 sm:text-lg md:text-xl">
+            Let's identify your first process to automate — and deploy an AI agent within days, not months.
+        </p>
+
+        <div class="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-6 md:mt-10">
+            <button onclick="openForm()" class="flex w-full items-center justify-center gap-3 rounded-xl bg-white px-6 py-3 text-base font-semibold text-primary-blue shadow-xl transition hover:bg-gray-100 sm:w-auto sm:px-8 sm:py-4 sm:text-lg">
+                <i class="fa-solid fa-calendar"></i>
+                Book Free Demo
+            </button>
+            <button 
+  onclick="openAgentChat()" 
+  class="flex w-full items-center justify-center gap-3 rounded-xl border-2 border-white px-6 py-3 text-base font-semibold text-white transition hover:bg-white hover:text-primary-blue sm:w-auto sm:px-8 sm:py-4 sm:text-lg"
+>
+  <i class="fa-solid fa-robot"></i>
+  Talk to Agent
+</button>
+        </div>
+
+        <div class="mt-12 grid grid-cols-1 gap-4 text-center sm:grid-cols-3">
+            <div class="rounded-xl bg-white/10 p-6 backdrop-blur-sm">
+                <i class="fa-solid fa-clock text-2xl text-white"></i>
+                <div class="mt-3 font-semibold text-white">Setup in 7-10 days</div>
+                <div class="text-sm text-blue-100">From idea to deployment</div>
+            </div>
+            <div class="rounded-xl bg-white/10 p-6 backdrop-blur-sm">
+                <i class="fa-solid fa-handshake text-2xl text-white"></i>
+                <div class="mt-3 font-semibold text-white">No long-term contracts</div>
+                <div class="text-sm text-blue-100">Start small, scale as needed</div>
+            </div>
+            <div class="rounded-xl bg-white/10 p-6 backdrop-blur-sm">
+                <i class="fa-solid fa-headset text-2xl text-white"></i>
+                <div class="mt-3 font-semibold text-white">24/7 support included</div>
+                <div class="text-sm text-blue-100">We're here when you need us</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+{% endblock %}
+
+
+
+</body></html>

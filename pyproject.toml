@@ -1,0 +1,22 @@
+[project]
+name = "webisite"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "alembic>=1.16.5",
+    "cryptography>=46.0.2",
+    "flask>=3.1.2",
+    "flask-migrate>=4.1.0",
+    "gunicorn>=23.0.0",
+    "livekit>=1.0.16",
+    "livekit-agents[deepgram,openai,silero,turn-detector]~=1.2",
+    "livekit-plugins-noise-cancellation~=0.2",
+    "openai>=1.57.0",
+    "openai-agents>=0.3.3",
+    "pip>=25.2",
+    "psycopg2-binary>=2.9.11",
+    "pymysql>=1.1.2",
+    "python-dotenv>=1.1.1",
+]

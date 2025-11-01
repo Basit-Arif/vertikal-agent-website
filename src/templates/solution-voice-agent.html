@@ -1,0 +1,408 @@
+{% extends "base.html" %}
+
+{% block title %}Vertikal Agent - Voice Agent Solution{% endblock %}
+{% block content %}
+<!-- Hero Section -->
+<section id="voice-hero" class="gradient-bg py-20 px-6">
+    <div class="max-w-7xl mx-auto">
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+            <div class="text-center md:text-left">
+                <h1 class="text-5xl md:text-6xl font-bold text-dark-text mb-6">
+                    AI Voice Agent for<br/>
+                    <span class="text-primary-blue">Inbound Calls</span>
+                </h1>
+                <p class="text-xl text-muted-text mb-8 leading-relaxed">
+                    Answer, book, route, and transcribe customer calls — with a fully autonomous AI receptionist that never sleeps.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    
+                    <span class="border-2 border-primary-blue text-primary-blue px-8 py-4 rounded-lg font-semibold text-lg hover:bg-primary-blue hover:text-white transition-colors cursor-pointer">
+                        <a href="https://calendar.app.google/sYYdKgsQZizuwJMe8" 
+                        target="_blank" 
+                        >
+                        Book a Consultation
+                        </a>
+            
+                    </span>
+                </div>
+            </div>
+            <div class="relative">
+                <div class="bg-white rounded-2xl p-8 shadow-xl">
+                    <div class="flex items-center mb-6">
+                        <div class="bg-green-100 text-green-600 w-12 h-12 rounded-full flex items-center justify-center">
+                            <i class="fa-solid fa-phone text-xl"></i>
+                        </div>
+                        <div class="ml-4">
+                            <h3 class="font-bold text-dark-text">Voice Agent Active</h3>
+                            <p class="text-muted-text text-sm">Handling incoming calls</p>
+                        </div>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-3 h-3 bg-green-500 rounded-full voice-wave"></div>
+                            <div class="w-4 h-4 bg-green-400 rounded-full voice-wave" style="animation-delay: 0.2s"></div>
+                            <div class="w-3 h-3 bg-green-300 rounded-full voice-wave" style="animation-delay: 0.4s"></div>
+                            <span class="text-sm text-dark-text">AI Agent speaking...</span>
+                        </div>
+                        <div class="bg-gray-50 p-3 rounded-lg">
+                            <p class="text-sm text-dark-text">"Hi! I can help you book an appointment. What time works best for you?"</p>
+                        </div>
+                        <div class="flex items-center justify-between bg-green-50 p-3 rounded-lg">
+                            <span class="text-sm">Appointment booked for 3:30 PM</span>
+                            <i class="fa-solid fa-check text-green-500"></i>
+                        </div>
+                        <div class="flex items-center justify-between bg-blue-50 p-3 rounded-lg">
+                            <span class="text-sm">Synced to CRM</span>
+                            <i class="fa-solid fa-check text-blue-500"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Flow Animation -->
+<section id="voice-flow" class="py-12 px-6 bg-white">
+    <div class="max-w-4xl mx-auto">
+        <div class="flex flex-wrap justify-center items-center gap-8">
+            <div class="text-center">
+                <div class="bg-blue-100 text-blue-600 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-2">
+                    <i class="fa-solid fa-phone-volume text-2xl"></i>
+                </div>
+                <span class="text-sm font-medium">Incoming Call</span>
+            </div>
+            <i class="fa-solid fa-arrow-right text-muted-text"></i>
+            <div class="text-center">
+                <div class="bg-green-100 text-green-600 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-2">
+                    <i class="fa-solid fa-microphone text-2xl"></i>
+                </div>
+                <span class="text-sm font-medium">AI Agent</span>
+            </div>
+            <i class="fa-solid fa-arrow-right text-muted-text"></i>
+            <div class="text-center">
+                <div class="bg-purple-100 text-purple-600 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-2">
+                    <i class="fa-solid fa-calendar-check text-2xl"></i>
+                </div>
+                <span class="text-sm font-medium">Booking Confirmed</span>
+            </div>
+            <i class="fa-solid fa-arrow-right text-muted-text"></i>
+            <div class="text-center">
+                <div class="bg-orange-100 text-orange-600 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-2">
+                    <i class="fa-solid fa-database text-2xl"></i>
+                </div>
+                <span class="text-sm font-medium">CRM Synced</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Common Problems -->
+<section id="voice-problems" class="py-16 px-6 bg-accent-gray">
+    <div class="max-w-6xl mx-auto text-center">
+        <h2 class="text-4xl font-bold text-dark-text mb-6">Your phone shouldn't be your bottleneck.</h2>
+        <div class="grid md:grid-cols-3 gap-8">
+            <div class="bg-red-50 p-8 rounded-xl">
+                <div class="bg-red-100 text-red-600 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i class="fa-solid fa-phone-slash text-2xl"></i>
+                </div>
+                <h3 class="text-xl font-bold text-dark-text mb-3">Missed calls = lost revenue</h3>
+                <p class="text-muted-text">Every unanswered call is a potential customer walking away</p>
+                <div class="mt-4">
+                    <i class="fa-solid fa-arrow-down text-red-500"></i>
+                </div>
+                <div class="bg-green-100 text-green-600 w-12 h-12 rounded-full flex items-center justify-center mx-auto mt-4">
+                    <i class="fa-solid fa-robot text-lg"></i>
+                </div>
+            </div>
+            <div class="bg-yellow-50 p-8 rounded-xl">
+                <div class="bg-yellow-100 text-yellow-600 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i class="fa-solid fa-user-clock text-2xl"></i>
+                </div>
+                <h3 class="text-xl font-bold text-dark-text mb-3">Staff overwhelmed with repetitive questions</h3>
+                <p class="text-muted-text">Hours wasted on "What are your hours?" and "How much does it cost?"</p>
+                <div class="mt-4">
+                    <i class="fa-solid fa-arrow-down text-yellow-500"></i>
+                </div>
+                <div class="bg-green-100 text-green-600 w-12 h-12 rounded-full flex items-center justify-center mx-auto mt-4">
+                    <i class="fa-solid fa-robot text-lg"></i>
+                </div>
+            </div>
+            <div class="bg-orange-50 p-8 rounded-xl">
+                <div class="bg-orange-100 text-orange-600 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i class="fa-solid fa-clock text-2xl"></i>
+                </div>
+                <h3 class="text-xl font-bold text-dark-text mb-3">Customers drop off during wait times</h3>
+                <p class="text-muted-text">Long hold times frustrate customers and hurt conversion</p>
+                <div class="mt-4">
+                    <i class="fa-solid fa-arrow-down text-orange-500"></i>
+                </div>
+                <div class="bg-green-100 text-green-600 w-12 h-12 rounded-full flex items-center justify-center mx-auto mt-4">
+                    <i class="fa-solid fa-robot text-lg"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Voice Agent Difference -->
+<section id="voice-difference" class="py-16 px-6 bg-white">
+    <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-12">
+            <h2 class="text-4xl font-bold text-dark-text mb-6">Never miss a call — or an opportunity.</h2>
+        </div>
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+            <div>
+                <ul class="space-y-6">
+                    <li class="flex items-start">
+                        <div class="bg-green-100 text-green-600 w-8 h-8 rounded-full flex items-center justify-center mr-4 mt-1">
+                            <i class="fa-solid fa-check"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-dark-text mb-1">Answers calls naturally using Vapi or Retell</h3>
+                            <p class="text-muted-text text-sm">Human-like conversation that customers love</p>
+                        </div>
+                    </li>
+                    <li class="flex items-start">
+                        <div class="bg-green-100 text-green-600 w-8 h-8 rounded-full flex items-center justify-center mr-4 mt-1">
+                            <i class="fa-solid fa-check"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-dark-text mb-1">Books appointments or passes to team</h3>
+                            <p class="text-muted-text text-sm">Smart routing based on your business rules</p>
+                        </div>
+                    </li>
+                    <li class="flex items-start">
+                        <div class="bg-green-100 text-green-600 w-8 h-8 rounded-full flex items-center justify-center mr-4 mt-1">
+                            <i class="fa-solid fa-check"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-dark-text mb-1">Handles FAQs like pricing, timing, location</h3>
+                            <p class="text-muted-text text-sm">Instant answers to common questions</p>
+                        </div>
+                    </li>
+                    <li class="flex items-start">
+                        <div class="bg-green-100 text-green-600 w-8 h-8 rounded-full flex items-center justify-center mr-4 mt-1">
+                            <i class="fa-solid fa-check"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-dark-text mb-1">Syncs transcripts and metadata to CRM</h3>
+                            <p class="text-muted-text text-sm">Every conversation automatically logged</p>
+                        </div>
+                    </li>
+                    <li class="flex items-start">
+                        <div class="bg-green-100 text-green-600 w-8 h-8 rounded-full flex items-center justify-center mr-4 mt-1">
+                            <i class="fa-solid fa-check"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-dark-text mb-1">Speaks in multiple languages</h3>
+                            <p class="text-muted-text text-sm">Serve customers in their preferred language</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="space-y-4">
+                <div class="bg-gray-50 rounded-xl p-6">
+                    <div class="flex items-center mb-4">
+                        <img class="w-12 h-12 rounded-lg object-cover" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/98928a2711-6fb5cd90af08d189ce2e.png" alt="smartphone interface showing AI agent speaking with voice waveform animation" />
+                        <div class="ml-3">
+                            <h4 class="font-bold text-dark-text">AI Agent Speaking</h4>
+                            <p class="text-sm text-muted-text">Live call in progress</p>
+                        </div>
+                    </div>
+                    <div class="bg-white p-4 rounded-lg">
+                        <p class="text-sm">"I can help you schedule an appointment. What day works best for you this week?"</p>
+                    </div>
+                </div>
+                <div class="bg-green-50 rounded-xl p-6">
+                    <div class="flex items-center mb-4">
+                        <img class="w-12 h-12 rounded-lg object-cover" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/19e2cde8d7-9797909271e8d721288a.png" alt="appointment booking confirmation screen with checkmark and time slot" />
+                        <div class="ml-3">
+                            <h4 class="font-bold text-dark-text">Booking Confirmed</h4>
+                            <p class="text-sm text-muted-text">Thursday 3:30 PM</p>
+                        </div>
+                    </div>
+                    <div class="bg-white p-4 rounded-lg">
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm">Appointment confirmed for Thursday 3:30 PM</span>
+                            <i class="fa-solid fa-check text-green-500"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-blue-50 rounded-xl p-6">
+                    <div class="flex items-center mb-4">
+                        <img class="w-12 h-12 rounded-lg object-cover" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/e79fb27117-8f2aa9c9da1decc95d88.png" alt="CRM dashboard showing call transcript and customer details" />
+                        <div class="ml-3">
+                            <h4 class="font-bold text-dark-text">CRM Updated</h4>
+                            <p class="text-sm text-muted-text">Call transcript synced</p>
+                        </div>
+                    </div>
+                    <div class="bg-white p-4 rounded-lg">
+                        <p class="text-xs text-muted-text">Customer: Jane Smith | Duration: 2:30 | Status: Appointment Booked</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Use Cases -->
+<section id="voice-use-cases" class="py-16 px-6 bg-accent-gray">
+    <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-12">
+            <h2 class="text-4xl font-bold text-dark-text mb-6">What your AI receptionist can do:</h2>
+        </div>
+        <div class="grid md:grid-cols-3 gap-8">
+            <div class="bg-white p-8 rounded-xl shadow-sm hover-lift">
+                <div class="bg-blue-100 text-blue-600 w-12 h-12 rounded-full flex items-center justify-center mb-4">
+                    <i class="fa-solid fa-stethoscope text-xl"></i>
+                </div>
+                <h3 class="text-xl font-bold text-dark-text mb-3">Medical Clinics</h3>
+                <ul class="space-y-2 text-sm text-muted-text">
+                    <li>• Schedule patient appointments</li>
+                    <li>• Answer insurance questions</li>
+                    <li>• Provide office hours & location</li>
+                    <li>• Handle prescription refill requests</li>
+                </ul>
+            </div>
+            <div class="bg-white p-8 rounded-xl shadow-sm hover-lift">
+                <div class="bg-green-100 text-green-600 w-12 h-12 rounded-full flex items-center justify-center mb-4">
+                    <i class="fa-solid fa-home text-xl"></i>
+                </div>
+                <h3 class="text-xl font-bold text-dark-text mb-3">Real Estate</h3>
+                <ul class="space-y-2 text-sm text-muted-text">
+                    <li>• Book property viewings</li>
+                    <li>• Qualify potential buyers</li>
+                    <li>• Provide listing details</li>
+                    <li>• Schedule agent callbacks</li>
+                </ul>
+            </div>
+            <div class="bg-white p-8 rounded-xl shadow-sm hover-lift">
+                <div class="bg-purple-100 text-purple-600 w-12 h-12 rounded-full flex items-center justify-center mb-4">
+                    <i class="fa-solid fa-cut text-xl"></i>
+                </div>
+                <h3 class="text-xl font-bold text-dark-text mb-3">Salons & Spas</h3>
+                <ul class="space-y-2 text-sm text-muted-text">
+                    <li>• Book beauty appointments</li>
+                    <li>• Explain service pricing</li>
+                    <li>• Handle cancellations</li>
+                    <li>• Promote special offers</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- How It Works -->
+<section id="voice-how-it-works" class="py-16 px-6 bg-white">
+    <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-12">
+            <h2 class="text-4xl font-bold text-dark-text mb-6">Set up in minutes, not weeks.</h2>
+        </div>
+        <div class="grid md:grid-cols-5 gap-8">
+            <div class="text-center">
+                <div class="bg-primary-blue text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold">1</div>
+                <div class="bg-blue-100 text-blue-600 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-3">
+                    <i class="fa-solid fa-phone text-xl"></i>
+                </div>
+                <h3 class="font-bold text-dark-text mb-2">Connect to phone system</h3>
+                <p class="text-sm text-muted-text">Vapi, Retell, Twilio</p>
+            </div>
+            <div class="text-center">
+                <div class="bg-primary-blue text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold">2</div>
+                <div class="bg-green-100 text-green-600 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-3">
+                    <i class="fa-solid fa-route text-xl"></i>
+                </div>
+                <h3 class="font-bold text-dark-text mb-2">Define call flows and FAQs</h3>
+                <p class="text-sm text-muted-text">Business rules & responses</p>
+            </div>
+            <div class="text-center">
+                <div class="bg-primary-blue text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold">3</div>
+                <div class="bg-purple-100 text-purple-600 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-3">
+                    <i class="fa-solid fa-calendar text-xl"></i>
+                </div>
+                <h3 class="font-bold text-dark-text mb-2">Add booking/calendar link</h3>
+                <p class="text-sm text-muted-text">Google, Calendly</p>
+            </div>
+            <div class="text-center">
+                <div class="bg-primary-blue text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold">4</div>
+                <div class="bg-orange-100 text-orange-600 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-3">
+                    <i class="fa-solid fa-play text-xl"></i>
+                </div>
+                <h3 class="font-bold text-dark-text mb-2">Go live with test call</h3>
+                <p class="text-sm text-muted-text">Test & refine</p>
+            </div>
+            <div class="text-center">
+                <div class="bg-primary-blue text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold">5</div>
+                <div class="bg-teal-100 text-teal-600 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-3">
+                    <i class="fa-solid fa-chart-line text-xl"></i>
+                </div>
+                <h3 class="font-bold text-dark-text mb-2">Monitor results + transcripts</h3>
+                <p class="text-sm text-muted-text">In dashboard</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Real Results -->
+<section id="voice-results" class="py-16 px-6 bg-accent-gray">
+    <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-12">
+            <h2 class="text-4xl font-bold text-dark-text mb-6">Hear from businesses using our AI receptionist</h2>
+        </div>
+        <div class="bg-white p-8 rounded-xl shadow-lg mb-8">
+            <div class="text-center">
+                <div class="text-6xl text-primary-blue mb-4">"</div>
+                <p class="text-xl text-dark-text mb-6 italic">
+                    Since using Vertikal's Voice Agent, we've handled 100% of our calls — even during holidays. Customers love the fast answers, and we haven't lost a single appointment to voicemail.
+                </p>
+                <div class="flex items-center justify-center">
+                    <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-2.jpg" alt="Adeel H." class="w-12 h-12 rounded-full mr-4">
+                    <div class="text-left">
+                        <p class="font-bold text-dark-text">Adeel H.</p>
+                        <p class="text-muted-text">Clinic Manager</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="grid md:grid-cols-3 gap-6">
+            <div class="bg-white p-6 rounded-xl shadow-sm text-center">
+                <div class="text-3xl font-bold text-primary-blue mb-2">40%</div>
+                <p class="text-muted-text">Increase in bookings</p>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-sm text-center">
+                <div class="text-3xl font-bold text-primary-blue mb-2">24/7</div>
+                <p class="text-muted-text">Response, zero wait time</p>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-sm text-center">
+                <div class="text-3xl font-bold text-primary-blue mb-2">95%</div>
+                <p class="text-muted-text">Of calls fully handled by AI</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Final CTA -->
+<section id="voice-final-cta" class="py-20 px-6 bg-primary-blue text-white">
+    <div class="max-w-4xl mx-auto text-center">
+        <h2 class="text-5xl font-bold mb-6">Let your phone be your strongest salesperson.</h2>
+        <p class="text-xl mb-8 opacity-90">
+            Deploy an AI receptionist that never sleeps, forgets, or fumbles. Turn every call into an opportunity.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+           
+            <span class="border-2 border-white text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-white hover:text-primary-blue transition-colors inline-block cursor-pointer">
+                <a href="https://calendar.app.google/sYYdKgsQZizuwJMe8" 
+                target="_blank" 
+                >
+                Book a Consultation
+                </a>
+            </span>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
+
+</body>
+</html>

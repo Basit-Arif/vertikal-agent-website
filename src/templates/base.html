@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="{% block meta_description %}Vertikal Agent builds AI agents that automate operations for growing businesses.{% endblock %}">
+  
+  <title>{% block title %}Vertikal Agent{% endblock %}</title>
+  <title>{{ meta.title if meta else 'Vertikal Agent' }}</title>
+  <meta name="description" content="{{ meta.description if meta else 'Vertikal Agent builds AI agents that automate operations for growing businesses.' }}">
+  <meta name="keywords" content="{{ meta.keywords if meta else 'AI Agent, Automation, Chatbot, WhatsApp Bot, Business Automation, Vertikal' }}">
+  <link rel="canonical" href="{{ meta.url if meta else request.url }}" />
+
+  <!-- Open Graph / WhatsApp / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="{{ meta.url if meta else request.url }}">
+  <meta property="og:title" content="{{ meta.title if meta else 'Vertikal Agent' }}">
+  <meta property="og:description" content="{{ meta.description if meta else 'AI-powered automation for every business.' }}">
+  <meta property="og:image" content="{{ meta.image if meta else url_for('static', filename='images/logo.jpeg', _external=True) }}">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{ meta.title if meta else 'Vertikal Agent' }}">
+  <meta name="twitter:description" content="{{ meta.description if meta else 'Automate sales, support, and workflows with AI Agents.' }}">
+  <meta name="twitter:image" content="{{ meta.image if meta else url_for('static', filename='images/logo.jpeg', _external=True) }}">
+
+  <!-- JSON-LD Structured Data for Google -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Vertikal Agent",
+    "url": "https://vertikalagent.com",
+    "logo": "https://vertikalagent.com/static/images/logo.jpeg",
+    "sameAs": [
+      "https://www.linkedin.com/company/vertikal-agent",
+      "https://www.instagram.com/vertikalagent.ai/"
+    ]
+  }
+  </script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap">
+  <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/logo.jpeg') }}">
+  <style>
+    ::-webkit-scrollbar { display: none; }
+    * { font-family: 'Inter', sans-serif; }
+    .gradient-bg { background: linear-gradient(135deg, #e9f3ff 0%, #f9fafb 100%); }
+    .card-hover { transition: all 0.3s ease; }
+    .card-hover:hover { transform: translateY(-4px); box-shadow: 0 20px 40px rgba(37, 99, 235, 0.1); }
+    .btn-primary { background: #2563EB; transition: all 0.3s ease; }
+    .btn-primary:hover { background: #1d4ed8; transform: translateY(-1px); }
+    .text-gradient { background: linear-gradient(135deg, #2563EB, #25A9A3); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .animate-float { animation: float 6s ease-in-out infinite; }
+    @keyframes float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-20px); } }
+    .animate-pulse-slow { animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+    .sticky-cta { position: fixed; bottom: 20px; right: 20px; z-index: 1000; }
+    body {
+      opacity: 0;
+      transition: opacity 0.4s ease-in;
+    }
+  </style>
+  <script>
+    tailwind.config = {
+        theme: {
+            extend: {
+                colors: {
+                    'primary': '#2563EB',
+                    'secondary': '#25A9A3',
+                    'dark-text': '#1e283a',
+                    'muted-text': '#7284a3',
+                    'accent-gray': '#e9f3ff',
+                    'bg-light': '#f9fafb',
+                    'primary-blue': '#2563EB',
+                        'secondary-teal': '#25A9A3',
+                        'dark-text': '#1e283a',
+                        'muted-text': '#7284a3',
+                        'accent-gray': '#e9f3ff',
+                        'primary': '#2563EB',
+                        'accent': '#25A9A3',
+                        'text': '#1e283a',
+                        'background': '#f9fafb',
+                        'primary': '#2563EB',
+                        'secondary': '#25A9A3',
+                        'dark': '#1e283a',
+                        'light': '#f9fafb'
+                },
+                fontFamily: {
+                    'nunito': ['Nunito', 'sans-serif']
+                }
+            }
+        }
+    }
+    
+</script>
+<script>
+  window.addEventListener("load", () => {
+    const loader = document.getElementById("page-loader");
+
+    // Remove loader after short delay
+    setTimeout(() => {
+      if (loader) loader.classList.add("hidden");
+      document.body.style.opacity = 1;
+    }, 300); // adjust delay if needed
+  });
+</script>
+<style>
+  #page-loader {
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+  }
+  #page-loader.hidden {
+    opacity: 0;
+    visibility: hidden;
+  }
+</style>
+</head>
+<body class="bg-gray-50">
+  <!-- Page Loader (separate, not affected by body fade) -->
+  <div id="page-loader" class="fixed inset-0 bg-white z-[9999] flex items-center justify-center">
+    <div class="flex flex-col items-center">
+      <img src="{{ url_for('static', filename='images/Full_Black_Logo.png') }}"
+           alt="Vertikal Agent Logo"
+           style="width: 150px; height: auto;"
+           class="animate-pulse-slow">
+      <p class="mt-4 text-muted-text text-sm">Loading...</p>
+    </div>
+  </div>
+  {% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    <div class="container mx-auto mt-4 px-4">
+      {% for category, message in messages %}
+        <div class="p-4 mb-4 rounded-lg 
+                    {% if category == 'success' %} bg-green-100 text-green-800
+                    {% elif category == 'error' %} bg-red-100 text-red-800
+                    {% else %} bg-blue-100 text-blue-800 {% endif %}">
+          {{ message }}
+        </div>
+      {% endfor %}
+    </div>
+  {% endif %}
+{% endwith %}
+
+  {% include 'partials/header.html' %}
+
+
+  {% block content %}{% endblock %}
+  <div id="contactModal" class="fixed inset-0 hidden bg-black/50 flex items-center justify-center z-50">
+    <div class="bg-white rounded-3xl shadow-2xl p-10 max-w-lg w-full relative font-sans">
+      
+      <!-- Close Button -->
+      <button onclick="closeForm()" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700 transition">
+        <i class="fa-solid fa-xmark text-2xl"></i>
+      </button>
+  
+      <!-- Header -->
+      <div class="mb-8">
+        <h3 class="text-3xl font-bold text-dark-text mb-2">Book a Free Demo</h3>
+        <p class="text-gray-600 text-base">Fill in your details and our team will reach out within 24 hours.</p>
+      </div>
+  
+      <!-- Form -->
+      <form action="{{ url_for('home.create_lead') }}" method="POST" class="space-y-6">
+  
+        <!-- Intent -->
+        <div>
+          <label class="block text-sm font-semibold text-gray-700 mb-2" for="intent">How can we help? *</label>
+          <select id="intent" name="intent" required
+            class="w-full px-4 py-4 border-2 border-gray-200 rounded-xl focus:border-primary focus:outline-none transition form-input">
+            <option value="">Select an option</option>
+            <option value="demo">Request a Demo</option>
+            <option value="support">Technical Support</option>
+            <option value="automation">Automation Consultation</option>
+            <option value="enterprise">Enterprise Solutions</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+  
+        <!-- Name + Email -->
+        <div class="grid md:grid-cols-2 gap-6">
+          <div>
+            <label class="block text-sm font-semibold text-gray-700 mb-2" for="name">Full Name *</label>
+            <input id="name" name="name" type="text" placeholder="John Doe" required
+              class="w-full px-4 py-4 border-2 border-gray-200 rounded-xl focus:border-primary focus:outline-none form-input">
+          </div>
+          <div>
+            <label class="block text-sm font-semibold text-gray-700 mb-2" for="email">Work Email *</label>
+            <input id="email" name="email" type="email" placeholder="john@company.com" required
+              class="w-full px-4 py-4 border-2 border-gray-200 rounded-xl focus:border-primary focus:outline-none form-input">
+          </div>
+        </div>
+  
+        <!-- Phone -->
+        <div>
+          <label class="block text-sm font-semibold text-gray-700 mb-2" for="phone">Phone Number</label>
+          <input id="phone" name="phone" type="tel" placeholder="+1 (555) 123-4567"
+            class="w-full px-4 py-4 border-2 border-gray-200 rounded-xl focus:border-primary focus:outline-none form-input">
+        </div>
+  
+        <!-- Message -->
+        <div>
+          <label class="block text-sm font-semibold text-gray-700 mb-2" for="message">Tell us about your needs</label>
+          <textarea id="message" name="message" rows="5" placeholder="Describe your current challenges and how AI could help..."
+            class="w-full px-4 py-4 border-2 border-gray-200 rounded-xl focus:border-primary focus:outline-none resize-none form-input"></textarea>
+        </div>
+  
+        <!-- Checkbox -->
+        <div class="flex items-start space-x-3">
+          <input type="checkbox" id="privacy" class="mt-1 w-5 h-5 text-primary border-gray-300 rounded focus:ring-primary" required/>
+          <label for="privacy" class="text-sm text-gray-600">
+            I agree to the 
+            <span class="text-primary hover:underline cursor-pointer">Privacy Policy</span> and 
+            <span class="text-primary hover:underline cursor-pointer">Terms of Service</span>.
+          </label>
+        </div>
+  
+        <!-- Submit -->
+        <button type="submit"
+          class="w-full bg-gradient-to-r from-primary to-secondary text-white py-4 rounded-xl font-bold text-lg hover:shadow-lg transform hover:scale-105 transition-all">
+          <i class="fas fa-paper-plane mr-2"></i>
+          Submit Request
+        </button>
+  
+      </form>
+    </div>
+  </div>
+
+  {% include 'partials/footer.html' %}
+  {% include 'partials/scripts.html' %}
+  {% include 'partials/voice-agent.html' %}
+
+<!-- Contact Modal -->
+
+{% block scripts %}{% endblock %}
+
+  
+</body>
+</html>

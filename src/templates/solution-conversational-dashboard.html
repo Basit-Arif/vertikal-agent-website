@@ -1,0 +1,505 @@
+{% extends "base.html" %}
+
+{% block title %}Vertikal Agent - Conversational Dashboards{% endblock %}
+{% block content %}
+    <!-- Hero Section -->
+    <section id="hero" class="pt-24 pb-16 bg-gradient-to-br from-slate-50 to-blue-50 h-[800px] flex items-center">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="max-w-xl">
+                    <h1 class="text-5xl lg:text-6xl font-bold text-text leading-tight mb-6">
+                        Conversational
+                        <span class="text-primary">Dashboards</span>
+                    </h1>
+                    <p class="text-xl text-gray-600 mb-8 leading-relaxed">
+                        Ask your business anything, get instant insights. No more dashboard hunting or waiting for reports.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <button onclick="openForm()" class="bg-primary text-white px-8 py-4 rounded-xl font-semibold hover:bg-blue-700 transition-colors shadow-lg">
+                            <i class="fa-solid fa-play mr-2"></i>
+                            Book a Demo
+                        </button>
+                    </div>
+                </div>
+                <div class="relative">
+                    <div class="bg-white rounded-2xl shadow-2xl p-6 max-w-md mx-auto">
+                        <div class="flex items-center mb-4 pb-4 border-b border-gray-100">
+                            <div class="w-3 h-3 bg-red-500 rounded-full mr-2"></div>
+                            <div class="w-3 h-3 bg-yellow-500 rounded-full mr-2"></div>
+                            <div class="w-3 h-3 bg-green-500 rounded-full"></div>
+                            <span class="ml-auto text-sm text-gray-500">Business Assistant</span>
+                        </div>
+                        <div class="space-y-4">
+                            <div class="flex justify-end">
+                                <div class="chat-bubble-user px-4 py-3 rounded-2xl rounded-tr-md max-w-xs">
+                                    <p class="text-sm">Show me this week's sales</p>
+                                </div>
+                            </div>
+                            <div class="flex justify-start">
+                                <div class="chat-bubble-agent px-4 py-3 rounded-2xl rounded-tl-md max-w-xs">
+                                    <p class="text-sm mb-2">This week: $14,230 (+22%)</p>
+                                    <p class="text-xs text-gray-500">Last week: $11,700</p>
+                                    <div class="mt-3 bg-white rounded-lg p-3">
+                                        <div class="flex items-end space-x-1 h-16">
+                                            <div class="bg-primary/20 w-6 h-8 rounded"></div>
+                                            <div class="bg-primary/40 w-6 h-10 rounded"></div>
+                                            <div class="bg-primary/60 w-6 h-12 rounded"></div>
+                                            <div class="bg-primary w-6 h-16 rounded"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section id="problem" class="py-20 bg-background">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-text mb-4">
+                    Dashboards are powerful — but rarely opened
+                </h2>
+                <p class="text-xl text-gray-600">Most business insights sit buried in complex interfaces</p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white rounded-2xl p-8 hover-lift cursor-pointer">
+                    <div class="w-16 h-16 bg-red-100 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fa-solid fa-chart-line-down text-2xl text-red-600"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">You rely on others to send you numbers</h3>
+                    <p class="text-gray-600">Waiting for weekly reports while opportunities slip by. Your team becomes a bottleneck for basic insights.</p>
+                </div>
+                <div class="bg-white rounded-2xl p-8 hover-lift cursor-pointer">
+                    <div class="w-16 h-16 bg-orange-100 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fa-solid fa-arrows-rotate text-2xl text-orange-600"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">You waste time navigating 5 dashboards</h3>
+                    <p class="text-gray-600">Sales in one tool, expenses in another, inventory somewhere else. Simple questions require multiple logins.</p>
+                </div>
+                <div class="bg-white rounded-2xl p-8 hover-lift cursor-pointer">
+                    <div class="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fa-solid fa-mobile-screen text-2xl text-blue-600"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">You can't access insights while on the move</h3>
+                    <p class="text-gray-600">Important decisions delayed because you need your laptop to check a simple metric or trend.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Use Case Highlights -->
+    <section id="use-cases" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-text mb-4">
+                    Your entire business — in one chat window
+                </h2>
+                <p class="text-xl text-gray-600">Get instant answers to the questions that matter most</p>
+            </div>
+            <div class="grid lg:grid-cols-3 gap-8">
+                <div class="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-8 hover-lift">
+                    <div class="w-16 h-16 bg-primary rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fa-solid fa-chart-bar text-2xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">Daily Performance Summaries</h3>
+                    <p class="text-gray-600 mb-6">Get your key metrics delivered every morning via WhatsApp, Slack, or email.</p>
+                    <div class="bg-white rounded-lg p-4">
+                        <div class="text-sm text-gray-500 mb-2">📊 Today's Summary</div>
+                        <div class="text-sm">
+                            <div class="flex justify-between mb-1">
+                                <span>Sales:</span>
+                                <span class="font-semibold text-green-600">$3,240 (+12%)</span>
+                            </div>
+                            <div class="flex justify-between mb-1">
+                                <span>Orders:</span>
+                                <span class="font-semibold">47</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Conversion:</span>
+                                <span class="font-semibold">3.2%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-gradient-to-br from-green-50 to-emerald-50 rounded-2xl p-8 hover-lift">
+                    <div class="w-16 h-16 bg-accent rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fa-solid fa-comments text-2xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">On-Demand Q&A</h3>
+                    <p class="text-gray-600 mb-6">Ask natural language questions and get instant, contextual answers with visualizations.</p>
+                    <div class="space-y-3">
+                        <div class="bg-white rounded-lg p-3 text-sm">
+                            <div class="text-primary font-medium mb-1">Q: "Which products sold best this month?"</div>
+                            <div class="text-gray-600">A: iPhone cases ($12k), Wireless chargers ($8k), Screen protectors ($6k)</div>
+                        </div>
+                        <div class="bg-white rounded-lg p-3 text-sm">
+                            <div class="text-primary font-medium mb-1">Q: "How's our cash flow looking?"</div>
+                            <div class="text-gray-600">A: Positive $34k this month. Next big expense: inventory restock ($15k) due Friday.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-gradient-to-br from-purple-50 to-violet-50 rounded-2xl p-8 hover-lift">
+                    <div class="w-16 h-16 bg-purple-600 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fa-solid fa-boxes-stacked text-2xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">Smart Inventory Alerts</h3>
+                    <p class="text-gray-600 mb-6">Never run out of stock again. Get proactive alerts and reorder suggestions.</p>
+                    <div class="bg-white rounded-lg p-4">
+                        <div class="flex items-center mb-3">
+                            <div class="w-2 h-2 bg-red-500 rounded-full mr-2"></div>
+                            <div class="text-sm font-medium">Low Stock Alert</div>
+                        </div>
+                        <div class="text-sm text-gray-600 space-y-1">
+                            <div>• iPhone 13 cases: 5 left (avg. 12/week)</div>
+                            <div>• Wireless chargers: 8 left (avg. 15/week)</div>
+                            <div>• Suggest reorder: 50 units each</div>
+                        </div>
+                        <button class="mt-3 bg-red-100 text-red-700 px-3 py-1 rounded-lg text-xs font-medium">
+                            Reorder Now
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section id="how-it-works" class="py-20 bg-background">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-text mb-4">Set up once. Ask forever.</h2>
+                <p class="text-xl text-gray-600">Get your conversational dashboard running in minutes</p>
+            </div>
+            <div class="relative">
+                <div class="absolute top-1/2 left-0 right-0 h-0.5 bg-gray-200 transform -translate-y-1/2 hidden lg:block"></div>
+                <div class="grid lg:grid-cols-5 gap-8 relative">
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-primary rounded-2xl flex items-center justify-center mx-auto mb-4 relative z-10">
+                            <i class="fa-solid fa-plug text-2xl text-white"></i>
+                        </div>
+                        <h3 class="text-lg font-semibold mb-2">Connect Data Sources</h3>
+                        <p class="text-gray-600 text-sm">Link your CRM, Google Sheets, POS system, or any business tool</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-accent rounded-2xl flex items-center justify-center mx-auto mb-4 relative z-10">
+                            <i class="fa-solid fa-gear text-2xl text-white"></i>
+                        </div>
+                        <h3 class="text-lg font-semibold mb-2">Define Monitoring</h3>
+                        <p class="text-gray-600 text-sm">Set what metrics you want to track and monitor automatically</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-orange-500 rounded-2xl flex items-center justify-center mx-auto mb-4 relative z-10">
+                            <i class="fa-solid fa-clock text-2xl text-white"></i>
+                        </div>
+                        <h3 class="text-lg font-semibold mb-2">Schedule Summaries</h3>
+                        <p class="text-gray-600 text-sm">Get daily reports via WhatsApp, Slack, or email at your preferred time</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-green-500 rounded-2xl flex items-center justify-center mx-auto mb-4 relative z-10">
+                            <i class="fa-solid fa-message text-2xl text-white"></i>
+                        </div>
+                        <h3 class="text-lg font-semibold mb-2">Ask Questions</h3>
+                        <p class="text-gray-600 text-sm">Chat naturally to get instant answers with charts and insights</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-purple-500 rounded-2xl flex items-center justify-center mx-auto mb-4 relative z-10">
+                            <i class="fa-solid fa-chart-line text-2xl text-white"></i>
+                        </div>
+                        <h3 class="text-lg font-semibold mb-2">Review Trends</h3>
+                        <p class="text-gray-600 text-sm">Access full dashboard for deep dives and historical analysis</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Integration Showcase -->
+    <section id="integrations" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-text mb-4">Works with your existing tools</h2>
+                <p class="text-xl text-gray-600">Connect to 100+ business applications and data sources</p>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 items-center">
+                <div class="bg-gray-50 rounded-xl p-6 text-center hover:bg-gray-100 transition-colors">
+                    <i class="fa-brands fa-google text-3xl text-blue-600 mb-2"></i>
+                    <div class="text-sm font-medium">Google Sheets</div>
+                </div>
+                <div class="bg-gray-50 rounded-xl p-6 text-center hover:bg-gray-100 transition-colors">
+                    <i class="fa-brands fa-salesforce text-3xl text-blue-500 mb-2"></i>
+                    <div class="text-sm font-medium">Salesforce</div>
+                </div>
+                <div class="bg-gray-50 rounded-xl p-6 text-center hover:bg-gray-100 transition-colors">
+                    <i class="fa-brands fa-shopify text-3xl text-green-600 mb-2"></i>
+                    <div class="text-sm font-medium">Shopify</div>
+                </div>
+                <div class="bg-gray-50 rounded-xl p-6 text-center hover:bg-gray-100 transition-colors">
+                    <i class="fa-brands fa-whatsapp text-3xl text-green-500 mb-2"></i>
+                    <div class="text-sm font-medium">WhatsApp</div>
+                </div>
+                <div class="bg-gray-50 rounded-xl p-6 text-center hover:bg-gray-100 transition-colors">
+                    <i class="fa-brands fa-slack text-3xl text-purple-600 mb-2"></i>
+                    <div class="text-sm font-medium">Slack</div>
+                </div>
+                <div class="bg-gray-50 rounded-xl p-6 text-center hover:bg-gray-100 transition-colors">
+                    <i class="fa-solid fa-plus text-3xl text-gray-400 mb-2"></i>
+                    <div class="text-sm font-medium">95+ more</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="testimonials" class="py-20 bg-background">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-text mb-4">Real results from real businesses</h2>
+                <p class="text-xl text-gray-600">See how teams save time and make better decisions</p>
+            </div>
+            <div class="grid lg:grid-cols-3 gap-8">
+                <div class="bg-white rounded-2xl p-8">
+                    <div class="flex items-center mb-6">
+                        <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-1.jpg" alt="Areeba Z." class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <div class="font-semibold">Areeba Z.</div>
+                            <div class="text-sm text-gray-500">Retail Ops Manager, Urban Fit</div>
+                        </div>
+                    </div>
+                    <blockquote class="text-lg text-gray-700 mb-6">
+                        "I haven't opened our analytics dashboard in a month — the AI agent tells me what I need before I ask."
+                    </blockquote>
+                    <div class="flex items-center text-yellow-500">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                </div>
+                <div class="bg-white rounded-2xl p-8">
+                    <div class="flex items-center mb-6">
+                        <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-2.jpg" alt="Marcus Chen" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <div class="font-semibold">Marcus Chen</div>
+                            <div class="text-sm text-gray-500">CEO, TechFlow Solutions</div>
+                        </div>
+                    </div>
+                    <blockquote class="text-lg text-gray-700 mb-6">
+                        "Our decision-making speed doubled. I get critical insights during my morning coffee, not after logging into 5 different tools."
+                    </blockquote>
+                    <div class="flex items-center text-yellow-500">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                </div>
+                <div class="bg-white rounded-2xl p-8">
+                    <div class="flex items-center mb-6">
+                        <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-5.jpg" alt="Sarah Kim" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <div class="font-semibold">Sarah Kim</div>
+                            <div class="text-sm text-gray-500">Operations Director, GrowthLab</div>
+                        </div>
+                    </div>
+                    <blockquote class="text-lg text-gray-700 mb-6">
+                        "The daily WhatsApp summaries keep our entire team aligned. No more 'Can someone check the numbers?' messages."
+                    </blockquote>
+                    <div class="flex items-center text-yellow-500">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-16 grid md:grid-cols-3 gap-8">
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-green-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                        <i class="fa-solid fa-clock text-2xl text-green-600"></i>
+                    </div>
+                    <div class="text-3xl font-bold text-text mb-2">3.5 hrs/week</div>
+                    <div class="text-gray-600">Average time saved per user</div>
+                </div>
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                        <i class="fa-solid fa-bolt text-2xl text-blue-600"></i>
+                    </div>
+                    <div class="text-3xl font-bold text-text mb-2">2.1×</div>
+                    <div class="text-gray-600">Faster decision-making</div>
+                </div>
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-purple-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                        <i class="fa-solid fa-check-circle text-2xl text-purple-600"></i>
+                    </div>
+                    <div class="text-3xl font-bold text-text mb-2">100%</div>
+                    <div class="text-gray-600">Daily summary delivery rate</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Deep Dive -->
+    <section id="features" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-text mb-4">Everything you need in one conversation</h2>
+                <p class="text-xl text-gray-600">Powerful features that make business intelligence effortless</p>
+            </div>
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div>
+                    <h3 class="text-2xl font-bold mb-6">Natural Language Queries</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-start space-x-3">
+                            <div class="w-6 h-6 bg-primary/20 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                <i class="fa-solid fa-check text-primary text-xs"></i>
+                            </div>
+                            <div>
+                                <div class="font-medium mb-1">"What were our sales today?"</div>
+                                <div class="text-gray-600 text-sm">Get instant revenue, order count, and comparison to yesterday</div>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <div class="w-6 h-6 bg-primary/20 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                <i class="fa-solid fa-check text-primary text-xs"></i>
+                            </div>
+                            <div>
+                                <div class="font-medium mb-1">"Which products are running low?"</div>
+                                <div class="text-gray-600 text-sm">Inventory alerts with reorder suggestions and supplier info</div>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <div class="w-6 h-6 bg-primary/20 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                <i class="fa-solid fa-check text-primary text-xs"></i>
+                            </div>
+                            <div>
+                                <div class="font-medium mb-1">"Show me this month's expense breakdown"</div>
+                                <div class="text-gray-600 text-sm">Categorized spending with charts and budget comparisons</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-gray-50 rounded-2xl p-6">
+                    <img class="w-full h-64 rounded-xl object-cover" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/f7a084234a-38d4de3f21d57a735fc2.png" alt="modern chat interface showing business queries and responses with charts and graphs, clean UI design" />
+                </div>
+            </div>
+            <div class="grid lg:grid-cols-2 gap-16 items-center mt-20">
+                <div class="order-2 lg:order-1">
+                    <div class="bg-gray-50 rounded-2xl p-6">
+                        <img class="w-full h-64 rounded-xl object-cover" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/7ba1626d11-27697fc071d3379aec1b.png" alt="smartphone showing WhatsApp business dashboard summary notification with metrics and charts" />
+                    </div>
+                </div>
+                <div class="order-1 lg:order-2">
+                    <h3 class="text-2xl font-bold mb-6">Multi-Channel Delivery</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-start space-x-3">
+                            <div class="w-6 h-6 bg-accent/20 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                <i class="fa-brands fa-whatsapp text-accent text-xs"></i>
+                            </div>
+                            <div>
+                                <div class="font-medium mb-1">WhatsApp Business</div>
+                                <div class="text-gray-600 text-sm">Get summaries and answers directly in your business WhatsApp</div>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <div class="w-6 h-6 bg-purple-100 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                <i class="fa-brands fa-slack text-purple-600 text-xs"></i>
+                            </div>
+                            <div>
+                                <div class="font-medium mb-1">Slack Integration</div>
+                                <div class="text-gray-600 text-sm">Share insights with your team in dedicated Slack channels</div>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <div class="w-6 h-6 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                <i class="fa-solid fa-envelope text-blue-600 text-xs"></i>
+                            </div>
+                            <div>
+                                <div class="font-medium mb-1">Email Reports</div>
+                                <div class="text-gray-600 text-sm">Formatted daily/weekly reports delivered to your inbox</div>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <div class="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                <i class="fa-solid fa-globe text-green-600 text-xs"></i>
+                            </div>
+                            <div>
+                                <div class="font-medium mb-1">Web Dashboard</div>
+                                <div class="text-gray-600 text-sm">Full-featured dashboard for deep analysis and historical data</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Security & Compliance -->
+    <section id="security" class="py-20 bg-background">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-text mb-4">Enterprise-grade security</h2>
+                <p class="text-xl text-gray-600">Your business data is protected with bank-level security</p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white rounded-2xl p-8 text-center">
+                    <div class="w-16 h-16 bg-green-100 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                        <i class="fa-solid fa-shield-halved text-2xl text-green-600"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">End-to-End Encryption</h3>
+                    <p class="text-gray-600">All data encrypted in transit and at rest with AES-256 encryption</p>
+                </div>
+                <div class="bg-white rounded-2xl p-8 text-center">
+                    <div class="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                        <i class="fa-solid fa-certificate text-2xl text-blue-600"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">SOC 2 Compliant</h3>
+                    <p class="text-gray-600">Independently audited security controls and data handling practices</p>
+                </div>
+                <div class="bg-white rounded-2xl p-8 text-center">
+                    <div class="w-16 h-16 bg-purple-100 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                        <i class="fa-solid fa-user-shield text-2xl text-purple-600"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">GDPR Ready</h3>
+                    <p class="text-gray-600">Full compliance with data privacy regulations and user rights</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section id="final-cta" class="py-20 bg-gradient-to-br from-primary to-blue-700 text-white">
+        <div class="max-w-4xl mx-auto px-6 lg:px-8 text-center">
+            <h2 class="text-4xl lg:text-5xl font-bold mb-6">
+                Let your data speak first
+            </h2>
+            <p class="text-xl mb-8 opacity-90">
+                Stay on top of every number — without opening your laptop
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <button 
+                onclick="openAgentChat()" 
+                class="flex w-full items-center justify-center gap-3 rounded-xl border-2 border-white px-6 py-3 text-base font-semibold text-white transition hover:bg-white hover:text-primary-blue sm:w-auto sm:px-8 sm:py-4 sm:text-lg shadow-lg"
+                >
+                <i class="fa-brands fa-whatsapp"></i>
+                Talk to Your Dashboard Agent
+                </button>
+                
+            </div>
+            
+        </div>
+    </section>
+
+    <!-- Footer -->
+
+    {% endblock %}
+</body>
+</html>

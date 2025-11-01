@@ -1,0 +1,435 @@
+{% extends "base.html" %}
+
+{% block title %}Vertikal Agent - AI Agents for Workflow Integration{% endblock %}
+{% block content %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Workflow Automation & Integrations - Vertikal Agent</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script> window.FontAwesomeConfig = { autoReplaceSvg: 'nest'};</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary': '#2563EB',
+                        'secondary': '#25A9A3',
+                        'dark-text': '#1e283a',
+                        'muted-text': '#7284a3',
+                        'accent-gray': '#e9f3ff',
+                        'bg-light': '#f9fafb'
+                    },
+                    fontFamily: {
+                        'nunito': ['Nunito', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>::-webkit-scrollbar { display: none;}</style>
+</head>
+<body class="font-nunito bg-bg-light">
+
+
+<!-- Hero Section -->
+<section id="hero" class="py-20 px-6 bg-gradient-to-br from-white to-accent-gray">
+    <div class="container mx-auto max-w-6xl">
+        <div class="flex flex-col lg:flex-row items-center">
+            <div class="lg:w-1/2 mb-12 lg:mb-0 lg:pr-12">
+                <div class="inline-flex items-center bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium mb-6">
+                    <i class="fa-solid fa-sparkles mr-2"></i>
+                    New: Advanced Workflow Engine
+                </div>
+                <h1 class="text-5xl lg:text-6xl font-bold text-dark-text leading-tight mb-6">
+                    Workflow Automation & Integrations
+                </h1>
+                <p class="text-xl text-muted-text mb-8 leading-relaxed">
+                    From abandoned cart recovery to lead syncing — Vertikal Agents automate your cross-tool operations.
+                </p>
+                <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                    
+                    <span class="border-2 border-primary text-primary px-8 py-4 rounded-lg font-semibold hover:bg-primary hover:text-white transition-all text-center cursor-pointer">
+                        <a href="https://calendar.app.google/sYYdKgsQZizuwJMe8" 
+                        target="_blank" 
+                        >
+                        Book Demo
+                        </a>
+                    </span>
+                </div>
+            </div>
+            <div class="lg:w-1/2 relative">
+                <div class="bg-white rounded-2xl shadow-xl p-8">
+                    <div class="flex items-center justify-center mb-8">
+                        <div class="flex items-center space-x-4">
+                            <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center">
+                                <i class="fa-brands fa-shopify text-green-600 text-2xl"></i>
+                            </div>
+                            <i class="fa-solid fa-arrow-right text-muted-text text-xl"></i>
+                            <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center">
+                                <i class="fa-brands fa-whatsapp text-green-600 text-2xl"></i>
+                            </div>
+                            <i class="fa-solid fa-arrow-right text-muted-text text-xl"></i>
+                            <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center">
+                                <i class="fa-solid fa-table text-blue-600 text-2xl"></i>
+                            </div>
+                            <i class="fa-solid fa-arrow-right text-muted-text text-xl"></i>
+                            <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center">
+                                <i class="fa-solid fa-address-book text-purple-600 text-2xl"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <div class="w-20 h-20 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fa-solid fa-robot text-white text-3xl"></i>
+                        </div>
+                        <p class="text-sm text-muted-text font-medium">AI Agent orchestrating all tools</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Problem Section -->
+<section id="problem" class="py-20 px-6 bg-white">
+    <div class="container mx-auto max-w-6xl">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl font-bold text-dark-text mb-6">So many tools — but they don't talk to each other</h2>
+            <p class="text-xl text-muted-text max-w-3xl mx-auto">
+                Your team wastes time copying data, following up manually, and switching tabs all day.
+            </p>
+        </div>
+        <div class="grid md:grid-cols-3 gap-8">
+            <div class="bg-red-50 rounded-2xl p-8 text-center">
+                <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <i class="fa-brands fa-whatsapp text-red-600 text-2xl"></i>
+                </div>
+                <h3 class="text-xl font-semibold text-dark-text mb-4">WhatsApp convos live in silos</h3>
+                <p class="text-muted-text">Customer conversations never make it to your CRM or tracking sheets.</p>
+            </div>
+            <div class="bg-orange-50 rounded-2xl p-8 text-center">
+                <div class="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <i class="fa-brands fa-shopify text-orange-600 text-2xl"></i>
+                </div>
+                <h3 class="text-xl font-semibold text-dark-text mb-4">Shopify has abandoned checkouts no one follows up</h3>
+                <p class="text-muted-text">Lost sales opportunities slip through the cracks without automated recovery.</p>
+            </div>
+            <div class="bg-blue-50 rounded-2xl p-8 text-center">
+                <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <i class="fa-solid fa-sync text-blue-600 text-2xl"></i>
+                </div>
+                <h3 class="text-xl font-semibold text-dark-text mb-4">Sheets and CRMs are always out of sync</h3>
+                <p class="text-muted-text">Manual data entry leads to inconsistencies and missed opportunities.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Solution Section -->
+<section id="solution" class="py-20 px-6 bg-bg-light">
+    <div class="container mx-auto max-w-6xl">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl font-bold text-dark-text mb-6">One agent. All your tools. Fully connected.</h2>
+        </div>
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+            <div class="space-y-8">
+                <h3 class="text-2xl font-semibold text-dark-text mb-6">Key Automations</h3>
+                <div class="space-y-6">
+                    <div class="flex items-start space-x-4">
+                        <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                            <i class="fa-solid fa-shopping-cart text-primary"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-dark-text mb-2">Shopify → Auto-follow-up on cart abandonment via WhatsApp</h4>
+                            <p class="text-muted-text">Instantly engage customers who left items in their cart with personalized recovery messages.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start space-x-4">
+                        <div class="w-12 h-12 bg-secondary/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                            <i class="fa-solid fa-address-book text-secondary"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-dark-text mb-2">CRM stage changes → send client summary via email</h4>
+                            <p class="text-muted-text">Automatically notify stakeholders when deals progress through your sales pipeline.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start space-x-4">
+                        <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                            <i class="fa-solid fa-table text-green-600"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-dark-text mb-2">WhatsApp conversations → push to Google Sheet as daily log</h4>
+                            <p class="text-muted-text">Keep comprehensive records of all customer interactions in organized spreadsheets.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start space-x-4">
+                        <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                            <i class="fa-brands fa-slack text-purple-600"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-dark-text mb-2">New order → ping internal team on Slack</h4>
+                            <p class="text-muted-text">Ensure your team is immediately notified of new orders for rapid fulfillment.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-white rounded-2xl shadow-xl p-8">
+                <div class="space-y-6">
+                    <div class="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
+                        <div class="flex items-center space-x-3">
+                            <i class="fa-brands fa-shopify text-green-600 text-xl"></i>
+                            <span class="font-medium">Cart Abandoned</span>
+                        </div>
+                        <div class="text-sm text-muted-text">Trigger</div>
+                    </div>
+                    <div class="flex justify-center">
+                        <i class="fa-solid fa-arrow-down text-muted-text text-xl"></i>
+                    </div>
+                    <div class="flex items-center justify-between p-4 bg-green-50 rounded-lg">
+                        <div class="flex items-center space-x-3">
+                            <i class="fa-brands fa-whatsapp text-green-600 text-xl"></i>
+                            <span class="font-medium">Send Recovery Message</span>
+                        </div>
+                        <div class="text-sm text-green-600">Action</div>
+                    </div>
+                    <div class="flex justify-center">
+                        <i class="fa-solid fa-arrow-down text-muted-text text-xl"></i>
+                    </div>
+                    <div class="flex items-center justify-between p-4 bg-blue-50 rounded-lg">
+                        <div class="flex items-center space-x-3">
+                            <i class="fa-solid fa-table text-blue-600 text-xl"></i>
+                            <span class="font-medium">Log to Sheets</span>
+                        </div>
+                        <div class="text-sm text-blue-600">Update</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Use Cases Section -->
+<section id="use-cases" class="py-20 px-6 bg-white">
+    <div class="container mx-auto max-w-6xl">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl font-bold text-dark-text mb-6">Use Case Highlights</h2>
+        </div>
+        <div class="grid md:grid-cols-3 gap-8">
+            <div class="bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl p-8">
+                <div class="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mb-6">
+                    <i class="fa-solid fa-shopping-bag text-white text-2xl"></i>
+                </div>
+                <h3 class="text-xl font-semibold text-dark-text mb-4">E-commerce Recovery</h3>
+                <p class="text-muted-text mb-6">
+                    "Customer abandons cart → AI sends personalized WhatsApp → Logs response in CRM → Tracks conversion rate"
+                </p>
+                <div class="bg-white rounded-lg p-4">
+                    <img class="w-full h-32 object-cover rounded-lg" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/1fc8ab5172-573169fd65bf64492615.png" alt="WhatsApp message interface showing abandoned cart recovery with product images and recovery text" />
+                </div>
+            </div>
+            <div class="bg-gradient-to-br from-green-50 to-green-100 rounded-2xl p-8">
+                <div class="w-16 h-16 bg-green-600 rounded-full flex items-center justify-center mb-6">
+                    <i class="fa-solid fa-users text-white text-2xl"></i>
+                </div>
+                <h3 class="text-xl font-semibold text-dark-text mb-4">Lead Management</h3>
+                <p class="text-muted-text mb-6">
+                    "New lead fills form → CRM creates contact → WhatsApp sends welcome → Schedules follow-up call"
+                </p>
+                <div class="bg-white rounded-lg p-4">
+                    <img class="w-full h-32 object-cover rounded-lg" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/398a3dd9ce-9eb0293e23c50dd63222.png" alt="CRM dashboard showing new lead entry with automated follow-up sequence" />
+                </div>
+            </div>
+            <div class="bg-gradient-to-br from-purple-50 to-purple-100 rounded-2xl p-8">
+                <div class="w-16 h-16 bg-purple-600 rounded-full flex items-center justify-center mb-6">
+                    <i class="fa-solid fa-chart-line text-white text-2xl"></i>
+                </div>
+                <h3 class="text-xl font-semibold text-dark-text mb-4">Sales Reporting</h3>
+                <p class="text-muted-text mb-6">
+                    "Daily sales data → Auto-updates Google Sheets → Sends summary to team → Creates performance alerts"
+                </p>
+                <div class="bg-white rounded-lg p-4">
+                    <img class="w-full h-32 object-cover rounded-lg" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/1bbc869b8e-e9c9e53620dbe7087aa5.png" alt="Google Sheets dashboard with sales data and automated reporting charts" />
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- How It Works Section -->
+<section id="how-it-works" class="py-20 px-6 bg-bg-light">
+    <div class="container mx-auto max-w-6xl">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl font-bold text-dark-text mb-6">Build your flow in minutes — not weeks</h2>
+        </div>
+        <div class="flex flex-col lg:flex-row items-center justify-between space-y-8 lg:space-y-0 lg:space-x-8">
+            <div class="flex flex-col items-center text-center">
+                <div class="w-20 h-20 bg-primary rounded-full flex items-center justify-center mb-4">
+                    <i class="fa-solid fa-plug text-white text-2xl"></i>
+                </div>
+                <h3 class="text-lg font-semibold text-dark-text mb-2">1. Choose your tools</h3>
+                <p class="text-muted-text text-sm">WhatsApp, CRM, Shopify</p>
+            </div>
+            <i class="fa-solid fa-arrow-right text-muted-text text-xl hidden lg:block"></i>
+            <div class="flex flex-col items-center text-center">
+                <div class="w-20 h-20 bg-secondary rounded-full flex items-center justify-center mb-4">
+                    <i class="fa-solid fa-bullseye text-white text-2xl"></i>
+                </div>
+                <h3 class="text-lg font-semibold text-dark-text mb-2">2. Define triggers</h3>
+                <p class="text-muted-text text-sm">Cart abandoned, new message</p>
+            </div>
+            <i class="fa-solid fa-arrow-right text-muted-text text-xl hidden lg:block"></i>
+            <div class="flex flex-col items-center text-center">
+                <div class="w-20 h-20 bg-green-600 rounded-full flex items-center justify-center mb-4">
+                    <i class="fa-solid fa-cog text-white text-2xl"></i>
+                </div>
+                <h3 class="text-lg font-semibold text-dark-text mb-2">3. Configure agent</h3>
+                <p class="text-muted-text text-sm">We configure and test</p>
+            </div>
+            <i class="fa-solid fa-arrow-right text-muted-text text-xl hidden lg:block"></i>
+            <div class="flex flex-col items-center text-center">
+                <div class="w-20 h-20 bg-orange-600 rounded-full flex items-center justify-center mb-4">
+                    <i class="fa-solid fa-rocket text-white text-2xl"></i>
+                </div>
+                <h3 class="text-lg font-semibold text-dark-text mb-2">4. Deploy & Monitor</h3>
+                <p class="text-muted-text text-sm">Go live and measure</p>
+            </div>
+            <i class="fa-solid fa-arrow-right text-muted-text text-xl hidden lg:block"></i>
+            <div class="flex flex-col items-center text-center">
+                <div class="w-20 h-20 bg-purple-600 rounded-full flex items-center justify-center mb-4">
+                    <i class="fa-solid fa-sync text-white text-2xl"></i>
+                </div>
+                <h3 class="text-lg font-semibold text-dark-text mb-2">5. Iterate</h3>
+                <p class="text-muted-text text-sm">Add new workflows</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Results & Testimonials Section -->
+<section id="testimonials" class="py-20 px-6 bg-white">
+    <div class="container mx-auto max-w-6xl">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl font-bold text-dark-text mb-6">From 3 tools to 1 smooth workflow</h2>
+        </div>
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+            <div class="bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl p-8">
+                <div class="mb-6">
+                    <div class="flex items-center space-x-4 mb-4">
+                        <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-5.jpg" alt="Zara A." class="w-16 h-16 rounded-full">
+                        <div>
+                            <h4 class="font-semibold text-dark-text">Zara A.</h4>
+                            <p class="text-muted-text text-sm">Ecom Ops Head, WearPlus</p>
+                        </div>
+                    </div>
+                    <blockquote class="text-lg text-dark-text italic">
+                        "We used to miss abandoned carts all the time. Now our agent auto-recovers 20% of them via WhatsApp — and logs every response in Sheets."
+                    </blockquote>
+                </div>
+                <div class="flex items-center space-x-6">
+                    <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
+                        <i class="fa-brands fa-shopify text-green-600"></i>
+                    </div>
+                    <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
+                        <i class="fa-brands fa-whatsapp text-green-600"></i>
+                    </div>
+                    <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+                        <i class="fa-solid fa-table text-blue-600"></i>
+                    </div>
+                    <div class="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center">
+                        <i class="fa-solid fa-chart-bar text-orange-600"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="space-y-8">
+                <div class="text-center p-6 bg-green-50 rounded-2xl">
+                    <div class="text-3xl font-bold text-green-600 mb-2">20%</div>
+                    <p class="text-dark-text font-medium">Cart recovery boost</p>
+                </div>
+                <div class="text-center p-6 bg-blue-50 rounded-2xl">
+                    <div class="text-3xl font-bold text-blue-600 mb-2">4+</div>
+                    <p class="text-dark-text font-medium">Hours saved per week</p>
+                </div>
+                <div class="text-center p-6 bg-purple-50 rounded-2xl">
+                    <div class="text-3xl font-bold text-purple-600 mb-2">100%</div>
+                    <p class="text-dark-text font-medium">Lead logging accuracy</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Industries Section -->
+<section id="industries" class="py-20 px-6 bg-bg-light">
+    <div class="container mx-auto max-w-6xl">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl font-bold text-dark-text mb-6">Built for Every Industry</h2>
+            <p class="text-xl text-muted-text">Wherever there's a process — there's an agent waiting to help.</p>
+        </div>
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
+            <div class="text-center">
+                <div class="w-20 h-20 bg-white rounded-2xl shadow-md flex items-center justify-center mx-auto mb-4">
+                    <i class="fa-solid fa-shopping-cart text-primary text-2xl"></i>
+                </div>
+                <p class="font-medium text-dark-text">E-commerce</p>
+            </div>
+            <div class="text-center">
+                <div class="w-20 h-20 bg-white rounded-2xl shadow-md flex items-center justify-center mx-auto mb-4">
+                    <i class="fa-solid fa-bullhorn text-secondary text-2xl"></i>
+                </div>
+                <p class="font-medium text-dark-text">Digital Agencies</p>
+            </div>
+            <div class="text-center">
+                <div class="w-20 h-20 bg-white rounded-2xl shadow-md flex items-center justify-center mx-auto mb-4">
+                    <i class="fa-solid fa-home text-green-600 text-2xl"></i>
+                </div>
+                <p class="font-medium text-dark-text">Real Estate</p>
+            </div>
+            <div class="text-center">
+                <div class="w-20 h-20 bg-white rounded-2xl shadow-md flex items-center justify-center mx-auto mb-4">
+                    <i class="fa-solid fa-stethoscope text-red-600 text-2xl"></i>
+                </div>
+                <p class="font-medium text-dark-text">Clinics & Salons</p>
+            </div>
+            <div class="text-center">
+                <div class="w-20 h-20 bg-white rounded-2xl shadow-md flex items-center justify-center mx-auto mb-4">
+                    <i class="fa-solid fa-truck text-orange-600 text-2xl"></i>
+                </div>
+                <p class="font-medium text-dark-text">Logistics</p>
+            </div>
+            <div class="text-center">
+                <div class="w-20 h-20 bg-white rounded-2xl shadow-md flex items-center justify-center mx-auto mb-4">
+                    <i class="fa-solid fa-industry text-purple-600 text-2xl"></i>
+                </div>
+                <p class="font-medium text-dark-text">Manufacturing</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Final CTA Section -->
+<section id="cta" class="py-20 px-6 bg-gradient-to-br from-primary to-blue-700">
+    <div class="container mx-auto max-w-4xl text-center">
+        <h2 class="text-4xl lg:text-5xl font-bold text-white mb-6">
+            No-code automation. AI execution.
+        </h2>
+        <p class="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
+            Let Vertikal Agent link your stack — and run your business logic, end to end.
+        </p>
+        <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
+            <button onclick="openForm()" 
+            class="bg-white text-primary-blue px-8 py-4 rounded-xl font-bold text-lg hover:bg-gray-100 transition-colors shadow-xl flex items-center">
+            <i class="fa-solid fa-calendar mr-3"></i>
+            Book Free Demo
+            </button>
+            <span class="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-primary transition-colors cursor-pointer">
+                Explore Integrations
+            </span>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
+</body>
+</html>

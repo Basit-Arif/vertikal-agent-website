@@ -1,0 +1,178 @@
+{% extends "base.html" %}
+
+{% block title %}About Vertikal Agent{% endblock %}
+{% block meta_description %}Meet Vertikal Agent: a global team building trustworthy automation agents for sales, support, finance, and operations teams.{% endblock %}
+{% block content %}
+<section class="gradient-bg relative overflow-hidden px-4 py-16 sm:px-6 md:py-20 lg:py-24">
+  <div class="absolute inset-0 pointer-events-none bg-gradient-to-br from-white/40 via-white/10 to-primary/5"></div>
+  <div class="container relative z-10 mx-auto max-w-6xl">
+    <div class="grid items-center gap-12 lg:grid-cols-2">
+      <div class="order-2 text-center lg:order-1 lg:text-left">
+        <div class="inline-flex items-center rounded-full bg-white/80 px-4 py-2 text-xs sm:text-sm font-medium text-primary-blue shadow-sm backdrop-blur">
+          <i class="fa-solid fa-building mr-2"></i>
+          About Vertikal Agent
+        </div>
+        <h1 class="mt-4 text-4xl font-bold text-dark-text sm:text-5xl lg:text-6xl leading-tight">
+          We build AI agents that run your operations
+        </h1>
+        <p class="mt-6 text-lg text-muted-text sm:text-xl leading-relaxed max-w-xl mx-auto md:mx-0">
+          Vertikal Agent is a team of builders, operators, and automation experts on a mission to bring autonomous agents into the workflows of modern businesses.
+        </p>
+        <div class="mt-8 flex flex-col sm:flex-row gap-4 items-center justify-center lg:justify-start">
+          <a href="{{ url_for('home.contact_us') }}" class="btn-primary flex w-full sm:w-auto items-center justify-center gap-2 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold text-sm sm:text-lg shadow-lg">
+            <i class="fa-solid fa-handshake-angle"></i>
+            Partner With Us
+          </a>
+          <button onclick="openAgentChat()" class="flex items-center gap-2 text-sm sm:text-lg font-semibold text-primary hover:underline">
+            <i class="fa-solid fa-robot"></i>
+            Talk to our agent
+          </button>
+        </div>
+      </div>
+      <div class="order-1 flex justify-center lg:order-2">
+        <div class="relative w-48 h-48 sm:w-72 sm:h-72 lg:w-[420px] lg:h-[420px]">
+          <div class="absolute inset-0 rounded-full bg-gradient-to-r from-primary-blue/25 to-secondary-teal/25 blur-2xl"></div>
+          <div class="absolute inset-4 sm:inset-6 lg:inset-8 rounded-3xl bg-white shadow-2xl border border-primary/10 p-6 flex flex-col gap-6 justify-center">
+            <div>
+              <div class="text-xs sm:text-sm uppercase tracking-wide text-muted-text">Founded</div>
+              <div class="text-2xl sm:text-3xl font-semibold text-dark-text">2025</div>
+            </div>
+            <div>
+              <div class="text-xs sm:text-sm uppercase tracking-wide text-muted-text">Customers</div>
+              <div class="text-2xl sm:text-3xl font-semibold text-primary">100+</div>
+            </div>
+            <div>
+              <div class="text-xs sm:text-sm uppercase tracking-wide text-muted-text">Automated hours</div>
+              <div class="text-2xl sm:text-3xl font-semibold text-secondary">30k+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="bg-white px-4 py-16 sm:px-6 lg:py-20">
+  <div class="mx-auto max-w-5xl">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-dark-text mb-4">Our Story</h2>
+      <p class="text-sm sm:text-base text-muted-text leading-relaxed">
+        Vertikal Agent was born from the challenges our founders faced while operating growth-stage companies. Manual follow-ups, spreadsheet-driven workflows, and fragmented tools slowed down teams everywhere. We set out to design agents that combine the reliability of enterprise systems with the flexibility of human-led processes.
+      </p>
+    </div>
+    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <div class="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
+        <div class="text-sm font-semibold text-primary">Phase 1</div>
+        <h3 class="mt-2 text-xl font-bold text-dark-text">Automation studio</h3>
+        <p class="mt-3 text-muted-text text-sm leading-relaxed">
+          We worked alongside operations teams to build bespoke automation playbooks—understanding the human context behind every task.
+        </p>
+      </div>
+      <div class="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
+        <div class="text-sm font-semibold text-secondary">Phase 2</div>
+        <h3 class="mt-2 text-xl font-bold text-dark-text">Agent platform</h3>
+        <p class="mt-3 text-muted-text text-sm leading-relaxed">
+          We standardized the best playbooks and wrapped them with learnable LLM-powered agents that observe, reason, and act across systems.
+        </p>
+      </div>
+      <div class="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
+        <div class="text-sm font-semibold text-dark-text">Today</div>
+        <h3 class="mt-2 text-xl font-bold text-dark-text">Autonomous operations</h3>
+        <p class="mt-3 text-muted-text text-sm leading-relaxed">
+          Vertikal Agents now run critical workflows—sales follow-up, onboarding, financial reconciliation, support triage—for customers across 15+ industries.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="gradient-bg px-4 py-16 sm:px-6 lg:py-20">
+  <div class="mx-auto max-w-6xl">
+    <div class="grid gap-10 lg:grid-cols-2">
+      <div class="rounded-3xl bg-white/90 p-8 shadow-xl border border-primary/10">
+        <h2 class="text-2xl sm:text-3xl font-bold text-dark-text mb-4">What we stand for</h2>
+        <ul class="space-y-4 text-muted-text text-sm sm:text-base">
+          <li class="flex gap-3"><i class="fa-solid fa-circle-check text-primary mt-1"></i><span><strong>Automation you can trust:</strong> Agents log every action and integrate with the systems you already rely on.</span></li>
+          <li class="flex gap-3"><i class="fa-solid fa-circle-check text-primary mt-1"></i><span><strong>Human-first design:</strong> We augment teams—providing explainable decisions, approvals, and handoff controls.</span></li>
+          <li class="flex gap-3"><i class="fa-solid fa-circle-check text-primary mt-1"></i><span><strong>Rapid experimentation:</strong> Launch a pilot agent in days, iterate quickly, and scale once you see value.</span></li>
+          <li class="flex gap-3"><i class="fa-solid fa-circle-check text-primary mt-1"></i><span><strong>Security at the core:</strong> SOC2-ready infrastructure, encrypted data flows, and permission-aware agents.</span></li>
+        </ul>
+      </div>
+      <div class="rounded-3xl border border-gray-200 bg-white p-8 shadow-xl">
+        <h3 class="text-2xl font-bold text-dark-text mb-6">Leadership</h3>
+        <div class="space-y-5">
+          <div class="flex items-center gap-4">
+            <div class="h-14 w-14 rounded-full bg-primary/10 text-primary flex items-center justify-center text-lg font-semibold">AR</div>
+            <div>
+              <div class="font-semibold text-dark-text">Abdul Basit</div>
+              <div class="text-sm text-muted-text">Co-founder & CEO</div>
+            </div>
+          </div>
+          <div class="flex items-center gap-4">
+            <div class="h-14 w-14 rounded-full bg-secondary/10 text-secondary flex items-center justify-center text-lg font-semibold">JT</div>
+            <div>
+              <div class="font-semibold text-dark-text">Abdul Subhan</div>
+              <div class="text-sm text-muted-text">Co-founder & CTO</div>
+            </div>
+          </div>
+          
+        </div>
+        <p class="mt-6 text-sm text-muted-text leading-relaxed">
+          We’re a fully distributed team across North America, Europe, and South Asia—united by our passion for building highly capable operations agents.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="bg-white px-4 py-16 sm:px-6 lg:py-20">
+  <div class="mx-auto max-w-6xl">
+    <div class="grid gap-8 lg:grid-cols-2">
+      <div class="rounded-3xl bg-gradient-to-br from-primary/10 via-secondary/10 to-white p-8 shadow-lg border border-primary/10">
+        <h2 class="text-2xl sm:text-3xl font-bold text-dark-text mb-4">How we partner with you</h2>
+        <ul class="space-y-4 text-muted-text text-sm sm:text-base">
+          <li class="flex gap-3"><i class="fa-solid fa-bolt text-primary mt-1"></i><span><strong>Discovery sprints:</strong> Identify automation opportunities in a 7-day workshop with our solutions team.</span></li>
+          <li class="flex gap-3"><i class="fa-solid fa-gears text-primary mt-1"></i><span><strong>Pilot agents:</strong> Launch a high-impact agent in under 14 days with clear ROI metrics.</span></li>
+          <li class="flex gap-3"><i class="fa-solid fa-chart-line text-primary mt-1"></i><span><strong>Scale & govern:</strong> Deploy additional agents, monitor outcomes, and implement approval workflows.</span></li>
+        </ul>
+      </div>
+      <div class="rounded-3xl border border-gray-200 bg-white p-8 shadow-lg">
+        <h3 class="text-2xl font-bold text-dark-text mb-4">Trusted by operations teams globally</h3>
+        <p class="text-muted-text text-sm sm:text-base leading-relaxed">
+          From e-commerce brands recovering abandoned carts to B2B companies automating onboarding, Vertikal Agents handle repetitive operations so humans can focus on strategy, creativity, and customer relationships.
+        </p>
+        <div class="mt-6 grid gap-4 sm:grid-cols-2">
+          <div class="rounded-2xl border border-primary/10 bg-primary/5 p-4 text-center">
+            <div class="text-3xl font-bold text-primary">80%</div>
+            <div class="text-sm text-muted-text uppercase tracking-wide">Manual work reduced</div>
+          </div>
+          <div class="rounded-2xl border border-secondary/10 bg-secondary/5 p-4 text-center">
+            <div class="text-3xl font-bold text-secondary">12x</div>
+            <div class="text-sm text-muted-text uppercase tracking-wide">Faster response time</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="about-cta" class="relative overflow-hidden bg-gradient-to-r from-primary-blue to-secondary-teal px-4 py-16 sm:px-6 lg:py-20">
+  <div class="absolute inset-0 bg-black/10"></div>
+  <div class="relative z-10 mx-auto max-w-4xl text-center space-y-6">
+    <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-white">Let’s design the agents that will run your business</h2>
+    <p class="text-base sm:text-lg text-blue-100 leading-relaxed">
+      Share the processes you want to automate and we’ll assemble a pilot agent with measurable outcomes in under two weeks.
+    </p>
+    <div class="flex flex-col sm:flex-row gap-4 items-center justify-center">
+      <button onclick="openForm()" class="flex items-center justify-center gap-3 rounded-xl bg-white px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-semibold text-primary-blue shadow-xl transition hover:bg-gray-100">
+        <i class="fa-solid fa-calendar-plus"></i>
+        Book a Strategy Call
+      </button>
+      <button onclick="openAgentChat()" class="flex items-center justify-center gap-3 rounded-xl border-2 border-white px-6 py-3 text-base font-semibold text-white transition hover:bg-white/90 hover:text-primary-blue sm:px-8 sm:py-4 sm:text-lg shadow-lg">
+        <i class="fa-robot fa-solid"></i>
+        Talk to an Agent Now
+      </button>
+    </div>
+  </div>
+</section>
+{% endblock %}

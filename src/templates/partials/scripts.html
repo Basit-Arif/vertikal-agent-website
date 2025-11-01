@@ -1,0 +1,203 @@
+<script>
+  const stickyCTA = document.getElementById("sticky-cta");
+  const loader = document.getElementById("page-loader");
+
+  const showLoader = () => {
+    if (!loader) return;
+    loader.classList.remove("hidden");
+    loader.style.visibility = "visible";
+    loader.style.opacity = "1";
+    document.body.style.opacity = "0.4";
+  };
+
+  const hideLoader = () => {
+    if (!loader) return;
+    loader.classList.add("hidden");
+    loader.style.visibility = "hidden";
+    loader.style.opacity = "0";
+    document.body.style.opacity = "1";
+  };
+
+  if (stickyCTA) {
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 800) {
+        stickyCTA.classList.remove("hidden");
+      } else {
+        stickyCTA.classList.add("hidden");
+      }
+    });
+  }
+
+  function openForm() {
+    const modal = document.getElementById("contactModal");
+    if (modal) modal.classList.remove("hidden");
+  }
+
+  function closeForm() {
+    const modal = document.getElementById("contactModal");
+    if (modal) modal.classList.add("hidden");
+  }
+
+  const mobileMenuToggle = document.getElementById("mobile-menu-toggle");
+  const mobileMenuIcon = document.getElementById("mobile-menu-icon");
+  const mobileMenu = document.getElementById("mobile-menu");
+  const mobileSolutionsToggle = document.getElementById("mobile-solutions-toggle");
+  const mobileSolutionsMenu = document.getElementById("mobile-solutions-menu");
+  const desktopSolutionsToggle = document.getElementById("desktop-solutions-toggle");
+  const desktopSolutionsMenu = document.getElementById("desktop-solutions-menu");
+
+  const closeDesktopSolutions = () => {
+    if (!desktopSolutionsMenu) return;
+    desktopSolutionsMenu.classList.add("invisible", "opacity-0", "translate-y-2");
+    desktopSolutionsMenu.classList.remove("translate-y-0");
+    if (desktopSolutionsToggle) {
+      desktopSolutionsToggle.setAttribute("aria-expanded", "false");
+      const chevron = desktopSolutionsToggle.querySelector("i");
+      chevron && chevron.classList.remove("rotate-180");
+    }
+  };
+
+  const openDesktopSolutions = () => {
+    if (!desktopSolutionsMenu) return;
+    desktopSolutionsMenu.classList.remove("invisible", "opacity-0", "translate-y-2");
+    desktopSolutionsMenu.classList.add("translate-y-0");
+    if (desktopSolutionsToggle) {
+      desktopSolutionsToggle.setAttribute("aria-expanded", "true");
+      const chevron = desktopSolutionsToggle.querySelector("i");
+      chevron && chevron.classList.add("rotate-180");
+    }
+  };
+
+  if (desktopSolutionsToggle && desktopSolutionsMenu) {
+    desktopSolutionsToggle.addEventListener("click", (event) => {
+      event.stopPropagation();
+      const isOpen = desktopSolutionsToggle.getAttribute("aria-expanded") === "true";
+      if (isOpen) {
+        closeDesktopSolutions();
+      } else {
+        openDesktopSolutions();
+      }
+    });
+
+    document.addEventListener("click", (event) => {
+      if (
+        desktopSolutionsMenu.contains(event.target) ||
+        desktopSolutionsToggle.contains(event.target)
+      ) {
+        return;
+      }
+      closeDesktopSolutions();
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") {
+        closeDesktopSolutions();
+      }
+    });
+  }
+
+  const toggleMobileMenu = () => {
+    if (!mobileMenu) return;
+    const isHidden = mobileMenu.classList.contains("hidden");
+    if (isHidden) {
+      mobileMenu.classList.remove("hidden");
+      mobileMenuToggle?.setAttribute("aria-expanded", "true");
+      if (mobileMenuIcon) {
+        mobileMenuIcon.classList.remove("fa-bars");
+        mobileMenuIcon.classList.add("fa-xmark");
+      }
+    } else {
+      mobileMenu.classList.add("hidden");
+      mobileMenuToggle?.setAttribute("aria-expanded", "false");
+      if (mobileMenuIcon) {
+        mobileMenuIcon.classList.remove("fa-xmark");
+        mobileMenuIcon.classList.add("fa-bars");
+      }
+      if (mobileSolutionsMenu && mobileSolutionsToggle) {
+        mobileSolutionsMenu.classList.add("hidden");
+        mobileSolutionsToggle.setAttribute("aria-expanded", "false");
+        const chevron = mobileSolutionsToggle.querySelector("i");
+        chevron && chevron.classList.remove("rotate-180");
+      }
+    }
+  };
+
+  mobileMenuToggle?.addEventListener("click", toggleMobileMenu);
+
+  if (mobileSolutionsToggle && mobileSolutionsMenu) {
+    mobileSolutionsToggle.addEventListener("click", () => {
+      const isHidden = mobileSolutionsMenu.classList.contains("hidden");
+      if (isHidden) {
+        mobileSolutionsMenu.classList.remove("hidden");
+        mobileSolutionsToggle.setAttribute("aria-expanded", "true");
+        const chevron = mobileSolutionsToggle.querySelector("i");
+        chevron && chevron.classList.add("rotate-180");
+      } else {
+        mobileSolutionsMenu.classList.add("hidden");
+        mobileSolutionsToggle.setAttribute("aria-expanded", "false");
+        const chevron = mobileSolutionsToggle.querySelector("i");
+        chevron && chevron.classList.remove("rotate-180");
+      }
+    });
+  }
+
+  if (mobileMenu) {
+    mobileMenu.querySelectorAll("a").forEach((anchor) => {
+      anchor.addEventListener("click", () => {
+        if (!mobileMenu.classList.contains("hidden")) {
+          toggleMobileMenu();
+        }
+      });
+    });
+  }
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && mobileMenu && !mobileMenu.classList.contains("hidden")) {
+      toggleMobileMenu();
+    }
+  });
+
+  const handleNavigation = (event) => {
+    const anchor = event.currentTarget;
+    if (!anchor) return;
+
+    const href = anchor.getAttribute("href");
+    const target = anchor.getAttribute("target");
+    const download = anchor.hasAttribute("download");
+
+    if (
+      !href ||
+      href.startsWith("#") ||
+      download ||
+      target === "_blank" ||
+      anchor.dataset?.noLoader === "true"
+    ) {
+      return;
+    }
+
+    const url = new URL(href, window.location.href);
+    if (url.origin !== window.location.origin) return;
+
+    showLoader();
+  };
+
+  document.querySelectorAll("a[href]").forEach((anchor) => {
+    anchor.addEventListener("click", handleNavigation);
+  });
+
+  window.addEventListener("beforeunload", () => {
+    showLoader();
+  });
+
+  window.addEventListener("pageshow", () => {
+    hideLoader();
+  });
+</script>
+<script>
+  function scrollToSolutions() {
+    const element = document.getElementById("solutions");
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  }
+  </script>

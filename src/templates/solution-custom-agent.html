@@ -1,0 +1,382 @@
+{% extends "base.html" %}
+
+{% block title %}Vertikal Agent - Custom AI Agents{% endblock %}
+{% block content %}
+
+<!-- Hero Section -->
+<section id="hero" class="gradient-bg py-20 px-4">
+    <div class="max-w-6xl mx-auto">
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+            <div class="text-center lg:text-left">
+                <h1 class="text-5xl lg:text-6xl font-bold text-dark-text mb-6 leading-tight">
+                    Custom AI Agents
+                </h1>
+                <p class="text-xl text-muted-text mb-8 leading-relaxed">
+                    Have a unique process? We'll turn it into an AI-powered assistant — in days, not months.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                    <button class="bg-primary-blue text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-blue-700 transition-colors">
+                            <a href="https://calendar.app.google/sYYdKgsQZizuwJMe8" 
+                            target="_blank" 
+                            >
+                            Start Consultation
+                            </a>
+                    </button>
+                
+                </div>
+            </div>
+            <div class="relative">
+                <div class="bg-white rounded-2xl shadow-xl p-8 border border-gray-100">
+                    <div class="flex items-center justify-between mb-6">
+                        <h3 class="font-semibold text-dark-text">Agent Workflow</h3>
+                        <div class="flex space-x-2">
+                            <div class="w-3 h-3 bg-green-500 rounded-full"></div>
+                            <div class="w-3 h-3 bg-yellow-500 rounded-full"></div>
+                            <div class="w-3 h-3 bg-red-500 rounded-full"></div>
+                        </div>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="flex items-center space-x-4 p-3 bg-accent-gray rounded-lg">
+                            <div class="w-8 h-8 bg-primary-blue rounded-lg flex items-center justify-center">
+                                <i class="fas fa-lightbulb text-white text-sm"></i>
+                            </div>
+                            <span class="text-dark-text font-medium">Your Idea</span>
+                            <i class="fas fa-arrow-right text-muted-text ml-auto"></i>
+                        </div>
+                        <div class="flex items-center space-x-4 p-3 bg-accent-gray rounded-lg">
+                            <div class="w-8 h-8 bg-secondary-teal rounded-lg flex items-center justify-center">
+                                <i class="fas fa-sitemap text-white text-sm"></i>
+                            </div>
+                            <span class="text-dark-text font-medium">Flow Design</span>
+                            <i class="fas fa-arrow-right text-muted-text ml-auto"></i>
+                        </div>
+                        <div class="flex items-center space-x-4 p-3 bg-accent-gray rounded-lg">
+                            <div class="w-8 h-8 bg-purple-600 rounded-lg flex items-center justify-center">
+                                <i class="fas fa-cogs text-white text-sm"></i>
+                            </div>
+                            <span class="text-dark-text font-medium">Agent Logic</span>
+                            <i class="fas fa-arrow-right text-muted-text ml-auto"></i>
+                        </div>
+                        <div class="flex items-center space-x-4 p-3 bg-accent-gray rounded-lg">
+                            <div class="w-8 h-8 bg-green-600 rounded-lg flex items-center justify-center">
+                                <i class="fas fa-database text-white text-sm"></i>
+                            </div>
+                            <span class="text-dark-text font-medium">API/DB</span>
+                            <i class="fas fa-arrow-right text-muted-text ml-auto"></i>
+                        </div>
+                        <div class="flex items-center space-x-4 p-3 bg-green-50 border border-green-200 rounded-lg">
+                            <div class="w-8 h-8 bg-green-500 rounded-lg flex items-center justify-center">
+                                <i class="fas fa-check text-white text-sm"></i>
+                            </div>
+                            <span class="text-dark-text font-medium">Automated Output</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Problem Section -->
+<section id="problem" class="py-20 px-4 bg-white">
+    <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl font-bold text-dark-text mb-4">
+                Most workflows don't fit templates.
+            </h2>
+        </div>
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div class="text-center p-6 rounded-xl bg-red-50 border border-red-100">
+                <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i class="fas fa-sync-alt text-red-600 text-2xl"></i>
+                </div>
+                <h3 class="font-semibold text-dark-text mb-2">Manual Tool Switching</h3>
+                <p class="text-muted-text text-sm">You switch between 5 tools manually</p>
+            </div>
+            <div class="text-center p-6 rounded-xl bg-orange-50 border border-orange-100">
+                <div class="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i class="fas fa-tools text-orange-600 text-2xl"></i>
+                </div>
+                <h3 class="font-semibold text-dark-text mb-2">Human Dependencies</h3>
+                <p class="text-muted-text text-sm">You rely on someone to "remember to do it"</p>
+            </div>
+            <div class="text-center p-6 rounded-xl bg-yellow-50 border border-yellow-100">
+                <div class="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i class="fas fa-exclamation-triangle text-yellow-600 text-2xl"></i>
+                </div>
+                <h3 class="font-semibold text-dark-text mb-2">No Perfect Solution</h3>
+                <p class="text-muted-text text-sm">There's no off-the-shelf solution that fits your case</p>
+            </div>
+            <div class="text-center p-6 rounded-xl bg-red-50 border border-red-100">
+                <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i class="fas fa-times text-red-600 text-2xl"></i>
+                </div>
+                <h3 class="font-semibold text-dark-text mb-2">Limited Automation</h3>
+                <p class="text-muted-text text-sm">You've tried Zapier but it's too limited for your logic</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Solution Section -->
+<section id="solution" class="py-20 px-4 gradient-bg">
+    <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl font-bold text-dark-text mb-4">
+                We design and deliver your exact agent — start to finish.
+            </h2>
+        </div>
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+            <div class="space-y-6">
+                <div class="flex items-start space-x-4">
+                    <div class="w-8 h-8 bg-primary-blue rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+                        <i class="fas fa-filter text-white text-sm"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold text-dark-text mb-1">Lead routing based on filters and tags</h3>
+                        <p class="text-muted-text text-sm">Automatically route leads to the right team member based on custom criteria</p>
+                    </div>
+                </div>
+                <div class="flex items-start space-x-4">
+                    <div class="w-8 h-8 bg-secondary-teal rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+                        <i class="fas fa-clipboard-check text-white text-sm"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold text-dark-text mb-1">Procurement approval workflow</h3>
+                        <p class="text-muted-text text-sm">Multi-step approval process with automatic notifications and escalations</p>
+                    </div>
+                </div>
+                <div class="flex items-start space-x-4">
+                    <div class="w-8 h-8 bg-purple-600 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+                        <i class="fas fa-file-invoice text-white text-sm"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold text-dark-text mb-1">Auto-invoice generation based on calendar rules</h3>
+                        <p class="text-muted-text text-sm">Generate and send invoices automatically based on scheduled events</p>
+                    </div>
+                </div>
+                <div class="flex items-start space-x-4">
+                    <div class="w-8 h-8 bg-green-600 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+                        <i class="fas fa-arrow-up text-white text-sm"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold text-dark-text mb-1">Escalation system via WhatsApp or Email</h3>
+                        <p class="text-muted-text text-sm">Smart escalation rules that notify the right people at the right time</p>
+                    </div>
+                </div>
+            </div>
+            <div class="relative">
+                <div class="bg-white rounded-2xl shadow-xl p-6 border border-gray-100">
+                    <div class="flex items-center justify-between mb-6">
+                        <h3 class="font-semibold text-dark-text">Agent Dashboard</h3>
+                        <div class="flex items-center space-x-2">
+                            <div class="w-2 h-2 bg-green-500 rounded-full"></div>
+                            <span class="text-xs text-green-600 font-medium">Active</span>
+                        </div>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between p-3 bg-green-50 border border-green-200 rounded-lg">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-8 h-8 bg-green-500 rounded-lg flex items-center justify-center">
+                                    <i class="fas fa-play text-white text-sm"></i>
+                                </div>
+                                <span class="font-medium text-dark-text">In Progress</span>
+                            </div>
+                            <span class="text-green-600 font-semibold">3</span>
+                        </div>
+                        <div class="flex items-center justify-between p-3 bg-blue-50 border border-blue-200 rounded-lg">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-8 h-8 bg-blue-500 rounded-lg flex items-center justify-center">
+                                    <i class="fas fa-bolt text-white text-sm"></i>
+                                </div>
+                                <span class="font-medium text-dark-text">Triggered Today</span>
+                            </div>
+                            <span class="text-blue-600 font-semibold">12</span>
+                        </div>
+                        <div class="pt-4 border-t border-gray-200">
+                            <h4 class="font-medium text-dark-text mb-3">Connected Tools</h4>
+                            <div class="flex items-center space-x-4">
+                                <div class="flex items-center space-x-2">
+                                    <div class="w-6 h-6 bg-green-100 rounded flex items-center justify-center">
+                                        <i class="fas fa-table text-green-600 text-xs"></i>
+                                    </div>
+                                    <span class="text-sm text-muted-text">Sheets</span>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <div class="w-6 h-6 bg-blue-100 rounded flex items-center justify-center">
+                                        <i class="fas fa-users text-blue-600 text-xs"></i>
+                                    </div>
+                                    <span class="text-sm text-muted-text">CRM</span>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <div class="w-6 h-6 bg-purple-100 rounded flex items-center justify-center">
+                                        <i class="fas fa-link text-purple-600 text-xs"></i>
+                                    </div>
+                                    <span class="text-sm text-muted-text">Webhook</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Timeline Section -->
+<section id="timeline" class="py-20 px-4 bg-white">
+    <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl font-bold text-dark-text mb-4">
+                From idea to agent in under 10 days.
+            </h2>
+        </div>
+        <div class="relative">
+            <div class="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gray-200"></div>
+            <div class="space-y-12">
+                <div class="flex items-center">
+                    <div class="w-1/2 pr-8 text-right">
+                        <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-100">
+                            <h3 class="font-semibold text-dark-text mb-2">You explain your process</h3>
+                            <p class="text-muted-text text-sm">Form or call to understand your workflow</p>
+                        </div>
+                    </div>
+                    <div class="relative z-10">
+                        <div class="w-12 h-12 bg-primary-blue rounded-full flex items-center justify-center">
+                            <span class="text-white font-bold">1</span>
+                        </div>
+                    </div>
+                    <div class="w-1/2 pl-8"></div>
+                </div>
+                <div class="flex items-center">
+                    <div class="w-1/2 pr-8"></div>
+                    <div class="relative z-10">
+                        <div class="w-12 h-12 bg-secondary-teal rounded-full flex items-center justify-center">
+                            <span class="text-white font-bold">2</span>
+                        </div>
+                    </div>
+                    <div class="w-1/2 pl-8">
+                        <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-100">
+                            <h3 class="font-semibold text-dark-text mb-2">We diagram your flow</h3>
+                            <p class="text-muted-text text-sm">Visual mapping of your process and logic</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex items-center">
+                    <div class="w-1/2 pr-8 text-right">
+                        <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-100">
+                            <h3 class="font-semibold text-dark-text mb-2">We build, test, and integrate</h3>
+                            <p class="text-muted-text text-sm">Development and integration with your tools</p>
+                        </div>
+                    </div>
+                    <div class="relative z-10">
+                        <div class="w-12 h-12 bg-purple-600 rounded-full flex items-center justify-center">
+                            <span class="text-white font-bold">3</span>
+                        </div>
+                    </div>
+                    <div class="w-1/2 pl-8"></div>
+                </div>
+                <div class="flex items-center">
+                    <div class="w-1/2 pr-8"></div>
+                    <div class="relative z-10">
+                        <div class="w-12 h-12 bg-green-600 rounded-full flex items-center justify-center">
+                            <span class="text-white font-bold">4</span>
+                        </div>
+                    </div>
+                    <div class="w-1/2 pl-8">
+                        <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-100">
+                            <h3 class="font-semibold text-dark-text mb-2">You approve + we go live</h3>
+                            <p class="text-muted-text text-sm">Final testing and deployment to production</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex items-center">
+                    <div class="w-1/2 pr-8 text-right">
+                        <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-100">
+                            <h3 class="font-semibold text-dark-text mb-2">We monitor and support post-launch</h3>
+                            <p class="text-muted-text text-sm">Ongoing monitoring and optimization</p>
+                        </div>
+                    </div>
+                    <div class="relative z-10">
+                        <div class="w-12 h-12 bg-orange-500 rounded-full flex items-center justify-center">
+                            <span class="text-white font-bold">5</span>
+                        </div>
+                    </div>
+                    <div class="w-1/2 pl-8"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Testimonial Section -->
+<section id="testimonial" class="py-20 px-4 gradient-bg">
+    <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-8">
+            <h2 class="text-3xl font-bold text-dark-text mb-4">
+                Built in 7 days. Running every day.
+            </h2>
+        </div>
+        <div class="bg-white rounded-2xl shadow-xl p-8 border border-gray-100">
+            <div class="text-center mb-8">
+                <blockquote class="text-xl text-dark-text leading-relaxed mb-6">
+                    "We explained our workflow on Monday. By Friday, our custom agent was sending invoice summaries and logging approvals across 3 platforms."
+                </blockquote>
+                <div class="flex items-center justify-center space-x-4">
+                    <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-5.jpg" alt="Fatima K." class="w-12 h-12 rounded-full">
+                    <div class="text-left">
+                        <p class="font-semibold text-dark-text">Fatima K.</p>
+                        <p class="text-muted-text text-sm">Ops Lead, AgriTech Co.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="grid md:grid-cols-3 gap-6 pt-6 border-t border-gray-200">
+                <div class="text-center">
+                    <div class="flex items-center justify-center space-x-2 mb-2">
+                        <i class="fas fa-clock text-green-600"></i>
+                        <span class="text-2xl font-bold text-dark-text">10+</span>
+                    </div>
+                    <p class="text-muted-text text-sm">Hours saved per week</p>
+                </div>
+                <div class="text-center">
+                    <div class="flex items-center justify-center space-x-2 mb-2">
+                        <i class="fas fa-envelope text-blue-600"></i>
+                        <span class="text-2xl font-bold text-dark-text">1,400</span>
+                    </div>
+                    <p class="text-muted-text text-sm">Messages automated monthly</p>
+                </div>
+                <div class="text-center">
+                    <div class="flex items-center justify-center space-x-2 mb-2">
+                        <i class="fas fa-lightbulb text-purple-600"></i>
+                        <span class="text-2xl font-bold text-dark-text">12</span>
+                    </div>
+                    <p class="text-muted-text text-sm">Custom agent rules built</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Final CTA Section -->
+<section id="final-cta" class="py-20 px-4 bg-dark-text">
+    <div class="max-w-4xl mx-auto text-center">
+        <h2 class="text-4xl font-bold text-white mb-4">
+            Your logic. Our build. One AI agent.
+        </h2>
+        <p class="text-xl text-gray-300 mb-12">
+            No templates. No limits. Let's build your business logic into an autonomous system.
+        </p>
+        <div class="max-w-md mx-auto">
+            <form action="{{ url_for('home.create_lead') }}" method="POST" class="space-y-4">
+                <input type="text" placeholder="Your Name" name="name" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary-blue">
+                <input type="email" placeholder="Email Address" name="email" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary-blue">
+                <textarea placeholder="Describe your idea or process..." name="idea" rows="4" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary-blue resize-none"></textarea>
+                <button type="submit" class="w-full bg-primary-blue text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-blue-700 transition-colors">
+                    Start a Custom Build
+                </button>
+            </form>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
