@@ -1,0 +1,164 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="py-16 bg-gray-50">
+  <div class="max-w-4xl px-4 mx-auto sm:px-6 lg:px-8">
+    <article class="overflow-hidden bg-white border border-slate-200/80 rounded-3xl shadow-sm">
+      {% if post.cover_image %}
+        <div class="relative overflow-hidden">
+          <img
+            src="{{ post.cover_image }}"
+            alt="{{ post.title }}"
+            class="object-cover w-full h-64 transition duration-500 ease-out md:h-[420px]"
+          >
+        </div>
+      {% else %}
+        <div class="flex items-center justify-center w-full h-64 text-5xl font-semibold text-white bg-gradient-to-br from-primary via-secondary to-primary/60 md:h-[320px]">
+          {{ post.title|first|upper if post.title else 'V' }}
+        </div>
+      {% endif %}
+
+      <div class="p-8 sm:p-12">
+        <div class="flex flex-wrap items-center gap-3 text-sm text-muted-text">
+          <span class="font-medium text-dark-text">
+            {{ post.author.name if post.author else 'Vertikal Team' }}
+          </span>
+          <span class="hidden w-1 h-1 bg-gray-300 rounded-full sm:inline-flex"></span>
+          <span>{{ post.created_at.strftime('%b %d, %Y') }}</span>
+          {% if post.read_time %}
+            <span class="hidden w-1 h-1 bg-gray-300 rounded-full sm:inline-flex"></span>
+            <span>{{ post.read_time }} min read</span>
+          {% endif %}
+        </div>
+
+        <h1 class="mt-6 text-4xl font-semibold text-dark-text sm:text-5xl">
+          {{ post.title }}
+        </h1>
+
+        {% if post.subtitle %}
+          <p class="mt-4 text-lg font-medium text-secondary">
+            {{ post.subtitle }}
+          </p>
+        {% endif %}
+
+        <div class="mt-10 space-y-6 leading-relaxed blog-content text-slate-700">
+          {{ post.content | safe }}
+          
+          
+        </div>
+
+        {% if post.tags %}
+          <div class="pt-10 mt-12 border-t border-slate-200">
+            <h2 class="mb-4 text-sm font-semibold tracking-[0.2em] uppercase text-muted-text">
+              Tags
+            </h2>
+            <div class="flex flex-wrap gap-3">
+              {% for tag in post.tags %}
+                <span class="inline-flex items-center px-3 py-1 text-sm font-medium text-primary bg-primary/10 rounded-full">
+                  {{ tag.name }}
+                </span>
+              {% endfor %}
+            </div>
+          </div>
+        {% endif %}
+
+        <div class="flex flex-wrap items-center justify-between gap-4 pt-10 mt-12 text-sm border-t border-slate-200 text-muted-text">
+          <span>Viewed {{ post.view_count }} times</span>
+          <span>Updated {{ post.updated_at.strftime('%b %d, %Y') if post.updated_at else post.created_at.strftime('%b %d, %Y') }}</span>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<style>
+  .blog-content p {
+    font-size: 1.1rem;
+    line-height: 1.9;
+    color: rgb(71 85 105);
+  }
+  .blog-content h2 {
+    font-size: 2rem;
+    font-weight: 600;
+    color: #1e283a;
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+  }
+  .blog-content h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #1e283a;
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+  }
+  .blog-content blockquote {
+    border-left: 4px solid rgba(37, 99, 235, 0.2);
+    padding-left: 1.5rem;
+    font-style: italic;
+    color: rgba(30, 40, 58, 0.8);
+    margin: 2.5rem 0;
+  }
+  .blog-content img {
+    border-radius: 1rem;
+    margin: 2rem 0;
+    width: 100%;
+    height: auto;
+  }
+  .blog-content ul,
+  .blog-content ol {
+    padding-left: 1.5rem;
+  }
+  .blog-content a {
+    color: #2563eb;
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 4px;
+  }
+</style>
+{% if view_id %}
+<script>
+  (function () {
+    const viewId = {{ view_id }};
+    const trackUrl = {{ url_for('home.blog_detail_track_public', slug=post.slug) | tojson }};
+    const startTime = Date.now();
+    let sent = false;
+
+    function send(viewDuration) {
+      if (sent) return;
+      sent = true;
+      fetch(trackUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          view_id: viewId,
+          read_duration: viewDuration
+        }),
+        keepalive: true
+      }).catch(() => {});
+    }
+
+    function finalize() {
+      const duration = Math.round((Date.now() - startTime) / 1000);
+      send(duration);
+    }
+
+    window.addEventListener('beforeunload', finalize);
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) {
+        finalize();
+      }
+    });
+  })();
+</script>
+{% endif %}
+{% endblock %}
+
+{% block scripts %}
+<script>
+  gtag('event', 'view_blog', {
+    blog_title: '{{ post.title }}',
+    blog_url: '{{ url_for('admin.blog_detail', slug=post.slug) }}',
+  });
+</script>
+{% endblock %}

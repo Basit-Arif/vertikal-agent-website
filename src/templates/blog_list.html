@@ -1,0 +1,137 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="py-16 bg-gray-50">
+  <div class="max-w-6xl px-4 mx-auto sm:px-6 lg:px-8">
+    <div class="mb-14 text-center">
+      <span class="inline-flex items-center px-4 py-1 text-xs font-semibold tracking-[0.2em] text-primary uppercase rounded-full bg-primary/10">
+        Vertikal Blog
+      </span>
+      <h1 class="mt-6 text-4xl font-semibold text-dark-text sm:text-5xl">Operate on autopilot </h1>
+      <p class="max-w-3xl mx-auto mt-4 text-lg text-muted-text">
+        Vertikal Agent’s take on the future of intelligent business.
+      </p>
+    </div>
+
+    <div class="flex flex-col gap-4 mb-10 sm:flex-row sm:items-center sm:justify-between">
+      <p class="text-sm text-muted-text">
+        {% if active_tag %}
+          Showing {{ posts|length }} stories about <span class="font-semibold text-dark-text">{{ active_tag.name }}</span>.
+        {% elif requested_tag and posts|length == 0 %}
+          We could not find stories for <span class="font-semibold text-dark-text">{{ requested_tag.replace('-', ' ') }}</span>. Try another topic.
+        {% else %}
+          {{ posts|length }} stories to help modern operators grow smarter.
+        {% endif %}
+      </p>
+      {% if (tags|default([], true)) %}
+        <form method="get" class="relative inline-flex items-center">
+          <label for="tag-filter" class="sr-only">Filter by topic</label>
+          <select
+            id="tag-filter"
+            name="tag"
+            class="px-4 py-2 text-sm font-medium text-dark-text bg-white border border-slate-200 rounded-full shadow-sm focus:outline-none focus:ring-2 focus:ring-primary/40"
+            onchange="this.form.submit()"
+          >
+            <option value="">{% if active_tag or requested_tag %}All topics{% else %}Browse by topic{% endif %}</option>
+            {% for tag in tags %}
+              <option value="{{ tag.slug }}" {% if active_tag and tag.id == active_tag.id %}selected{% endif %}>
+                {{ tag.name }}
+              </option>
+            {% endfor %}
+          </select>
+          <noscript>
+            <button type="submit" class="ml-3 text-sm font-semibold text-primary">Apply</button>
+          </noscript>
+        </form>
+      {% endif %}
+    </div>
+
+    {% if posts %}
+      <div class="grid gap-8 md:grid-cols-2 md:gap-10">
+        {% for post in posts %}
+          {% set preview_source = post.content or '' %}
+          {% set preview = post.excerpt if post.excerpt else preview_source[:220] %}
+          {% set show_more = (not post.excerpt) and (preview_source|length > 220) %}
+          <article class="group flex h-full flex-col overflow-hidden rounded-3xl border border-slate-200/80 bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-2xl">
+            {% if post.cover_image %}
+              <div class="relative overflow-hidden bg-slate-100">
+                <img
+                  src="{{ post.cover_image }}"
+                  alt="{{ post.title }}"
+                  class="h-56 w-full object-cover transition duration-300 ease-out group-hover:scale-105 sm:h-64"
+                >
+              </div>
+            {% else %}
+              <div class="flex h-56 w-full items-center justify-center bg-gradient-to-br from-primary via-secondary to-primary/70 text-4xl font-semibold text-white sm:h-64">
+                {{ post.title|first|upper if post.title else 'V' }}
+              </div>
+            {% endif %}
+
+            <div class="flex flex-1 flex-col justify-between p-8 sm:p-9">
+              <div class="space-y-5">
+                <div class="flex flex-wrap items-center gap-3 text-sm text-muted-text">
+                  <span class="font-medium text-dark-text">
+                    By {{ post.author.name if post.author else 'Vertikal Team' }}
+                  </span>
+                  <span class="hidden h-1 w-1 rounded-full bg-gray-300 sm:inline-flex"></span>
+                  <span>{{ post.created_at.strftime('%b %d, %Y') }}</span>
+                  {% if post.read_time %}
+                    <span class="hidden h-1 w-1 rounded-full bg-gray-300 sm:inline-flex"></span>
+                    <span>{{ post.read_time }} min read</span>
+                  {% endif %}
+                </div>
+
+                <h2 class="text-2xl font-semibold text-dark-text transition-colors duration-200 sm:text-[26px] group-hover:text-primary">
+                  <a href="{{ url_for('admin.blog_detail', slug=post.slug) }}">
+                    {{ post.title }}
+                  </a>
+                </h2>
+
+                {% if post.subtitle %}
+                  <p class="text-sm font-semibold uppercase tracking-[0.18em] text-secondary">
+                    {{ post.subtitle }}
+                  </p>
+                {% endif %}
+
+                <p class="text-base leading-relaxed text-slate-600">
+                  {{ preview|default('', true)|striptags }}{% if show_more %}...{% endif %}
+                </p>
+              </div>
+
+              <div class="mt-8">
+                <a
+                  href="{{ url_for('admin.blog_detail', slug=post.slug) }}"
+                  class="inline-flex items-center text-sm font-semibold text-primary transition-colors duration-200 group-hover:text-secondary"
+                >
+                  Read the full story
+                  <i class="ml-2 text-xs fa-solid fa-arrow-right-long"></i>
+                </a>
+              </div>
+            </div>
+          </article>
+        {% endfor %}
+      </div>
+    {% else %}
+      <div class="p-16 text-center rounded-3xl border border-dashed border-slate-300 bg-white/60">
+        <h2 class="text-2xl font-semibold text-dark-text">
+          {% if active_tag %}
+            No articles yet for {{ active_tag.name }}
+          {% elif requested_tag %}
+            That topic is on our roadmap
+          {% else %}
+            No articles yet
+          {% endif %}
+        </h2>
+        <p class="mt-3 text-muted-text">
+          {% if active_tag %}
+            Explore other tags to discover more ideas from the Vertikal team.
+          {% elif requested_tag %}
+            Try selecting a different tag to keep exploring the Vertikal blog.
+          {% else %}
+            We are crafting stories to help you build smarter. Check back soon.
+          {% endif %}
+        </p>
+      </div>
+    {% endif %}
+  </div>
+</section>
+{% endblock %}

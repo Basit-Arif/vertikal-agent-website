@@ -1,5 +1,8 @@
 from datetime import datetime
+from werkzeug.security import generate_password_hash, check_password_hash
 from flask_sqlalchemy import SQLAlchemy
+from slugify import slugify
+import math
 
 db = SQLAlchemy()
 
@@ -105,4 +108,118 @@ class VisitorLog(db.Model):
     utm_content = db.Column(db.String(100))
 
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
+
+
+
+
+class User(db.Model):
+    __tablename__ = "users"
+
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(100), nullable=False)
+    email = db.Column(db.String(120), unique=True, nullable=False)
+    password_hash = db.Column(db.String(255), nullable=False)
+    bio = db.Column(db.Text)
+    profile_image = db.Column(db.String(255))
+    role = db.Column(db.String(50), default="author")  # author, reader, admin
+    joined_at = db.Column(db.DateTime, default=datetime.utcnow)
+
+    posts = db.relationship("Post", backref="author", lazy=True)
+    
+    # ---- Password Methods ----
+    def set_password(self, password):
+        self.password_hash = generate_password_hash(password)
+
+    def check_password(self, password):
+        return check_password_hash(self.password_hash, password)
+
+    def __repr__(self):
+        return f"<User {self.name}>"
+
+class Post(db.Model):
+    __tablename__ = "posts"
+
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(255), nullable=False)
+    slug = db.Column(db.String(255), unique=True, nullable=False)
+    subtitle = db.Column(db.String(255))
+    content = db.Column(db.Text, nullable=False)  # Quill HTML / Delta
+    cover_image = db.Column(db.String(255))
+    excerpt = db.Column(db.String(500))
+    author_id = db.Column(db.Integer, db.ForeignKey("users.id"))
+    created_at = db.Column(db.DateTime, default=datetime.utcnow)
+    updated_at = db.Column(db.DateTime, onupdate=datetime.utcnow)
+    read_time = db.Column(db.Integer, default=3)
+    is_published = db.Column(db.Boolean, default=False)
+    view_count = db.Column(db.Integer, default=0)
+
+    # SEO fields
+    meta_title = db.Column(db.String(255))
+    meta_description = db.Column(db.String(255))
+    meta_keywords = db.Column(db.String(255))
+
+    # relationships
+    tags = db.relationship("Tag", secondary="post_tags", back_populates="posts")
+    views = db.relationship("BlogView", backref="post", lazy=True, cascade="all, delete-orphan")
+    
+    def __init__(self, title, content, author_id, **kwargs):
+        self.title = title
+        self.slug = slugify(title)
+        self.content = content
+        self.author_id = author_id
+        self.read_time = self.calculate_read_time(content)
+        super().__init__(**kwargs)
+
+    def calculate_read_time(self, text):
+        words = len(text.split())
+        return math.ceil(words / 200)
+
+    def __repr__(self):
+        return f"<Post {self.title}>"
+
+
+
+# ---------- TAGS (Like Medium Topics) ----------
+class Tag(db.Model):
+    __tablename__ = "tags"
+
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(50), unique=True, nullable=False)
+    slug = db.Column(db.String(120), unique=True, nullable=False)
+    posts = db.relationship("Post", secondary="post_tags", back_populates="tags")
+
+    def __init__(self, name):
+        self.name = name
+        self.slug = slugify(name)
+
+
+# Association table: many-to-many between Post & Tag
+post_tags = db.Table(
+    "post_tags",
+    db.Column("post_id", db.Integer, db.ForeignKey("posts.id")),
+    db.Column("tag_id", db.Integer, db.ForeignKey("tags.id")),
+)
+
+
+class BlogView(db.Model):
+    __tablename__ = "blog_views"
+
+    id = db.Column(db.Integer, primary_key=True)
+    post_id = db.Column(db.Integer, db.ForeignKey("posts.id"), nullable=False)
+    fingerprint = db.Column(db.String(64), index=True)
+    ip_address = db.Column(db.String(120))
+    country = db.Column(db.String(100))
+    city = db.Column(db.String(100))
+    region = db.Column(db.String(100))
+    device = db.Column(db.String(40))
+    user_agent = db.Column(db.String(500))
+    referrer = db.Column(db.String(500))
+    utm_source = db.Column(db.String(120))
+    utm_medium = db.Column(db.String(120))
+    utm_campaign = db.Column(db.String(120))
+    read_duration = db.Column(db.Integer)  # seconds
+    created_at = db.Column(db.DateTime, default=datetime.utcnow, nullable=False)
+    updated_at = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
+
+
 

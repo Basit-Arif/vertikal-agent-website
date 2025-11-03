@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="min-h-[80vh] bg-slate-100/80 py-16">
+  <div class="max-w-6xl px-6 mx-auto space-y-8">
+    <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+      <div>
+        <p class="text-xs font-semibold uppercase tracking-[0.3em] text-blue-600">Inbox</p>
+        <h1 class="mt-2 text-3xl font-semibold text-slate-900">Conversation history</h1>
+        <p class="text-sm text-slate-500">Latest chatbot interactions and human follow-ups.</p>
+      </div>
+      <a href="{{ url_for('admin.dashboard') }}" class="inline-flex items-center justify-center rounded-full border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-600 transition hover:border-blue-500 hover:text-blue-600">Back to dashboard</a>
+    </div>
+
+    <div class="rounded-3xl border border-slate-200 bg-white shadow-xl shadow-slate-200/60 overflow-hidden">
+      <div class="overflow-x-auto">
+        <table class="min-w-full divide-y divide-slate-200 text-sm">
+          <thead class="bg-slate-50">
+            <tr>
+              <th class="px-4 py-3 text-left font-semibold uppercase tracking-wide text-slate-500">Created</th>
+              <th class="px-4 py-3 text-left font-semibold uppercase tracking-wide text-slate-500">Lead</th>
+              <th class="px-4 py-3 text-left font-semibold uppercase tracking-wide text-slate-500">Direction</th>
+              <th class="px-4 py-3 text-left font-semibold uppercase tracking-wide text-slate-500">Message</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-100">
+            {% for message in messages %}
+            <tr class="hover:bg-slate-50/60">
+              <td class="px-4 py-3 text-slate-700">{{ message.created_at.strftime('%b %d, %Y %H:%M') if message.created_at else '—' }}</td>
+              <td class="px-4 py-3 text-slate-700">
+                <div class="font-medium">{{ message.lead.name if message.lead and message.lead.name else 'Lead #' ~ message.lead_id }}</div>
+                {% if message.lead and message.lead.email %}
+                <div class="text-xs text-slate-400">{{ message.lead.email }}</div>
+                {% endif %}
+              </td>
+              <td class="px-4 py-3 text-slate-700">
+                <span class="inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold {{ 'bg-blue-100 text-blue-600' if message.direction == 'inbound' else 'bg-purple-100 text-purple-600' }}">
+                  {{ message.direction|capitalize }}
+                </span>
+              </td>
+              <td class="px-4 py-3 text-slate-700 text-sm max-w-2xl">{{ message.content }}</td>
+            </tr>
+            {% else %}
+            <tr>
+              <td colspan="4" class="px-4 py-12 text-center text-slate-500">No chatbot messages recorded yet.</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

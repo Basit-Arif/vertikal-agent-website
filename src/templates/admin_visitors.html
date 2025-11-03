@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="min-h-[80vh] bg-slate-100/80 py-16">
+  <div class="max-w-6xl px-6 mx-auto space-y-8">
+    <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+      <div>
+        <p class="text-xs font-semibold uppercase tracking-[0.3em] text-blue-600">Analytics</p>
+        <h1 class="mt-2 text-3xl font-semibold text-slate-900">Visitor activity</h1>
+        <p class="text-sm text-slate-500">Recent visits, sources, and geography across the website.</p>
+      </div>
+      <a href="{{ url_for('admin.dashboard') }}" class="inline-flex items-center justify-center rounded-full border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-600 transition hover:border-blue-500 hover:text-blue-600">Back to dashboard</a>
+    </div>
+
+    <div class="rounded-3xl border border-slate-200 bg-white shadow-xl shadow-slate-200/60 overflow-hidden">
+      <div class="overflow-x-auto">
+        <table class="min-w-full divide-y divide-slate-200 text-sm">
+          <thead class="bg-slate-50">
+            <tr>
+              <th class="px-4 py-3 text-left font-semibold uppercase tracking-wide text-slate-500">Timestamp</th>
+              <th class="px-4 py-3 text-left font-semibold uppercase tracking-wide text-slate-500">IP / Location</th>
+              <th class="px-4 py-3 text-left font-semibold uppercase tracking-wide text-slate-500">Path</th>
+              <th class="px-4 py-3 text-left font-semibold uppercase tracking-wide text-slate-500">UTM</th>
+              <th class="px-4 py-3 text-left font-semibold uppercase tracking-wide text-slate-500">Referrer</th>
+              <th class="px-4 py-3 text-left font-semibold uppercase tracking-wide text-slate-500">Device</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-100">
+            {% for log in logs %}
+            <tr class="hover:bg-slate-50/60">
+              <td class="px-4 py-3 text-slate-700">{{ log.created_at.strftime('%b %d, %Y %H:%M') if log.created_at else '—' }}</td>
+              <td class="px-4 py-3 text-slate-700">
+                <div class="font-medium">{{ log.ip_address or 'Unknown IP' }}</div>
+                <div class="text-xs text-slate-400">{{ log.city or 'Unknown city' }}, {{ log.country or 'Unknown country' }}</div>
+              </td>
+              <td class="px-4 py-3 text-slate-700">{{ log.path or '—' }}</td>
+              <td class="px-4 py-3 text-slate-700 text-xs">
+                {% set utms = [] %}
+                {% if log.utm_source %}{% set _ = utms.append('src=' ~ log.utm_source) %}{% endif %}
+                {% if log.utm_medium %}{% set _ = utms.append('med=' ~ log.utm_medium) %}{% endif %}
+                {% if log.utm_campaign %}{% set _ = utms.append('cmp=' ~ log.utm_campaign) %}{% endif %}
+                {% if log.utm_term %}{% set _ = utms.append('term=' ~ log.utm_term) %}{% endif %}
+                {% if log.utm_content %}{% set _ = utms.append('content=' ~ log.utm_content) %}{% endif %}
+                {{ utms|join(', ') if utms else '—' }}
+              </td>
+              <td class="px-4 py-3 text-slate-700 text-xs truncate max-w-xs">{{ log.referrer or '—' }}</td>
+              <td class="px-4 py-3 text-slate-700 text-xs truncate max-w-sm">{{ log.user_agent or '—' }}</td>
+            </tr>
+            {% else %}
+            <tr>
+              <td colspan="6" class="px-4 py-12 text-center text-slate-500">No visitor data logged yet.</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

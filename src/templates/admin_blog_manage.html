@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="min-h-[80vh] bg-slate-100/80 py-16">
+  <div class="max-w-6xl px-6 mx-auto space-y-8">
+    <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+      <div>
+        <p class="text-xs font-semibold uppercase tracking-[0.3em] text-blue-600">Blog management</p>
+        <h1 class="mt-2 text-3xl font-semibold text-slate-900">Your Vertikal stories</h1>
+        <p class="text-sm text-slate-500">Edit, review, or publish posts. Keep the library tidy and on-brand.</p>
+      </div>
+      <div class="flex gap-3">
+        <a href="{{ url_for('admin.dashboard') }}" class="inline-flex items-center justify-center rounded-full border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-600 transition hover:border-blue-500 hover:text-blue-600">Back to dashboard</a>
+        <a href="{{ url_for('admin.add_blog') }}" class="inline-flex items-center justify-center rounded-full bg-blue-600 px-5 py-2 text-sm font-semibold text-white shadow-lg shadow-blue-200 transition hover:bg-blue-500">New story</a>
+      </div>
+    </div>
+
+    <div class="rounded-3xl border border-slate-200/80 bg-white shadow-xl shadow-slate-200/60">
+      {% if posts %}
+        <div class="overflow-x-auto">
+          <table class="min-w-full divide-y divide-slate-200">
+            <thead class="bg-slate-50">
+              <tr>
+                <th scope="col" class="px-6 py-3 text-left text-xs font-semibold uppercase tracking-wider text-slate-500">Title</th>
+                <th scope="col" class="hidden px-6 py-3 text-left text-xs font-semibold uppercase tracking-wider text-slate-500 lg:table-cell">Tags</th>
+                <th scope="col" class="px-6 py-3 text-left text-xs font-semibold uppercase tracking-wider text-slate-500">Reads</th>
+                <th scope="col" class="px-6 py-3 text-left text-xs font-semibold uppercase tracking-wider text-slate-500">Avg read time</th>
+                <th scope="col" class="px-6 py-3 text-left text-xs font-semibold uppercase tracking-wider text-slate-500">Top location</th>
+                <th scope="col" class="px-6 py-3 text-left text-xs font-semibold uppercase tracking-wider text-slate-500">Updated</th>
+                <th scope="col" class="px-6 py-3"></th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-200">
+              {% for post in posts %}
+              <tr class="transition hover:bg-slate-50/80">
+                <td class="px-6 py-4 text-sm text-slate-700">
+                  <div class="font-semibold text-slate-900">{{ post.title }}</div>
+                  {% if post.subtitle %}
+                    <div class="text-xs text-slate-500 truncate">{{ post.subtitle }}</div>
+                  {% endif %}
+                </td>
+                <td class="hidden px-6 py-4 text-xs text-slate-500 lg:table-cell">
+                  {% if post.tags %}
+                    {{ post.tags | map(attribute='name') | join(', ') }}
+                  {% else %}
+                    —
+                  {% endif %}
+                </td>
+                {% set post_stats = analytics.get(post.id, {}) %}
+                <td class="px-6 py-4 text-sm text-slate-700">
+                  {{ post_stats.total_reads or 0 }}
+                  {% if post_stats.unique_readers %}
+                    <span class="ml-2 text-xs text-slate-400">({{ post_stats.unique_readers }} unique)</span>
+                  {% endif %}
+                </td>
+                <td class="px-6 py-4 text-sm text-slate-700">
+                  {% if post_stats.avg_read_time %}
+                    {{ post_stats.avg_read_time }}s
+                  {% else %}
+                    —
+                  {% endif %}
+                </td>
+                <td class="px-6 py-4 text-sm text-slate-500">
+                  {{ post_stats.top_location or '—' }}
+                </td>
+                <td class="px-6 py-4 text-sm text-slate-500">
+                  {{ (post.updated_at or post.created_at).strftime('%b %d, %Y') }}
+                </td>
+                <td class="px-6 py-4 text-sm text-right">
+                  <div class="flex justify-end gap-3">
+                    <a href="{{ url_for('admin.blog_detail', slug=post.slug) }}" class="text-xs font-semibold text-slate-500 transition hover:text-blue-600" target="_blank" rel="noopener">View</a>
+                    <a href="{{ url_for('admin.edit_blog', post_id=post.id) }}" class="text-xs font-semibold text-blue-600 transition hover:text-blue-500">Edit</a>
+                    <form method="POST" action="{{ url_for('admin.delete_blog', post_id=post.id) }}" onsubmit="return confirm('Delete {{ post.title }}? This cannot be undone.');">
+                      <button type="submit" class="text-xs font-semibold text-red-500 transition hover:text-red-600">Delete</button>
+                    </form>
+                  </div>
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      {% else %}
+        <div class="flex flex-col items-center justify-center px-10 py-16 text-center">
+          <div class="rounded-full bg-blue-50 px-4 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-blue-500">No posts yet</div>
+          <h2 class="mt-6 text-2xl font-semibold text-slate-900">Start sharing Vertikal insights</h2>
+          <p class="mt-2 max-w-xl text-sm text-slate-500">Once you publish your first story, it will appear here for quick edits, status changes, and sharing links.</p>
+          <a href="{{ url_for('admin.add_blog') }}" class="mt-6 inline-flex items-center justify-center rounded-full bg-blue-600 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-blue-200 transition hover:bg-blue-500">Draft your first story</a>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</section>
+{% endblock %}

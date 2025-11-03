@@ -1,6 +1,8 @@
 import os
 import logging
 import sys
+import json
+from urllib.request import Request, urlopen
 from flask import Flask, jsonify, request
 from src.config import DevelopmentConfig, config as config_map
 from src.models.database import db
@@ -10,6 +12,7 @@ from src.route.ai_route.agent import agent_bp
 from livekit import api
 from dotenv import load_dotenv
 from src.models.database import VisitorLog
+from src.route.admin_route.admin import admin_bp
 
 
 logging.basicConfig(
@@ -34,6 +37,8 @@ migrate = Migrate(app, db)
 app.register_blueprint(home_bp)
 app.register_blueprint(agent_bp)
 
+app.register_blueprint(admin_bp)
+
 
 @app.before_request
 def log_visitor():
@@ -41,7 +46,10 @@ def log_visitor():
         return
 
     try:
-        ip = request.headers.get("X-Forwarded-For", request.remote_addr)
+        ip_header = request.headers.get("X-Forwarded-For", request.remote_addr)
+        ip = (ip_header or "").split(",")[0].strip()
+        if not ip or ip.lower() == "unknown":
+            ip = request.remote_addr
         country, city = "Unknown", "Unknown"
 
         # Parse UTM parameters
@@ -52,10 +60,17 @@ def log_visitor():
         utm_content = request.args.get("utm_content")
 
         # Lookup country/city (optional)
-        if ip and not ip.startswith(("127.", "192.168.", "172.")):
+        if ip and not ip.startswith(("127.", "10.", "192.168.", "172.16.", "172.17.", "172.18.", "172.19.", "172.20.", "172.21.", "172.22.", "172.23.", "172.24.", "172.25.", "172.26.", "172.27.", "172.28.", "172.29.", "172.30.", "172.31.")):
             try:
-                res = request.get(f"https://ipapi.co/{ip}/json/", timeout=3)
-                data = res.json()
+                req = Request(
+                    f"https://ipapi.co/{ip}/json/",
+                    headers={"User-Agent": "VertikalAgent/1.0 (+https://vertikalagent.com)"},
+                )
+                with urlopen(req, timeout=3) as res:
+                    if res.status == 200:
+                        data = json.loads(res.read().decode("utf-8"))
+                    else:
+                        data = {}
                 country = data.get("country_name", "Unknown")
                 city = data.get("city", "Unknown")
             except Exception:
@@ -93,7 +108,31 @@ API_KEY = os.getenv("LIVEKIT_API_KEY")
 API_SECRET = os.getenv("LIVEKIT_API_SECRET")
 
 # Import models after db initialization to avoid circular imports
+
 from src.models.database import Lead, Message, Interaction  # noqa: E402
+from src.models.database import User
+
+
+@app.cli.command("create-admin")
+def create_admin():
+    """Create a new admin user from the command line."""
+    name = input('Name: ').strip()
+    email = input('Email: ').strip().lower()
+    password = input('Password: ').strip()
+
+    if not name or not email or not password:
+        print('All fields are required.')
+        return
+
+    with app.app_context():
+        if User.query.filter_by(email=email).first():
+            print('A user with that email already exists.')
+            return
+        user = User(name=name, email=email, role='admin')
+        user.set_password(password)
+        db.session.add(user)
+        db.session.commit()
+        print(f'Admin user {name} <{email}> created.')
 
 if __name__ == '__main__':
     # Run with the debug setting defined by the active configuration

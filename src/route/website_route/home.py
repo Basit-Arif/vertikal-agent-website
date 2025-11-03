@@ -3,9 +3,14 @@ from datetime import datetime
 from sqlalchemy.exc import IntegrityError, SQLAlchemyError
 from flask import flash
 from src.utils.seo import meta_tags
+from src.route.admin_route.admin import (
+    render_blog_list_page,
+    render_blog_detail_page,
+    track_blog_read,
+)
 
 
-from src.models.database import db, Lead
+from src.models.database import db, Lead, Post
 
 home_bp = Blueprint('home', __name__, url_prefix='/')
 
@@ -128,11 +133,20 @@ def sitemap_xml():
         ('home.privacy_policy', {}),
         ('home.terms_of_service', {}),
         ('home.security_overview', {}),
+        ('home.blog_listing', {}),
     ]
     for endpoint, params in routes:
         pages.append({
             "loc": url_for(endpoint, _external=True, **params),
             "lastmod": ten_days_ago,
+        })
+
+    posts = Post.query.filter_by(is_published=True).order_by(Post.updated_at.desc(), Post.created_at.desc()).all()
+    for post in posts:
+        lastmod_dt = post.updated_at or post.created_at or datetime.utcnow()
+        pages.append({
+            "loc": url_for('home.blog_detail_public', slug=post.slug, _external=True),
+            "lastmod": lastmod_dt.date().isoformat(),
         })
 
     xml_parts = [
@@ -149,6 +163,21 @@ def sitemap_xml():
     response = make_response("\n".join(xml_parts))
     response.headers["Content-Type"] = "application/xml"
     return response
+
+
+@home_bp.route('/blog')
+def blog_listing():
+    return render_blog_list_page()
+
+
+@home_bp.route('/blog/<slug>')
+def blog_detail_public(slug):
+    return render_blog_detail_page(slug)
+
+
+@home_bp.route('/blog/<slug>/track', methods=['POST'])
+def blog_detail_track_public(slug):
+    return track_blog_read(slug)
 
 
 
