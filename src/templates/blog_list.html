@@ -61,8 +61,10 @@
                 >
               </div>
             {% else %}
-              <div class="flex h-56 w-full items-center justify-center bg-gradient-to-br from-primary via-secondary to-primary/70 text-4xl font-semibold text-white sm:h-64">
-                {{ post.title|first|upper if post.title else 'V' }}
+              <div class="flex h-56 w-full items-center justify-center bg-gradient-to-br from-primary via-secondary to-primary/70 px-6 text-center text-white sm:h-64">
+                <span class="text-lg font-semibold leading-snug sm:text-xl lg:text-2xl">
+                  {{ post.title if post.title else 'Vertikal Story' }}
+                </span>
               </div>
             {% endif %}
 

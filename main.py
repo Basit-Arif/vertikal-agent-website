@@ -1,8 +1,6 @@
 import os
 import logging
 import sys
-import json
-from urllib.request import Request, urlopen
 from flask import Flask, jsonify, request
 from src.config import DevelopmentConfig, config as config_map
 from src.models.database import db
@@ -46,10 +44,7 @@ def log_visitor():
         return
 
     try:
-        ip_header = request.headers.get("X-Forwarded-For", request.remote_addr)
-        ip = (ip_header or "").split(",")[0].strip()
-        if not ip or ip.lower() == "unknown":
-            ip = request.remote_addr
+        ip = request.headers.get("X-Forwarded-For", request.remote_addr)
         country, city = "Unknown", "Unknown"
 
         # Parse UTM parameters
@@ -60,17 +55,10 @@ def log_visitor():
         utm_content = request.args.get("utm_content")
 
         # Lookup country/city (optional)
-        if ip and not ip.startswith(("127.", "10.", "192.168.", "172.16.", "172.17.", "172.18.", "172.19.", "172.20.", "172.21.", "172.22.", "172.23.", "172.24.", "172.25.", "172.26.", "172.27.", "172.28.", "172.29.", "172.30.", "172.31.")):
+        if ip and not ip.startswith(("127.", "192.168.", "172.")):
             try:
-                req = Request(
-                    f"https://ipapi.co/{ip}/json/",
-                    headers={"User-Agent": "VertikalAgent/1.0 (+https://vertikalagent.com)"},
-                )
-                with urlopen(req, timeout=3) as res:
-                    if res.status == 200:
-                        data = json.loads(res.read().decode("utf-8"))
-                    else:
-                        data = {}
+                res = request.get(f"https://ipapi.co/{ip}/json/", timeout=3)
+                data = res.json()
                 country = data.get("country_name", "Unknown")
                 city = data.get("city", "Unknown")
             except Exception:

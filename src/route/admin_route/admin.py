@@ -48,6 +48,31 @@ def _save_cover_image(file_storage, title):
     return f"/static/{relative_path.replace(os.sep, '/')}"
 
 
+def _save_body_image(file_storage, title="blog-image"):
+    filename = secure_filename(file_storage.filename)
+    if not filename:
+        return None
+
+    ext = os.path.splitext(filename)[1].lower()
+    if ext.replace(".", "") not in ALLOWED_IMAGE_EXTENSIONS:
+        return None
+
+    upload_root = current_app.config.get(
+        "BLOG_BODY_UPLOAD_FOLDER",
+        os.path.join(current_app.static_folder, "uploads", "blog_images"),
+    )
+    os.makedirs(upload_root, exist_ok=True)
+
+    base_slug = slugify(title) or "vertikal-image"
+    timestamp = datetime.utcnow().strftime("%Y%m%d%H%M%S")
+    final_name = f"{base_slug}-{timestamp}{ext}"
+
+    file_path = os.path.join(upload_root, final_name)
+    file_storage.save(file_path)
+
+    relative_path = os.path.relpath(file_path, current_app.static_folder)
+    return f"/static/{relative_path.replace(os.sep, '/')}"
+
 def generate_unique_slug(title, current_post=None):
     base_slug = slugify(title) or f"post-{datetime.utcnow().strftime('%Y%m%d%H%M%S')}"
     slug = base_slug
@@ -326,6 +351,27 @@ def manage_blogs():
         admin=g.current_admin,
         analytics=analytics,
     )
+
+
+@admin_bp.route("/blogs/upload-image", methods=["POST"])
+@admin_login_required
+def upload_blog_image():
+    """
+    Upload handler for images embedded in the blog body editor.
+    Expects 'image' (or 'file') in multipart form data.
+    Returns a JSON object with the public URL.
+    """
+    file_storage = request.files.get("image") or request.files.get("file")
+    title = (request.form.get("title") or request.form.get("context_title") or "blog-image").strip()
+
+    if not file_storage or not getattr(file_storage, "filename", ""):
+        return jsonify({"error": "no_file"}), 400
+
+    saved_url = _save_body_image(file_storage, title=title or "blog-image")
+    if not saved_url:
+        return jsonify({"error": "unsupported_format"}), 400
+
+    return jsonify({"url": saved_url})
 
 
 @admin_bp.route("/analytics/visitors")

@@ -297,6 +297,8 @@ def chatting():
 from livekit import api
 import uuid
 
+
+
 @agent_bp.route('/getToken')
 def getToken():
   unique_room_name = f"vertikal-room-{uuid.uuid4().hex[:8]}"

@@ -12,6 +12,16 @@
     .ql-toolbar.ql-snow { border-radius: 18px 18px 0 0; border: 1px solid rgba(148, 163, 184, 0.4); padding: 12px; }
     .ql-container.ql-snow { border-radius: 0 0 18px 18px; border: 1px solid rgba(148, 163, 184, 0.4); min-height: 320px; }
     .form-card { box-shadow: 0 20px 45px rgba(15, 23, 42, 0.08); }
+    /* Constrain images inserted into the editor to standard, responsive size */
+    .ql-editor img {
+      max-width: 100%;
+      height: auto;
+      max-height: 480px;
+      object-fit: contain;
+      display: block;
+      margin: 1.25rem auto;
+      border-radius: 0.75rem;
+    }
   </style>
 </head>
 <body>
@@ -209,10 +219,76 @@
   </div>
 
   <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
   <script>
+    const uploadImageUrl = {{ url_for('admin.upload_blog_image') | tojson }};
+    const toolbarOptions = [
+      [{ header: [1, 2, 3, false] }],
+      ['bold', 'italic', 'underline', 'strike'],
+      [{ list: 'ordered' }, { list: 'bullet' }],
+      ['link', 'image', 'blockquote', 'code-block'],
+      [{ align: [] }],
+      ['clean'],
+    ];
+
+    function imageHandler() {
+      const fileInput = document.createElement('input');
+      fileInput.setAttribute('type', 'file');
+      fileInput.setAttribute('accept', 'image/*');
+      fileInput.onchange = async () => {
+        const file = fileInput.files && fileInput.files[0];
+        if (!file) return;
+        const form = new FormData();
+        form.append('image', file);
+        const titleInput = document.getElementById('title');
+        if (titleInput && titleInput.value) {
+          form.append('context_title', titleInput.value);
+        }
+        try {
+          const res = await fetch(uploadImageUrl, { method: 'POST', body: form });
+          if (!res.ok) throw new Error('Upload failed');
+          const data = await res.json();
+          if (!data.url) throw new Error('No URL returned');
+          const range = quill.getSelection(true);
+          quill.insertEmbed(range ? range.index : 0, 'image', data.url, 'user');
+          quill.setSelection((range ? range.index : 0) + 1, 0);
+        } catch (err) {
+          alert('Image upload failed. Please try a different image.');
+        }
+      };
+      fileInput.click();
+    }
+
     const quill = new Quill('#editor', {
       theme: 'snow',
-      placeholder: 'Start drafting your story...'
+      placeholder: 'Start drafting your story...',
+      modules: {
+        toolbar: {
+          container: toolbarOptions,
+          handlers: { image: imageHandler },
+        },
+      },
+    });
+
+    // Markdown paste support: detect Markdown in clipboard and convert to rich text
+    quill.root.addEventListener('paste', (event) => {
+      const data = event.clipboardData || window.clipboardData;
+      if (!data) return;
+      const markdown = data.getData('text/markdown') || data.getData('text/plain');
+      if (!markdown) return;
+      // Heuristic to detect markdown content
+      const looksLikeMarkdown = /(^|\n)\s{0,3}#{1,6}\s|(^|\n)[-*+]\s+|(^|\n)\d+\.\s+|`{1,3}[\s\S]*?`{1,3}|\*\*[^*]+\*\*|__[^_]+__|!\[[^\]]*\]\([^)]+\)|\[[^\]]+\]\([^)]+\)/.test(markdown);
+      if (!looksLikeMarkdown) return;
+      event.preventDefault();
+      try {
+        const html = marked.parse(markdown, { breaks: true });
+        const range = quill.getSelection(true);
+        const index = range ? range.index : quill.getLength();
+        quill.clipboard.dangerouslyPasteHTML(index, html, 'user');
+        quill.setSelection(index + 1, 0);
+      } catch (e) {
+        // fallback to default behavior on failure
+      }
     });
 
     const form = document.getElementById('blog-form');
