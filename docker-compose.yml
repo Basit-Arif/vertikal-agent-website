@@ -12,6 +12,7 @@ services:
       - FLASK_ENV=production
     volumes:
       - .:/app
+      - /app/.venv
     restart: always
 
   db:

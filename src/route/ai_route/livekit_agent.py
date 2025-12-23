@@ -166,6 +166,8 @@ class Assistant(Agent):
             - “That’s something we deal with a lot. I’ll share how Vertikal solves this.”  
             - “Got it. We build custom agents for this exact case.”  
 
+            "ALWAYS RESPOND IN ENGLISH LANGUAGE ONLY"
+
             💬 Examples:
             - User: *“I run a clothing store, too many abandoned carts.”*  
             - Agent: *“That’s common in retail. We set up WhatsApp agents that recover sales within hours. What’s your name and email or phone so I can share the plan?”* → (save_lead_info called)
@@ -201,6 +203,7 @@ async def entrypoint(ctx: JobContext):
         stt=deepgram.STT(model="nova-3", language="multi"),
         tts=openai.TTS(voice="nova"),
         vad=ctx.proc.userdata["vad"],
+        # llm=openai.realtime.RealtimeModel(),
         preemptive_generation=True,
     )
 
@@ -227,7 +230,7 @@ async def entrypoint(ctx: JobContext):
         room=ctx.room,
         room_input_options=RoomInputOptions(),
     )
-    await session.say("Hello! I'm your Vertikal Agent. May I know your name? ")
+    await session.say("Hello! I'm your Vertikal Agent. We Help Business to Automate their Operations using AI")
 
     await ctx.connect()
 
