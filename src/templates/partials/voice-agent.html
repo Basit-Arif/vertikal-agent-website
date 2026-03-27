@@ -15,6 +15,10 @@
       window.liveKitClient;
     console.log("✅ LiveKit Client Loaded:", Boolean(lkGlobal));
   </script>
+  <script src="{{ url_for('static', filename='js/livekit-client.umd.js') }}"></script>
+<script>
+  console.log("✅ LiveKit Client Loaded:", window.LiveKitClient || window.livekitClient);
+</script>
 </head>
 <body class="bg-gray-50">
 
@@ -790,10 +794,7 @@
   resetChatUI();
   
 </script>
-<script src="{{ url_for('static', filename='js/livekit-client.umd.js') }}"></script>
-<script>
-  console.log("✅ LiveKit Client Loaded:", window.LiveKitClient || window.livekitClient);
-</script>
+
 
 
 

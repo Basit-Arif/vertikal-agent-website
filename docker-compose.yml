@@ -14,7 +14,25 @@ services:
       - .:/app
       - /app/.venv
     restart: always
-
+ 
+  worker:
+    build: .
+    container_name: vertikal_worker
+    command: uv run src/route/ai_route/livekit_agent.py start
+    environment:
+      - LIVEKIT_URL=${LIVEKIT_URL:-wss://testing-mwtbjpwy.livekit.cloud}
+      - LIVEKIT_API_KEY=${LIVEKIT_API_KEY}
+      - LIVEKIT_API_SECRET=${LIVEKIT_API_SECRET}
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - DEEPGRAM_API_KEY=${DEEPGRAM_API_KEY}
+      - DATABASE_URL=mysql+pymysql://root:root@db/vertikal_agent
+    depends_on:
+      - db
+    volumes:
+      - .:/app
+      - /app/.venv
+    restart: always
+ 
   db:
     image: mysql:8.0
     container_name: vertikal_db
